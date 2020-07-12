@@ -81,7 +81,7 @@ from scipy.optimize import fsolve
 def logistic_model(X,a,b,c):
     return c/(1+np.exp(-a*(X-b)))
 #Select a countries
-countries=['World','USA','Brazil','India','Russia','Peru','Chile','UK','Germany']
+countries=['World','USA','Brazil','India','Russia','Peru','Chile','Mexico','Germany']
 #list of dataframes with confirmed cases per country
 dfs_c=[]
 #list of dataframes with deaths per country
@@ -242,7 +242,7 @@ sns.set_style('darkgrid')
 sns.set_context('paper')
 sns.set_palette('muted')
 
-countries=['USA','Brazil','India','Russia','Peru','UK','Germany','Chile']
+countries=['USA','Brazil','India','Russia','Peru','Mexico','Germany','Chile']
 
 #Confirmed cases graph
 #Prepare data
@@ -369,7 +369,7 @@ fig.savefig('output/projection_chile.png',dpi=300, bbox_inches='tight')
 plt.show()
 
 #Graph of ARIMA projections for countries
-countries=['World','USA','Brazil','India','Russia','Peru','Chile','UK','Germany']
+countries=['World','USA','Brazil','India','Russia','Peru','Chile','Mexico','Germany']
 for country in countries:
     dblue,pred=sns.xkcd_palette(['denim blue','pale red'])
     fig, axs=plt.subplots(2,2,figsize=(12,6),sharex=True)
