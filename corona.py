@@ -92,6 +92,10 @@ textlist=[]
 models_c={}
 #Dictionary of automodels deaths
 models_d={}
+#Logistic model parameters confirmed cases
+parm_c={}
+#Logistic model parameters deaths
+parm_d={}
 #Title of the report
 textlist.append('\t\tDaily Report on COVID-19')
 textlist.append('')
@@ -126,8 +130,8 @@ for country in countries:
     RMSE_c_arima=np.round(mean_squared_error(train,predictions_in_sample)**(1/2),2)
     explained_variance_c_arima=np.round(explained_variance_score(train,predictions_in_sample),3)
     #Fitting a logistic model for long term predictions
-    parm, cov = curve_fit(logistic_model,X,y,p0=[0.3,50,y[-1]],maxfev = 10000)
-    a,b,c=parm
+    parm_c[country] = curve_fit(logistic_model,X,y,p0=[0.3,50,y[-1]],maxfev = 10000)
+    a,b,c=parm_c[country][0]
     #Calculate date of pick daily infections
     #y_year=logistic_model(np.arange(365),a,b,c)
     #dy=np.diff(y_year)
@@ -174,8 +178,8 @@ for country in countries:
     RMSE_d_arima=mean_squared_error(train,predictions_in_sample)**(1/2)
     explained_variance_d_arima=explained_variance_score(train,predictions_in_sample)
     #Fitting a logistic model for long term predictions
-    parm, cov = curve_fit(logistic_model,X,y,p0=[0.3,50,y[-1]],maxfev = 10000)
-    a,b,c=parm
+    parm_d[country] = curve_fit(logistic_model,X,y,p0=[0.3,50,y[-1]],maxfev = 10000)
+    a,b,c=parm_d[country][0]
     #Total deaths
     forecast_daily=np.maximum(0,models_d[country].predict(sol-len(train)))
     forecast=daily_to_cum(deaths[country],forecast_daily)
