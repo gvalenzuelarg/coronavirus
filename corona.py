@@ -31,7 +31,7 @@ confirmed.rename(columns={'US': 'USA', 'Korea, South': 'South Korea','United Kin
 #Dataframe of daily cases
 confirmed_daily=confirmed-confirmed.shift(+1)
 confirmed_daily.fillna(0)
-#Chile: On 2020-06-17 there was a retroactive report of 36179.0 cases. In order for the model to work better I will replace this data point for the average of the surrounding dates
+#Chile: On 2020-06-17 there was a retroactive report of 36179.0 cases. In order for the model to work better I will replace this data point with the average of the surrounding dates
 confirmed_daily['Chile']['2020-06-17']=np.mean([confirmed_daily['Chile']['2020-06-16'],confirmed_daily['Chile']['2020-06-18']])
 
 #Dataframe of deaths
@@ -50,7 +50,7 @@ deaths.rename(columns={'US': 'USA', 'Korea, South': 'South Korea','United Kingdo
 #Dataframe of daily deaths
 deaths_daily=deaths-deaths.shift(+1)
 deaths_daily.fillna(0)
-#Chile: On 2020-06-08 there was a retroactive report of 627.0 deaths. In order for the model to work better I will replace this data point for the average of the surrounding dates
+#Chile: On 2020-06-08 there was a retroactive report of 627.0 deaths. In order for the model to work better I will replace this data point with the average of the surrounding dates
 deaths_daily['Chile']['2020-06-08']=np.mean([deaths_daily['Chile']['2020-06-07'],deaths_daily['Chile']['2020-06-09']])
 
 #Dataframe of confirmed cases reindexed to days since the first instance
@@ -81,7 +81,7 @@ from scipy.optimize import fsolve
 def logistic_model(X,a,b,c):
     return c/(1+np.exp(-a*(X-b)))
 #Select a countries
-countries=['World','USA','Brazil','India','Russia','Peru','Chile','Mexico','Germany']
+countries=['World','USA','Brazil','India','Russia','Peru','South Africa','Chile','Germany']
 #list of dataframes with confirmed cases per country
 dfs_c=[]
 #list of dataframes with deaths per country
@@ -246,7 +246,7 @@ sns.set_style('darkgrid')
 sns.set_context('paper')
 sns.set_palette('muted')
 
-countries=['USA','Brazil','India','Russia','Peru','Mexico','Germany','Chile']
+countries=['USA','Brazil','India','Russia','Peru','South Africa','Germany','Chile']
 
 #Confirmed cases graph
 #Prepare data
@@ -373,7 +373,7 @@ fig.savefig('output/projection_chile.png',dpi=300, bbox_inches='tight')
 plt.show()
 
 #Graph of ARIMA projections for countries
-countries=['World','USA','Brazil','India','Russia','Peru','Chile','Mexico','Germany']
+countries=['World','USA','Brazil','India','Russia','Peru','South Africa','Chile','Germany']
 for country in countries:
     dblue,pred=sns.xkcd_palette(['denim blue','pale red'])
     fig, axs=plt.subplots(2,2,figsize=(12,6),sharex=True)
