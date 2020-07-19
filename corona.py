@@ -71,6 +71,9 @@ for country in all_countries:
     df=df.drop(columns='Date')
     deaths_comp=pd.concat([deaths_comp,df], axis=1)
 
+#Creates list with the World plus the top 6 countries by confirmed cases plus Chile and Germany
+countries=list(confirmed.iloc[-1].sort_values(ascending=False)[0:7].index)+['Chile','Germany']
+
 #Projection of cases for selected countries
 from sklearn.metrics import mean_squared_error, explained_variance_score
 from statsmodels.tsa.arima_model import ARIMA
@@ -80,8 +83,7 @@ from scipy.optimize import fsolve
 #Logistic Curve model
 def logistic_model(X,a,b,c):
     return c/(1+np.exp(-a*(X-b)))
-#Select a countries
-countries=['World','USA','Brazil','India','Russia','Peru','South Africa','Chile','Germany']
+
 #list of dataframes with confirmed cases per country
 dfs_c=[]
 #list of dataframes with deaths per country
@@ -246,7 +248,8 @@ sns.set_style('darkgrid')
 sns.set_context('paper')
 sns.set_palette('muted')
 
-countries=['USA','Brazil','India','Russia','Peru','South Africa','Germany','Chile']
+#Sublist of countries to graph
+countries=list(confirmed.iloc[-1].sort_values(ascending=False)[1:7].index)+['Germany','Chile']
 
 #Confirmed cases graph
 #Prepare data
@@ -373,7 +376,7 @@ fig.savefig('output/projection_chile.png',dpi=300, bbox_inches='tight')
 plt.show()
 
 #Graph of ARIMA projections for countries
-countries=['World','USA','Brazil','India','Russia','Peru','South Africa','Chile','Germany']
+countries=list(confirmed.iloc[-1].sort_values(ascending=False)[0:7].index)+['Chile','Germany']
 for country in countries:
     dblue,pred=sns.xkcd_palette(['denim blue','pale red'])
     fig, axs=plt.subplots(2,2,figsize=(12,6),sharex=True)
