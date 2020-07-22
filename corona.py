@@ -28,6 +28,12 @@ world_c=pd.DataFrame(confirmed.sum(axis=1),columns=['World'])
 confirmed=pd.concat([world_c,confirmed],axis=1)
 confirmed.rename(columns={'US': 'USA', 'Korea, South': 'South Korea','United Kingdom':'UK'}, inplace=True)
 
+#Data Corrections:
+confirmed['Chile']['2020-07-20']=333029
+deaths['Chile']['2020-07-20']=8633
+confirmed['Peru']['2020-07-20']=357681
+deaths['Peru']['2020-07-20']=13384
+
 #Dataframe of daily cases
 confirmed_daily=confirmed-confirmed.shift(+1)
 confirmed_daily.fillna(0)
