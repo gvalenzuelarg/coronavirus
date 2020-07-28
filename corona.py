@@ -118,6 +118,7 @@ for country in countries:
     y=confirmed_comp[country].dropna().values
     train=np.maximum(0,confirmed_daily[country].astype(float))
     train=train[train>0]
+    train=np.maximum(0,confirmed_daily[country].astype(float))[train.index[0]:]
     #Find optimal ARIMA model
     models_c[country] = pm.auto_arima(train, seasonal=False, trace=True)
     #2 weeks predictions
@@ -166,6 +167,7 @@ for country in countries:
     y=deaths_comp[country].dropna().values
     train=np.maximum(0,deaths_daily[country].astype(float))
     train=train[train>0]
+    train=np.maximum(0,deaths_daily[country].astype(float))[train.index[0]:]
     #Find optimal ARIMA model
     models_d[country] = pm.auto_arima(train, seasonal=False, trace=True)
     #2 weeks predictions
