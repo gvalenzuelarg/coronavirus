@@ -11,6 +11,17 @@ today_str=format_date(today,locale=locale)
 yesterday=today-datetime.timedelta(1)
 yesterday_str=format_date(yesterday,locale=locale)
 
+def cum_to_daily(cum_data):
+    #Returns daily changes dataframe provided with cummulative data dataframe
+    daily_data=cum_data-cum_data.shift(+1)
+    return daily_data
+
+def daily_to_cum(cum_data,daily_forcast):
+    #Returns cummulative forcast from daily change forcast, provided with current cummulative data
+    cum_forcast=daily_forcast.cumsum(axis=0)
+    cum_forcast=cum_forcast+cum_data[-1]
+    return cum_forcast
+
 #Data source from JHU CSSE: https://github.com/CSSEGISandData/COVID-19
 url_c='https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_confirmed_global.csv'
 url_d='https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv'
@@ -29,8 +40,8 @@ confirmed=pd.concat([world_c,confirmed],axis=1)
 confirmed.rename(columns={'US': 'USA', 'Korea, South': 'South Korea','United Kingdom':'UK'}, inplace=True)
 
 #Dataframe of daily cases
-confirmed_daily=confirmed-confirmed.shift(+1)
-confirmed_daily.fillna(0)
+confirmed_daily=cum_to_daily(confirmed)
+confirmed_daily=confirmed_daily.fillna(0)
 
 #Chile: On 2020-06-17 there was a retroactive report of 36179.0 cases. In order for the model to work better I will replace this data point with the average of the surrounding dates
 confirmed_daily['Chile']['2020-06-17']=np.mean([confirmed_daily['Chile']['2020-06-16'],confirmed_daily['Chile']['2020-06-18']])
@@ -49,8 +60,8 @@ deaths=pd.concat([world_d,deaths],axis=1)
 deaths.rename(columns={'US': 'USA', 'Korea, South': 'South Korea','United Kingdom':'UK'}, inplace=True)
 
 #Dataframe of daily deaths
-deaths_daily=deaths-deaths.shift(+1)
-deaths_daily.fillna(0)
+deaths_daily=cum_to_daily(deaths)
+deaths_daily=deaths_daily.fillna(0)
 
 #Chile: On 2020-06-08 there was a retroactive report of 627.0 deaths. In order for the model to work better I will replace this data point with the average of the surrounding dates
 deaths_daily['Chile']['2020-06-08']=np.mean([deaths_daily['Chile']['2020-06-07'],deaths_daily['Chile']['2020-06-09']])
@@ -80,8 +91,7 @@ countries=list(confirmed.iloc[-1].sort_values(ascending=False)[0:7].index)+['Chi
 
 #Projection of cases for selected countries
 from sklearn.metrics import mean_squared_error, explained_variance_score
-from statsmodels.tsa.arima_model import ARIMA
-import pmdarima as pm
+from fbprophet import Prophet
 from scipy.optimize import curve_fit
 from scipy.optimize import fsolve
 #Logistic Curve model
@@ -92,8 +102,6 @@ def logistic_model(X,a,b,c):
 dfs_c=[]
 #list of dataframes with deaths per country
 dfs_d=[]
-#list of text lines to be printed/saved to the report file
-textlist=[]
 #Dictionary of automodels confirmed cases
 models_c={}
 #Dictionary of automodels deaths
@@ -102,56 +110,93 @@ models_d={}
 parm_c={}
 #Logistic model parameters deaths
 parm_d={}
+#Countries confirmed cases trend points
+t_c={'World':'2020-05-01',
+ 'USA':'2020-06-01',
+ 'Brazil':None,
+ 'India':None,
+ 'Russia':None,
+ 'South Africa':None,
+ 'Mexico':None,
+ 'Chile':'2020-06-18',
+ 'Germany':None}
+#Countries deaths trend points
+t_d={'World':'2020-06-01',
+ 'USA':'2020-07-01',
+ 'Brazil':None,
+ 'India':None,
+ 'Russia':None,
+ 'South Africa':None,
+ 'Mexico':None,
+ 'Chile':'2020-07-01',
+ 'Germany':None}
+ #Countries pandemic status
+status={'World':'second wave',
+ 'USA':'second wave',
+ 'Brazil':'first wave',
+ 'India':'first wave',
+ 'Russia':'first wave',
+ 'South Africa':'first wave',
+ 'Mexico':'first wave',
+ 'Chile':'first wave',
+ 'Germany':'saturation point'}
+#list of text lines to be printed/saved to the report file
+textlist=[]
 #Title of the report
 textlist.append('\t\tDaily Report on COVID-19')
 textlist.append('')
 #Model calculations
-def daily_to_cum(cum_data,daily_forcast):
-    #Returns cummulative forcast from daily change forcast, provided with current cummulative data
-    cum_forcast=daily_forcast.cumsum(axis=0)
-    cum_forcast=cum_forcast+cum_data[-1]
-    return cum_forcast
 for country in countries:
     #Confirmed cases prediction
     #Prapare data
-    X=np.arange(len(confirmed_comp[country].dropna()))
-    y=confirmed_comp[country].dropna().values
-    train=np.maximum(0,confirmed_daily[country].astype(float))
-    train=train[train>0]
-    train=np.maximum(0,confirmed_daily[country].astype(float))[train.index[0]:]
-    #Find optimal ARIMA model
-    models_c[country] = pm.auto_arima(train, seasonal=False, trace=True)
-    #2 weeks predictions
-    forecast_daily=np.maximum(0,models_c[country].predict(35))
-    forecast_daily=pd.DataFrame(forecast_daily,index=pd.date_range(today, periods=(35), freq='D'))
+    y=confirmed.loc[:,country][confirmed.loc[:,country]>0]
+    X=np.arange(len(y))
+    #cap calculation
+    parm = curve_fit(logistic_model,np.arange(len(y[t_c[country]:])),y[t_c[country]:].values,p0=[.3,1,y[-1]],maxfev = 100000)
+    cap=parm[0][2]
+    #Prophet model
+    train=pd.DataFrame({'ds':y[t_c[country]:].index,'y':y[t_c[country]:].values})
+    train['cap'] = cap
+    #Choice of model depending saturation status
+    if status[country]=='saturation point':
+        m = Prophet()
+    else:
+        m = Prophet(growth='logistic')
+    m.fit(train)
+    future = m.make_future_dataframe(periods=1460)
+    future['cap'] = cap
+    models_c[country] = m.predict(future)
+    #5 weeks predictions
+    forecast_daily=np.maximum(0,cum_to_daily(models_c[country][['yhat']][-1461:-(1460-35)])).dropna()
+    forecast_daily=pd.DataFrame(forecast_daily.values,index=pd.date_range(today, periods=(35), freq='D'))
     forecast=daily_to_cum(confirmed[country],forecast_daily)
     forecast=pd.DataFrame(forecast,index=pd.date_range(today, periods=(35), freq='D'))
-    predictions_in_sample=pd.DataFrame(models_c[country].predict_in_sample(),columns=['Prediction'],index=train.index)
+    predictions_in_sample=pd.DataFrame(models_c[country]['yhat'][:len(train)].values,columns=['Prediction'],index=models_c[country]['ds'][:len(train)])
     #country's confirmed cases dataframe
     df_c=pd.concat([confirmed[country][confirmed[country]>0],forecast,forecast_daily],axis=1)
     df_c.columns=['Data','Prediction','Daily']
     df_c.index.name='Date'
     #Saves dataframe to list
     dfs_c.append(df_c)
-    #Metrics ARIMA model
-    RMSE_c_arima=np.round(mean_squared_error(train,predictions_in_sample)**(1/2),2)
-    explained_variance_c_arima=np.round(explained_variance_score(train,predictions_in_sample),3)
+    #Metrics Prophet model
+    RMSE_c_arima=np.round(mean_squared_error(train['y'],predictions_in_sample)**(1/2),2)
+    explained_variance_c_arima=np.round(explained_variance_score(train['y'],predictions_in_sample),3)
     #Fitting a logistic model for long term predictions
-    parm_c[country] = curve_fit(logistic_model,X,y,p0=[0.3,50,y[-1]],maxfev = 10000)
+    parm_c[country] = curve_fit(logistic_model,X,y.values,p0=[0.3,50,y[-1]],maxfev = 100000)
     a,b,c=parm_c[country][0]
     #Calculate date of pick daily infections
     #y_year=logistic_model(np.arange(365),a,b,c)
     #dy=np.diff(y_year)
     #arg_max=np.argmax(dy)
-    first_day=train.index[0]
+    first_day=y.index[0]
     max_daily_date=first_day+datetime.timedelta(int(b))
     #Calculate end of pandemic
     sol = int(fsolve(lambda x : logistic_model(x,a,b,c) - int(c),b))
     ending_date=first_day+datetime.timedelta(sol)
     #Total confirmed cases
-    forecast_daily=np.maximum(0,models_c[country].predict(sol-len(train)))
+    forecast_daily=cum_to_daily(models_c[country][['yhat']][-1461:-((sol-len(train)))]).dropna()
     forecast=daily_to_cum(confirmed[country],forecast_daily)
-    total_cases=forecast[-1]
+    total_cases=forecast['yhat'].values[-1]
     #Calculates country's mortality rate
     mortality= round(deaths.iloc[-1,:][country]/confirmed.iloc[-1,:][country]*100,1)
     #Metrics logistic model
@@ -163,35 +208,45 @@ for country in countries:
 
     #Deaths prediction
     #Prapare data
-    X=np.arange(len(deaths_comp[country].dropna()))
-    y=deaths_comp[country].dropna().values
-    train=np.maximum(0,deaths_daily[country].astype(float))
-    train=train[train>0]
-    train=np.maximum(0,deaths_daily[country].astype(float))[train.index[0]:]
-    #Find optimal ARIMA model
-    models_d[country] = pm.auto_arima(train, seasonal=False, trace=True)
-    #2 weeks predictions
-    forecast_daily=np.maximum(0,models_d[country].predict(35))
-    forecast_daily=pd.DataFrame(forecast_daily,index=pd.date_range(today, periods=(35), freq='D'))
+    y=deaths.loc[:,country][deaths.loc[:,country]>0]
+    X=np.arange(len(y))
+    #cap calculation
+    parm = curve_fit(logistic_model,np.arange(len(y[t_d[country]:])),y[t_d[country]:].values,p0=[.3,1,y[-1]],maxfev = 100000)
+    cap=parm[0][2]
+    #Prophet model
+    train=pd.DataFrame({'ds':y[t_d[country]:].index,'y':y[t_d[country]:].values})
+    train['cap'] = cap
+    #Choice of model depending saturation status
+    if status[country]=='saturation point':
+        m = Prophet()
+    else:
+        m = Prophet(growth='logistic')
+    m.fit(train)
+    future = m.make_future_dataframe(periods=1460)
+    future['cap'] = cap
+    models_d[country] = m.predict(future)
+    #5 weeks predictions
+    forecast_daily=np.maximum(0,cum_to_daily(models_d[country][['yhat']][-1461:-(1460-35)])).dropna()
+    forecast_daily=pd.DataFrame(forecast_daily.values,index=pd.date_range(today, periods=(35), freq='D'))
     forecast=daily_to_cum(deaths[country],forecast_daily.values)
     forecast=pd.DataFrame(forecast,index=pd.date_range(today, periods=(35), freq='D'))
-    predictions_in_sample=pd.DataFrame(models_d[country].predict_in_sample(),columns=['Prediction'],index=train.index)
+    predictions_in_sample=pd.DataFrame(models_d[country]['yhat'][:len(train)].values,columns=['Prediction'],index=models_d[country]['ds'][:len(train)])
     #country's deaths dataframe
     df_d=pd.concat([deaths[country][deaths[country]>0],forecast,forecast_daily],axis=1)
     df_d.columns=['Data','Prediction','Daily']
     df_d.index.name='Date'
     #Saves dataframe to list
     dfs_d.append(df_d)
-    #Metrics ARIMA model
-    RMSE_d_arima=mean_squared_error(train,predictions_in_sample)**(1/2)
-    explained_variance_d_arima=explained_variance_score(train,predictions_in_sample)
+    #Metrics Prophet model
+    RMSE_d_arima=mean_squared_error(train['y'],predictions_in_sample)**(1/2)
+    explained_variance_d_arima=explained_variance_score(train['y'],predictions_in_sample)
     #Fitting a logistic model for long term predictions
-    parm_d[country] = curve_fit(logistic_model,X,y,p0=[0.3,50,y[-1]],maxfev = 10000)
+    parm_d[country] = curve_fit(logistic_model,X,y.values,p0=[0.3,50,y[-1]],maxfev = 10000)
     a,b,c=parm_d[country][0]
     #Total deaths
-    forecast_daily=np.maximum(0,models_d[country].predict(sol-len(train)))
+    forecast_daily=cum_to_daily(models_d[country][['yhat']][-1461:-((sol-len(train)))]).dropna()
     forecast=daily_to_cum(deaths[country],forecast_daily)
-    total_deaths=forecast[-1]
+    total_deaths=forecast['yhat'].values[-1]
     #Metrics logistic model
     RMSE_d_log=mean_squared_error(deaths_comp[country].dropna(),logistic_model(X,a,b,c))**(1/2)
     explained_variance_d_log=explained_variance_score(deaths_comp[country].dropna(),logistic_model(X,a,b,c))
@@ -356,8 +411,8 @@ plt.show()
 #Projection of cases in Chile graph
 #Prepare data
 train=confirmed['Chile'][confirmed['Chile']>0].astype(float)
-y_fc,ci=models_c['Chile'].predict(40,return_conf_int=True)
-y_fc,ci=np.maximum(0,y_fc),np.maximum(0,ci)
+y_fc,ci=cum_to_daily(models_c['Chile'][['yhat']][-1461:-(1460-40)]).dropna(),cum_to_daily(models_c['Chile'][['yhat_lower','yhat_upper']][-1461:-(1460-40)]).dropna()
+y_fc,ci=np.maximum(0,y_fc)['yhat'].values,np.maximum(0,ci)[['yhat_lower','yhat_upper']].values
 y_fc,ci=daily_to_cum(confirmed['Chile'],y_fc),daily_to_cum(confirmed['Chile'],ci)
 y_fc=np.concatenate((np.array([train.iloc[-1]]),y_fc))
 X_fc=np.arange(len(train)-1,len(train)+40)
@@ -381,7 +436,7 @@ plt.figtext(0.5,-0.01,footnote, fontsize=6, ha='center')
 fig.savefig('output/projection_chile.png',dpi=300, bbox_inches='tight')
 plt.show()
 
-#Graph of ARIMA projections for countries
+#Graph of projections for countries
 countries=list(confirmed.iloc[-1].sort_values(ascending=False)[0:7].index)+['Chile','Germany']
 for country in countries:
     dblue,pred=sns.xkcd_palette(['denim blue','pale red'])
@@ -389,8 +444,8 @@ for country in countries:
     fig.subplots_adjust(hspace=0.05)
     #Prepare data confirmed cases
     train=confirmed[country][confirmed[country]>0].astype(float)
-    y_fc,ci=models_c[country].predict(70,return_conf_int=True)
-    y_fc,ci=np.maximum(0,y_fc),np.maximum(0,ci)
+    y_fc,ci=cum_to_daily(models_c[country][['yhat']][-1461:-(1460-70)]).dropna(),cum_to_daily(models_c[country][['yhat_lower','yhat_upper']][-1461:-(1460-70)]).dropna()
+    y_fc,ci=np.maximum(0,y_fc)['yhat'].values,np.maximum(0,ci)[['yhat_lower','yhat_upper']].values
     y_fc,ci=daily_to_cum(confirmed[country],y_fc),daily_to_cum(confirmed[country],ci)
     y_fc=np.concatenate((np.array([train.iloc[-1]]),y_fc))
     X_fc=pd.date_range(train.index[-1], periods=71, freq='D')
@@ -406,9 +461,8 @@ for country in countries:
     #Prepare data daily cases
     train=np.maximum(0,confirmed_daily[country]).astype(float)
     train=train[train>0].rolling(7).mean().dropna()
-    #model=pm.auto_arima(train, seasonal=False, trace=True)
-    y_fc,ci=models_c[country].predict(70,return_conf_int=True)
-    y_fc,ci=pd.DataFrame(np.maximum(0,y_fc),columns=['val']).rolling(7,min_periods=1).mean(),pd.DataFrame(np.maximum(0,ci),columns=[['min','max']]).rolling(7,min_periods=1).mean()
+    y_fc,ci=y_fc,ci=cum_to_daily(models_c[country][['yhat']][-1461:-(1460-70)]).dropna(),cum_to_daily(models_c[country][['yhat_lower','yhat_upper']][-1461:-(1460-70)]).dropna()
+    y_fc,ci=pd.DataFrame(np.maximum(0,y_fc)['yhat'].values,columns=['val']).rolling(7,min_periods=1).mean(),pd.DataFrame(np.maximum(0,ci)[['yhat_lower','yhat_upper']].values,columns=[['min','max']]).rolling(7,min_periods=1).mean()
     y_fc=np.concatenate((np.array([train.iloc[-1]]),y_fc['val'].values))
     X_fc=pd.date_range(train.index[-1], periods=71, freq='D')
     #Graph daily cases
@@ -422,8 +476,8 @@ for country in countries:
     axs[0,1].set_ylabel('Number of daily cases')
     #Prepare data deaths
     train=deaths[country][deaths[country]>0].astype(float)
-    y_fc,ci=models_d[country].predict(70,return_conf_int=True)
-    y_fc,ci=np.maximum(0,y_fc),np.maximum(0,ci)
+    y_fc,ci=y_fc,ci=cum_to_daily(models_d[country][['yhat']][-1461:-(1460-70)]).dropna(),cum_to_daily(models_d[country][['yhat_lower','yhat_upper']][-1461:-(1460-70)]).dropna()
+    y_fc,ci=np.maximum(0,y_fc)['yhat'].values,np.maximum(0,ci)[['yhat_lower','yhat_upper']].values
     y_fc,ci=daily_to_cum(deaths[country],y_fc),daily_to_cum(deaths[country],ci)
     y_fc=np.concatenate((np.array([train.iloc[-1]]),y_fc))
     X_fc=pd.date_range(train.index[-1], periods=71, freq='D')
@@ -443,8 +497,8 @@ for country in countries:
     train=np.maximum(0,deaths_daily[country]).astype(float)
     train=train[train>0].rolling(7).mean().dropna()
     #model=pm.auto_arima(train, seasonal=False, trace=True)
-    y_fc,ci=models_d[country].predict(70,return_conf_int=True)
-    y_fc,ci=pd.DataFrame(np.maximum(0,y_fc),columns=['val']).rolling(7,min_periods=1).mean(),pd.DataFrame(np.maximum(0,ci),columns=[['min','max']]).rolling(7,min_periods=1).mean()
+    y_fc,ci=y_fc,ci=cum_to_daily(models_d[country][['yhat']][-1461:-(1460-70)]).dropna(),cum_to_daily(models_d[country][['yhat_lower','yhat_upper']][-1461:-(1460-70)]).dropna()
+    y_fc,ci=pd.DataFrame(np.maximum(0,y_fc)['yhat'].values,columns=['val']).rolling(7,min_periods=1).mean(),pd.DataFrame(np.maximum(0,ci)[['yhat_lower','yhat_upper']].values,columns=[['min','max']]).rolling(7,min_periods=1).mean()
     y_fc=np.concatenate((np.array([train.iloc[-1]]),y_fc['val'].values))
     X_fc=pd.date_range(train.index[-1], periods=71, freq='D')
     #Graph daily deaths
@@ -462,7 +516,7 @@ for country in countries:
     fig.suptitle('Projections for COVID-19 in {}'.format(country))
     footnote='Updated on {}. Source: Johns Hopkins CSSE. https://github.com/CSSEGISandData/COVID-19'.format(yesterday_str)
     plt.figtext(0.5,-0.01,footnote, fontsize=6, ha='center')
-    fig.savefig('output/arima_{}.png'.format(str.lower(country)),dpi=300, bbox_inches='tight')
+    fig.savefig('output/{}_proj.png'.format(str.lower(country)),dpi=300, bbox_inches='tight')
     plt.show()
 
 #Countries performance comparison
