@@ -17,9 +17,9 @@ World:
 
 		Maximum daily infections on 12.07.2020.
 		The pandemic is expected to end on 26.02.2022.
-		Total number of confirmed cases: 79.525.658.
-		Total number of deaths: 1.884.685.
-		Final mortality rate: 2,4%.
+		Total number of confirmed cases: 76.878.901.
+		Total number of deaths: 1.680.495.
+		Final mortality rate: 2,2%.
 
 	Confirmed cases model's metrics:
 
@@ -48,8 +48,8 @@ USA:
 
 		Maximum daily infections on 06.07.2020.
 		The pandemic is expected to end on 12.02.2022.
-		Total number of confirmed cases: 462.543.692.177.
-		Total number of deaths: 30.661.956.
+		Total number of confirmed cases: 267.301.150.629.
+		Total number of deaths: 28.136.566.
 		Final mortality rate: 0%.
 
 	Confirmed cases model's metrics:
@@ -79,9 +79,9 @@ Brazil:
 
 		Maximum daily infections on 03.07.2020.
 		The pandemic is expected to end on 28.04.2021.
-		Total number of confirmed cases: 4.863.195.
-		Total number of deaths: 177.116.
-		Final mortality rate: 3,6%.
+		Total number of confirmed cases: 3.183.164.
+		Total number of deaths: 100.788.
+		Final mortality rate: 3,2%.
 
 	Confirmed cases model's metrics:
 
@@ -110,9 +110,9 @@ India:
 
 		Maximum daily infections on 17.08.2020.
 		The pandemic is expected to end on 08.09.2021.
-		Total number of confirmed cases: 5.334.753.
-		Total number of deaths: 56.035.
-		Final mortality rate: 1,1%.
+		Total number of confirmed cases: 5.052.266.
+		Total number of deaths: 48.902.
+		Final mortality rate: 1%.
 
 	Confirmed cases model's metrics:
 
@@ -141,9 +141,9 @@ Russia:
 
 		Maximum daily infections on 01.06.2020.
 		The pandemic is expected to end on 12.02.2021.
-		Total number of confirmed cases: 1.176.696.
-		Total number of deaths: 22.562.
-		Final mortality rate: 1,9%.
+		Total number of confirmed cases: 856.770.
+		Total number of deaths: 15.076.
+		Final mortality rate: 1,8%.
 
 	Confirmed cases model's metrics:
 
@@ -172,9 +172,9 @@ South Africa:
 
 		Maximum daily infections on 24.07.2020.
 		The pandemic is expected to end on 12.05.2021.
-		Total number of confirmed cases: 1.062.564.
-		Total number of deaths: 22.870.
-		Final mortality rate: 2,2%.
+		Total number of confirmed cases: 846.515.
+		Total number of deaths: 20.305.
+		Final mortality rate: 2,4%.
 
 	Confirmed cases model's metrics:
 
@@ -203,9 +203,9 @@ Mexico:
 
 		Maximum daily infections on 06.07.2020.
 		The pandemic is expected to end on 23.05.2021.
-		Total number of confirmed cases: 718.925.
-		Total number of deaths: 92.319.
-		Final mortality rate: 12,8%.
+		Total number of confirmed cases: 547.472.
+		Total number of deaths: 53.520.
+		Final mortality rate: 9,8%.
 
 	Confirmed cases model's metrics:
 
@@ -234,9 +234,9 @@ Chile:
 
 		Maximum daily infections on 09.06.2020.
 		The pandemic is expected to end on 10.12.2020.
-		Total number of confirmed cases: 589.350.
-		Total number of deaths: 57.072.
-		Final mortality rate: 9,7%.
+		Total number of confirmed cases: 380.956.
+		Total number of deaths: 18.392.
+		Final mortality rate: 4,8%.
 
 	Confirmed cases model's metrics:
 
@@ -265,9 +265,9 @@ Germany:
 
 		Maximum daily infections on 06.04.2020.
 		The pandemic is expected to end on 09.09.2020.
-		Total number of confirmed cases: 810.760.
-		Total number of deaths: 23.792.
-		Final mortality rate: 2,9%.
+		Total number of confirmed cases: 225.217.
+		Total number of deaths: 9.591.
+		Final mortality rate: 4,3%.
 
 	Confirmed cases model's metrics:
 

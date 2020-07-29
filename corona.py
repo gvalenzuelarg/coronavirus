@@ -194,7 +194,7 @@ for country in countries:
     sol = int(fsolve(lambda x : logistic_model(x,a,b,c) - int(c),b))
     ending_date=first_day+datetime.timedelta(sol)
     #Total confirmed cases
-    forecast_daily=cum_to_daily(models_c[country][['yhat']][-1461:-((sol-len(train)))]).dropna()
+    forecast_daily=cum_to_daily(models_c[country][['yhat']][-1461:-(1461-(sol-len(train)))]).dropna()
     forecast=daily_to_cum(confirmed[country],forecast_daily)
     total_cases=forecast['yhat'].values[-1]
     #Calculates country's mortality rate
@@ -244,7 +244,7 @@ for country in countries:
     parm_d[country] = curve_fit(logistic_model,X,y.values,p0=[0.3,50,y[-1]],maxfev = 10000)
     a,b,c=parm_d[country][0]
     #Total deaths
-    forecast_daily=cum_to_daily(models_d[country][['yhat']][-1461:-((sol-len(train)))]).dropna()
+    forecast_daily=cum_to_daily(models_d[country][['yhat']][-1461:-(1460-(sol-len(train)))]).dropna()
     forecast=daily_to_cum(deaths[country],forecast_daily)
     total_deaths=forecast['yhat'].values[-1]
     #Metrics logistic model
