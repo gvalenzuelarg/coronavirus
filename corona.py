@@ -111,24 +111,44 @@ parm_c={}
 #Logistic model parameters deaths
 parm_d={}
 #Countries confirmed cases trend points
-t_c={'World':'2020-05-01',
- 'USA':'2020-06-01',
+t_c={'World':None,
+ 'USA':'2020-04',
  'Brazil':None,
  'India':None,
  'Russia':None,
  'South Africa':None,
  'Mexico':None,
- 'Chile':'2020-06-18',
+ 'Chile':None,
+ 'Germany':None}
+#Countries confirmed cases cap
+cap_c={'World':83947230,
+ 'USA':7902006.478648115,
+ 'Brazil':4559159,
+ 'India':5948987.169130052,
+ 'Russia':1106588.113381628,
+ 'South Africa':722709.4177319047,
+ 'Mexico':791073.4734617069,
+ 'Chile':390695.16332426557,
  'Germany':None}
 #Countries deaths trend points
-t_d={'World':'2020-06-01',
- 'USA':'2020-07-01',
+t_d={'World':None,
+ 'USA':'2020-04-15',
  'Brazil':None,
  'India':None,
  'Russia':None,
  'South Africa':None,
  'Mexico':None,
- 'Chile':'2020-07-01',
+ 'Chile':'2020-06-15',
+ 'Germany':None}
+#Countries confirmed cases cap
+cap_d={'World':1549243.3435022462,
+ 'USA':261139.89470543567,
+ 'Brazil':126569.82242028319,
+ 'India':153363.0229759953,
+ 'Russia':20442.720435709107,
+ 'South Africa':21347.12941439004,
+ 'Mexico':62274.40161284603,
+ 'Chile':12991.828377906302,
  'Germany':None}
  #Countries pandemic status
 status={'World':'second wave',
@@ -151,12 +171,9 @@ for country in countries:
     #Prapare data
     y=confirmed.loc[:,country][confirmed.loc[:,country]>0]
     X=np.arange(len(y))
-    #cap calculation
-    parm = curve_fit(logistic_model,np.arange(len(y[t_c[country]:])),y[t_c[country]:].values,p0=[.3,1,y[-1]],maxfev = 100000)
-    cap=parm[0][2]
     #Prophet model
     train=pd.DataFrame({'ds':y[t_c[country]:].index,'y':y[t_c[country]:].values})
-    train['cap'] = cap
+    train['cap'] = cap_c[country]
     #Choice of model depending saturation status
     if status[country]=='saturation point':
         m = Prophet()
@@ -164,7 +181,7 @@ for country in countries:
         m = Prophet(growth='logistic')
     m.fit(train)
     future = m.make_future_dataframe(periods=1460)
-    future['cap'] = cap
+    future['cap'] = cap_c[country]
     models_c[country] = m.predict(future)
     #5 weeks predictions
     forecast_daily=np.maximum(0,cum_to_daily(models_c[country][['yhat']][-1461:-(1460-35)])).dropna()
@@ -210,12 +227,9 @@ for country in countries:
     #Prapare data
     y=deaths.loc[:,country][deaths.loc[:,country]>0]
     X=np.arange(len(y))
-    #cap calculation
-    parm = curve_fit(logistic_model,np.arange(len(y[t_d[country]:])),y[t_d[country]:].values,p0=[.3,1,y[-1]],maxfev = 100000)
-    cap=parm[0][2]
     #Prophet model
     train=pd.DataFrame({'ds':y[t_d[country]:].index,'y':y[t_d[country]:].values})
-    train['cap'] = cap
+    train['cap'] = cap_d[country]
     #Choice of model depending saturation status
     if status[country]=='saturation point':
         m = Prophet()
@@ -223,7 +237,7 @@ for country in countries:
         m = Prophet(growth='logistic')
     m.fit(train)
     future = m.make_future_dataframe(periods=1460)
-    future['cap'] = cap
+    future['cap'] = cap_d[country]
     models_d[country] = m.predict(future)
     #5 weeks predictions
     forecast_daily=np.maximum(0,cum_to_daily(models_d[country][['yhat']][-1461:-(1460-35)])).dropna()
