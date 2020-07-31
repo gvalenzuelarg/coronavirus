@@ -169,7 +169,7 @@ textlist.append('')
 for country in countries:
     #Confirmed cases prediction
     #Prapare data
-    y=confirmed.loc[:,country][confirmed.loc[:,country]>0]
+    y=confirmed.loc[:,country][confirmed.loc[:,country]>0].rolling(14).mean().dropna()
     X=np.arange(len(y))
     #Prophet model
     train=pd.DataFrame({'ds':y[t_c[country]:].index,'y':y[t_c[country]:].values})
@@ -217,15 +217,15 @@ for country in countries:
     #Calculates country's mortality rate
     mortality= round(deaths.iloc[-1,:][country]/confirmed.iloc[-1,:][country]*100,1)
     #Metrics logistic model
-    RMSE_c_log=mean_squared_error(confirmed_comp[country].dropna(),logistic_model(X,a,b,c))**(1/2)
-    explained_variance_c_log=explained_variance_score(confirmed_comp[country].dropna(),logistic_model(X,a,b,c))
+    RMSE_c_log=mean_squared_error(y,logistic_model(X,a,b,c))**(1/2)
+    explained_variance_c_log=explained_variance_score(y,logistic_model(X,a,b,c))
     #Metrics avg.
     RMSE_c=np.round(np.mean([RMSE_c_arima,RMSE_c_log]),2)
     explained_variance_c=np.round(np.mean([explained_variance_c_arima,explained_variance_c_log]),3)
 
     #Deaths prediction
     #Prapare data
-    y=deaths.loc[:,country][deaths.loc[:,country]>0]
+    y=deaths.loc[:,country][deaths.loc[:,country]>0].rolling(14).mean().dropna()
     X=np.arange(len(y))
     #Prophet model
     train=pd.DataFrame({'ds':y[t_d[country]:].index,'y':y[t_d[country]:].values})
@@ -262,8 +262,8 @@ for country in countries:
     forecast=daily_to_cum(deaths[country],forecast_daily)
     total_deaths=forecast['yhat'].values[-1]
     #Metrics logistic model
-    RMSE_d_log=mean_squared_error(deaths_comp[country].dropna(),logistic_model(X,a,b,c))**(1/2)
-    explained_variance_d_log=explained_variance_score(deaths_comp[country].dropna(),logistic_model(X,a,b,c))
+    RMSE_d_log=mean_squared_error(y,logistic_model(X,a,b,c))**(1/2)
+    explained_variance_d_log=explained_variance_score(y,logistic_model(X,a,b,c))
     #Metrics avg.
     RMSE_d=np.round(np.mean([RMSE_d_arima,RMSE_d_log]),2)
     explained_variance_d=np.round(np.mean([explained_variance_d_arima,explained_variance_d_log]),3)
@@ -353,9 +353,9 @@ plt.show()
 
 #Daily cases graph
 #Prepare data
-df_c=model_data_c.loc[:,(countries,'Daily')].iloc[-35:].rolling(7,min_periods=1).mean()
+df_c=model_data_c.loc[:,(countries,'Daily')].iloc[-35:]
 df_c.columns=df_c.columns.droplevel(1)
-df_c=confirmed_daily.loc['2020-03-01':,countries].rolling(7).mean()[-1:].append(df_c)
+df_c=confirmed_daily.loc['2020-03-01':,countries][-7:].append(df_c).rolling(7).mean().dropna()
 #Graph
 fig, ax =plt.subplots()
 sns.lineplot(data=df_c,dashes=False, legend=False)
@@ -401,9 +401,9 @@ plt.show()
 
 #Daily deaths graph
 #Prepare data
-df_d=model_data_d.loc[:,(countries,'Daily')].iloc[-35:].rolling(7,min_periods=1).mean()
+df_d=model_data_d.loc[:,(countries,'Daily')].iloc[-35:]
 df_d.columns=df_d.columns.droplevel(1)
-df_d=deaths_daily.loc['2020-03-01':,countries].rolling(7).mean()[-1:].append(df_d)
+df_d=deaths_daily.loc['2020-03-01':,countries][-7:].append(df_d).rolling(7).mean().dropna()
 #Graph
 fig, ax =plt.subplots()
 sns.lineplot(data=df_d,dashes=False, legend=False)
@@ -474,10 +474,11 @@ for country in countries:
     axs[0,0].set_ylabel('Number of cases')
     #Prepare data daily cases
     train=np.maximum(0,confirmed_daily[country]).astype(float)
+    y_fc,ci=cum_to_daily(models_c[country][['yhat']][-1461:-(1460-70)]).dropna(),cum_to_daily(models_c[country][['yhat_lower','yhat_upper']][-1461:-(1460-70)]).dropna()
+    y_fc,ci=np.concatenate([train[-7:].values,y_fc['yhat'].values]),np.concatenate([pd.concat([train[-6:],train[-6:]],axis=1).values,ci.values])
+    y_fc,ci=pd.DataFrame(np.maximum(0,y_fc),columns=['yhat']).rolling(7).mean().dropna(),pd.DataFrame(np.maximum(0,ci),columns=[['min','max']]).rolling(7).mean().dropna()
+    y_fc=y_fc['yhat'].values
     train=train[train>0].rolling(7).mean().dropna()
-    y_fc,ci=y_fc,ci=cum_to_daily(models_c[country][['yhat']][-1461:-(1460-70)]).dropna(),cum_to_daily(models_c[country][['yhat_lower','yhat_upper']][-1461:-(1460-70)]).dropna()
-    y_fc,ci=pd.DataFrame(np.maximum(0,y_fc)['yhat'].values,columns=['val']).rolling(7,min_periods=1).mean(),pd.DataFrame(np.maximum(0,ci)[['yhat_lower','yhat_upper']].values,columns=[['min','max']]).rolling(7,min_periods=1).mean()
-    y_fc=np.concatenate((np.array([train.iloc[-1]]),y_fc['val'].values))
     X_fc=pd.date_range(train.index[-1], periods=71, freq='D')
     #Graph daily cases
     sns.lineplot(data=train.loc['2020-03-10':],color=dblue,dashes=False,ax=axs[0,1],label='Confirmed daily cases')
@@ -509,11 +510,11 @@ for country in countries:
     axs[1,0].set_ylabel('Number of deaths')
     #Prepare data daily deaths
     train=np.maximum(0,deaths_daily[country]).astype(float)
-    train=train[train>0].rolling(7).mean().dropna()
-    #model=pm.auto_arima(train, seasonal=False, trace=True)
     y_fc,ci=y_fc,ci=cum_to_daily(models_d[country][['yhat']][-1461:-(1460-70)]).dropna(),cum_to_daily(models_d[country][['yhat_lower','yhat_upper']][-1461:-(1460-70)]).dropna()
-    y_fc,ci=pd.DataFrame(np.maximum(0,y_fc)['yhat'].values,columns=['val']).rolling(7,min_periods=1).mean(),pd.DataFrame(np.maximum(0,ci)[['yhat_lower','yhat_upper']].values,columns=[['min','max']]).rolling(7,min_periods=1).mean()
-    y_fc=np.concatenate((np.array([train.iloc[-1]]),y_fc['val'].values))
+    y_fc,ci=np.concatenate([train[-7:].values,y_fc['yhat'].values]),np.concatenate([pd.concat([train[-6:],train[-6:]],axis=1).values,ci.values])
+    y_fc,ci=pd.DataFrame(np.maximum(0,y_fc),columns=['yhat']).rolling(7).mean().dropna(),pd.DataFrame(np.maximum(0,ci),columns=[['min','max']]).rolling(7).mean().dropna()
+    y_fc=y_fc['yhat'].values
+    train=train[train>0].rolling(7).mean().dropna()
     X_fc=pd.date_range(train.index[-1], periods=71, freq='D')
     #Graph daily deaths
     sns.lineplot(data=train.loc['2020-03-10':],color=pred,dashes=False,ax=axs[1,1],label='Confirmed daily deaths')
