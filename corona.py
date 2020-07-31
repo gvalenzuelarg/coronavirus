@@ -111,44 +111,24 @@ parm_c={}
 #Logistic model parameters deaths
 parm_d={}
 #Countries confirmed cases trend points
-t_c={'World':None,
- 'USA':'2020-04',
+t_c={'World':'2020-03-15',
+ 'USA':'2020-03-25',
  'Brazil':None,
  'India':None,
- 'Russia':None,
+ 'Russia':'2020-05-20',
  'South Africa':None,
- 'Mexico':None,
- 'Chile':None,
- 'Germany':None}
-#Countries confirmed cases cap
-cap_c={'World':83947230,
- 'USA':7902006.478648115,
- 'Brazil':4559159,
- 'India':5948987.169130052,
- 'Russia':1106588.113381628,
- 'South Africa':722709.4177319047,
- 'Mexico':791073.4734617069,
- 'Chile':390695.16332426557,
+ 'Mexico':'2020-03-15',
+ 'Chile':'2020-07',
  'Germany':None}
 #Countries deaths trend points
-t_d={'World':None,
- 'USA':'2020-04-15',
- 'Brazil':None,
+t_d={'World':'2020-06',
+ 'USA':'2020-05-25',
+ 'Brazil':'2020-05-15',
  'India':None,
- 'Russia':None,
+ 'Russia':'2020-06',
  'South Africa':None,
- 'Mexico':None,
- 'Chile':'2020-06-15',
- 'Germany':None}
-#Countries confirmed cases cap
-cap_d={'World':1549243.3435022462,
- 'USA':261139.89470543567,
- 'Brazil':126569.82242028319,
- 'India':153363.0229759953,
- 'Russia':20442.720435709107,
- 'South Africa':21347.12941439004,
- 'Mexico':62274.40161284603,
- 'Chile':12991.828377906302,
+ 'Mexico':'2020-06',
+ 'Chile':'2020-06-05',
  'Germany':None}
  #Countries pandemic status
 status={'World':'second wave',
@@ -168,20 +148,25 @@ textlist.append('')
 #Model calculations
 for country in countries:
     #Confirmed cases prediction
+    #Cap estimation
+    y=confirmed[country][t_c[country]:].rolling(14).mean().dropna()
+    X=np.arange(len(y))
+    parm = curve_fit(logistic_model,X,y.values,p0=[.3,1,y[-1]],maxfev = 100000)
+    cap=parm[0][2]
     #Prapare data
     y=confirmed.loc[:,country][confirmed.loc[:,country]>0].rolling(14).mean().dropna()
     X=np.arange(len(y))
     #Prophet model
-    train=pd.DataFrame({'ds':y[t_c[country]:].index,'y':y[t_c[country]:].values})
-    train['cap'] = cap_c[country]
+    train=pd.DataFrame({'ds':y.index,'y':y.values})
+    train['cap'] = cap
     #Choice of model depending saturation status
     if status[country]=='saturation point':
         m = Prophet()
     else:
-        m = Prophet(growth='logistic')
+        m = Prophet(growth='logistic',changepoint_prior_scale=0.5,changepoint_range=1)
     m.fit(train)
     future = m.make_future_dataframe(periods=1460)
-    future['cap'] = cap_c[country]
+    future['cap'] = cap
     models_c[country] = m.predict(future)
     #5 weeks predictions
     forecast_daily=np.maximum(0,cum_to_daily(models_c[country][['yhat']][-1461:-(1460-35)])).dropna()
@@ -224,20 +209,25 @@ for country in countries:
     explained_variance_c=np.round(np.mean([explained_variance_c_arima,explained_variance_c_log]),3)
 
     #Deaths prediction
+    #Cap estimation
+    y=deaths[country][t_d[country]:].rolling(14).mean().dropna()
+    X=np.arange(len(y))
+    parm = curve_fit(logistic_model,X,y.values,p0=[.3,1,y[-1]],maxfev = 100000)
+    cap=parm[0][2]
     #Prapare data
     y=deaths.loc[:,country][deaths.loc[:,country]>0].rolling(14).mean().dropna()
     X=np.arange(len(y))
     #Prophet model
-    train=pd.DataFrame({'ds':y[t_d[country]:].index,'y':y[t_d[country]:].values})
-    train['cap'] = cap_d[country]
+    train=pd.DataFrame({'ds':y.index,'y':y.values})
+    train['cap'] = cap
     #Choice of model depending saturation status
     if status[country]=='saturation point':
         m = Prophet()
     else:
-        m = Prophet(growth='logistic')
+        m = Prophet(growth='logistic',changepoint_prior_scale=0.5,changepoint_range=1)
     m.fit(train)
     future = m.make_future_dataframe(periods=1460)
-    future['cap'] = cap_d[country]
+    future['cap'] = cap
     models_d[country] = m.predict(future)
     #5 weeks predictions
     forecast_daily=np.maximum(0,cum_to_daily(models_d[country][['yhat']][-1461:-(1460-35)])).dropna()
@@ -353,14 +343,14 @@ plt.show()
 
 #Daily cases graph
 #Prepare data
-df_c=model_data_c.loc[:,(countries,'Daily')].iloc[-35:]
-df_c.columns=df_c.columns.droplevel(1)
-df_c=confirmed_daily.loc['2020-03-01':,countries][-7:].append(df_c).rolling(7).mean().dropna()
+#df_c=model_data_c.loc[:,(countries,'Daily')].iloc[-35:]
+#df_c.columns=df_c.columns.droplevel(1)
+#df_c=confirmed_daily.loc['2020-03-01':,countries][-7:].append(df_c).rolling(7).mean().dropna()
 #Graph
 fig, ax =plt.subplots()
-sns.lineplot(data=df_c,dashes=False, legend=False)
-for i in np.arange(8):
-    ax.lines[i].set_linestyle('--')
+#sns.lineplot(data=df_c,dashes=False, legend=False)
+#for i in np.arange(8):
+#    ax.lines[i].set_linestyle('--')
 sns.lineplot(data=confirmed_daily.loc['2020-03-01':,countries].rolling(7).mean(),dashes=False)
 #ax.set(yscale='log')
 ax.set_title('Daily Cases')
@@ -401,14 +391,14 @@ plt.show()
 
 #Daily deaths graph
 #Prepare data
-df_d=model_data_d.loc[:,(countries,'Daily')].iloc[-35:]
-df_d.columns=df_d.columns.droplevel(1)
-df_d=deaths_daily.loc['2020-03-01':,countries][-7:].append(df_d).rolling(7).mean().dropna()
+#df_d=model_data_d.loc[:,(countries,'Daily')].iloc[-35:]
+#df_d.columns=df_d.columns.droplevel(1)
+#df_d=deaths_daily.loc['2020-03-01':,countries][-7:].append(df_d).rolling(7).mean().dropna()
 #Graph
 fig, ax =plt.subplots()
-sns.lineplot(data=df_d,dashes=False, legend=False)
-for i in np.arange(8):
-    ax.lines[i].set_linestyle('--')
+#sns.lineplot(data=df_d,dashes=False, legend=False)
+#for i in np.arange(8):
+#    ax.lines[i].set_linestyle('--')
 sns.lineplot(data=deaths_daily.loc['2020-03-01':,countries].rolling(7).mean(),dashes=False)
 #ax.set(yscale='log')
 ax.set_title('Daily Deaths')
@@ -454,7 +444,7 @@ plt.show()
 countries=list(confirmed.iloc[-1].sort_values(ascending=False)[0:7].index)+['Chile','Germany']
 for country in countries:
     dblue,pred=sns.xkcd_palette(['denim blue','pale red'])
-    fig, axs=plt.subplots(2,2,figsize=(12,6),sharex=True)
+    fig, axs=plt.subplots(2,2,figsize=(12,6),sharex='col')
     fig.subplots_adjust(hspace=0.05)
     #Prepare data confirmed cases
     train=confirmed[country][confirmed[country]>0].astype(float)
@@ -473,19 +463,20 @@ for country in countries:
     #axs[0].yaxis.set_major_locator(ticker.MultipleLocator(10000))
     axs[0,0].set_ylabel('Number of cases')
     #Prepare data daily cases
-    train=np.maximum(0,confirmed_daily[country]).astype(float)
-    y_fc,ci=cum_to_daily(models_c[country][['yhat']][-1461:-(1460-70)]).dropna(),cum_to_daily(models_c[country][['yhat_lower','yhat_upper']][-1461:-(1460-70)]).dropna()
-    y_fc,ci=np.concatenate([train[-7:].values,y_fc['yhat'].values]),np.concatenate([pd.concat([train[-6:],train[-6:]],axis=1).values,ci.values])
-    y_fc,ci=pd.DataFrame(np.maximum(0,y_fc),columns=['yhat']).rolling(7).mean().dropna(),pd.DataFrame(np.maximum(0,ci),columns=[['min','max']]).rolling(7).mean().dropna()
-    y_fc=y_fc['yhat'].values
-    train=train[train>0].rolling(7).mean().dropna()
-    X_fc=pd.date_range(train.index[-1], periods=71, freq='D')
+    train=confirmed_daily[country].astype(float)
+    #y_fc,ci=cum_to_daily(models_c[country][['yhat']][-1461:-(1460-70)]).dropna(),cum_to_daily(models_c[country][['yhat_lower','yhat_upper']][-1461:-(1460-70)]).dropna()
+    #y_fc,ci=np.concatenate([train[-7:].values,y_fc['yhat'].values]),np.concatenate([pd.concat([train[-6:],train[-6:]],axis=1).values,ci.values])
+    #y_fc,ci=pd.DataFrame(np.maximum(0,y_fc),columns=['yhat']).rolling(7).mean().dropna(),pd.DataFrame(np.maximum(0,ci),columns=[['min','max']]).rolling(7).mean().dropna()
+    #y_fc=y_fc['yhat'].values
+    #train=train[train>0].rolling(7).mean().dropna()
+    train=train.rolling(7).mean().dropna()
+    #X_fc=pd.date_range(train.index[-1], periods=71, freq='D')
     #Graph daily cases
-    sns.lineplot(data=train.loc['2020-03-10':],color=dblue,dashes=False,ax=axs[0,1],label='Confirmed daily cases')
-    sns.lineplot(x=X_fc,y=y_fc,color=dblue,alpha=1,ax=axs[0,1],label='Projected daily cases')
-    axs[0,1].lines[1].set_linestyle('--')
-    axs[0,1].fill_between(X_fc[1:], ci[['min','max']].values[:,0], ci[['min','max']].values[:,1], color=dblue, alpha=0.1,label='95% confidence interval')
-    axs[0,1].legend(loc='upper left')
+    sns.lineplot(data=train.loc['2020-03-10':],color=dblue,dashes=False,ax=axs[0,1],label=None)
+    #sns.lineplot(x=X_fc,y=y_fc,color=dblue,alpha=1,ax=axs[0,1],label='Projected daily cases')
+    #axs[0,1].lines[1].set_linestyle('--')
+    #axs[0,1].fill_between(X_fc[1:], ci[['min','max']].values[:,0], ci[['min','max']].values[:,1], color=dblue, alpha=0.1,label='95% confidence interval')
+    #axs[0,1].legend(loc='upper left')
     axs[0,1].yaxis.set_major_formatter(ticker.FuncFormatter(lambda y,p: format_decimal(y,locale=locale)))
     #axs[0].yaxis.set_major_locator(ticker.MultipleLocator(10000))
     axs[0,1].set_ylabel('Number of daily cases')
@@ -509,19 +500,20 @@ for country in countries:
     axs[1,0].xaxis.set_major_locator(mdates.WeekdayLocator(interval=2))
     axs[1,0].set_ylabel('Number of deaths')
     #Prepare data daily deaths
-    train=np.maximum(0,deaths_daily[country]).astype(float)
-    y_fc,ci=y_fc,ci=cum_to_daily(models_d[country][['yhat']][-1461:-(1460-70)]).dropna(),cum_to_daily(models_d[country][['yhat_lower','yhat_upper']][-1461:-(1460-70)]).dropna()
-    y_fc,ci=np.concatenate([train[-7:].values,y_fc['yhat'].values]),np.concatenate([pd.concat([train[-6:],train[-6:]],axis=1).values,ci.values])
-    y_fc,ci=pd.DataFrame(np.maximum(0,y_fc),columns=['yhat']).rolling(7).mean().dropna(),pd.DataFrame(np.maximum(0,ci),columns=[['min','max']]).rolling(7).mean().dropna()
-    y_fc=y_fc['yhat'].values
-    train=train[train>0].rolling(7).mean().dropna()
+    train=deaths_daily[country].astype(float)
+    #y_fc,ci=y_fc,ci=cum_to_daily(models_d[country][['yhat']][-1461:-(1460-70)]).dropna(),cum_to_daily(models_d[country][['yhat_lower','yhat_upper']][-1461:-(1460-70)]).dropna()
+    #y_fc,ci=np.concatenate([train[-7:].values,y_fc['yhat'].values]),np.concatenate([pd.concat([train[-6:],train[-6:]],axis=1).values,ci.values])
+    #y_fc,ci=pd.DataFrame(np.maximum(0,y_fc),columns=['yhat']).rolling(7).mean().dropna(),pd.DataFrame(np.maximum(0,ci),columns=[['min','max']]).rolling(7).mean().dropna()
+    #y_fc=y_fc['yhat'].values
+    #train=train[train>0].rolling(7).mean().dropna()
+    train=train.rolling(7).mean().dropna()
     X_fc=pd.date_range(train.index[-1], periods=71, freq='D')
     #Graph daily deaths
-    sns.lineplot(data=train.loc['2020-03-10':],color=pred,dashes=False,ax=axs[1,1],label='Confirmed daily deaths')
-    sns.lineplot(x=X_fc,y=y_fc,color=pred,alpha=1,ax=axs[1,1],label='Projected daily deaths')
-    axs[1,1].lines[1].set_linestyle('--')
-    axs[1,1].fill_between(X_fc[1:], ci[['min','max']].values[:,0], ci[['min','max']].values[:,1], color=pred, alpha=0.1,label='95% confidence interval')
-    axs[1,1].legend(loc='upper left')
+    sns.lineplot(data=train.loc['2020-03-10':],color=pred,dashes=False,ax=axs[1,1],label=None)
+    #sns.lineplot(x=X_fc,y=y_fc,color=pred,alpha=1,ax=axs[1,1],label='Projected daily deaths')
+    #axs[1,1].lines[1].set_linestyle('--')
+    #axs[1,1].fill_between(X_fc[1:], ci[['min','max']].values[:,0], ci[['min','max']].values[:,1], color=pred, alpha=0.1,label='95% confidence interval')
+    #axs[1,1].legend(loc='upper left')
     axs[1,1].yaxis.set_major_formatter(ticker.FuncFormatter(lambda y,p: format_decimal(y,locale=locale)))
     #axs[0].yaxis.set_major_locator(ticker.MultipleLocator(10000))
     axs[1,1].set_ylabel('Number of daily deaths')
