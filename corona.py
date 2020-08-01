@@ -111,24 +111,24 @@ parm_c={}
 #Logistic model parameters deaths
 parm_d={}
 #Countries confirmed cases trend points
-t_c={'World':'2020-03-15',
+t_c={'World':'2020-04-15',
  'USA':'2020-03-25',
- 'Brazil':None,
+ 'Brazil':'2020-07',
  'India':None,
- 'Russia':'2020-05-20',
+ 'Russia':'2020-06-21',
  'South Africa':None,
- 'Mexico':'2020-03-15',
- 'Chile':'2020-07',
+ 'Mexico':'2020-07-09',
+ 'Chile':'2020-07-15',
  'Germany':None}
 #Countries deaths trend points
 t_d={'World':'2020-06',
- 'USA':'2020-05-25',
- 'Brazil':'2020-05-15',
- 'India':None,
- 'Russia':'2020-06',
+ 'USA':'2020-05-20',
+ 'Brazil':'2020-07-15',
+ 'India':'2020-06-10',
+ 'Russia':'2020-06-15',
  'South Africa':None,
- 'Mexico':'2020-06',
- 'Chile':'2020-06-05',
+ 'Mexico':'2020-07-15',
+ 'Chile':'2020-06-15',
  'Germany':None}
  #Countries pandemic status
 status={'World':'second wave',
@@ -149,19 +149,19 @@ textlist.append('')
 for country in countries:
     #Confirmed cases prediction
     #Cap estimation
-    y=confirmed[country][t_c[country]:].rolling(14).mean().dropna()
+    y=confirmed[country][t_c[country]:].dropna()
     X=np.arange(len(y))
     parm = curve_fit(logistic_model,X,y.values,p0=[.3,1,y[-1]],maxfev = 100000)
     cap=parm[0][2]
     #Prapare data
-    y=confirmed.loc[:,country][confirmed.loc[:,country]>0].rolling(14).mean().dropna()
+    y=confirmed[country].dropna()
     X=np.arange(len(y))
     #Prophet model
     train=pd.DataFrame({'ds':y.index,'y':y.values})
     train['cap'] = cap
     #Choice of model depending saturation status
     if status[country]=='saturation point':
-        m = Prophet()
+        m = Prophet(changepoint_prior_scale=0.5,changepoint_range=1)
     else:
         m = Prophet(growth='logistic',changepoint_prior_scale=0.5,changepoint_range=1)
     m.fit(train)
@@ -210,19 +210,19 @@ for country in countries:
 
     #Deaths prediction
     #Cap estimation
-    y=deaths[country][t_d[country]:].rolling(14).mean().dropna()
+    y=deaths[country][t_d[country]:].dropna()
     X=np.arange(len(y))
     parm = curve_fit(logistic_model,X,y.values,p0=[.3,1,y[-1]],maxfev = 100000)
     cap=parm[0][2]
     #Prapare data
-    y=deaths.loc[:,country][deaths.loc[:,country]>0].rolling(14).mean().dropna()
+    y=deaths[country].dropna()
     X=np.arange(len(y))
     #Prophet model
     train=pd.DataFrame({'ds':y.index,'y':y.values})
     train['cap'] = cap
     #Choice of model depending saturation status
     if status[country]=='saturation point':
-        m = Prophet()
+        m = Prophet(changepoint_prior_scale=0.5,changepoint_range=1)
     else:
         m = Prophet(growth='logistic',changepoint_prior_scale=0.5,changepoint_range=1)
     m.fit(train)
