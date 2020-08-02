@@ -119,7 +119,7 @@ t_c={'World':'2020-04-15',
  'South Africa':None,
  'Mexico':'2020-07-09',
  'Chile':'2020-07-15',
- 'Germany':None}
+ 'Germany':'2020-05-15'}
 #Countries deaths trend points
 t_d={'World':'2020-06',
  'USA':'2020-05-20',
@@ -129,7 +129,7 @@ t_d={'World':'2020-06',
  'South Africa':None,
  'Mexico':'2020-07-15',
  'Chile':'2020-06-15',
- 'Germany':None}
+ 'Germany':'2020-05-15'}
  #Countries pandemic status
 status={'World':'second wave',
  'USA':'second wave',
@@ -161,6 +161,7 @@ for country in countries:
     train['cap'] = cap
     #Choice of model depending saturation status
     if status[country]=='saturation point':
+        train=pd.DataFrame({'ds':y[t_c[country]:].index,'y':y[t_c[country]:].values})
         m = Prophet(changepoint_prior_scale=0.5,changepoint_range=1)
     else:
         m = Prophet(growth='logistic',changepoint_prior_scale=0.5,changepoint_range=1)
@@ -222,6 +223,7 @@ for country in countries:
     train['cap'] = cap
     #Choice of model depending saturation status
     if status[country]=='saturation point':
+        train=pd.DataFrame({'ds':y[t_d[country]:].index,'y':y[t_d[country]:].values})
         m = Prophet(changepoint_prior_scale=0.5,changepoint_range=1)
     else:
         m = Prophet(growth='logistic',changepoint_prior_scale=0.5,changepoint_range=1)
