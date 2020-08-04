@@ -43,9 +43,6 @@ confirmed.rename(columns={'US': 'USA', 'Korea, South': 'South Korea','United Kin
 confirmed_daily=cum_to_daily(confirmed)
 confirmed_daily=confirmed_daily.fillna(0)
 
-#Chile: On 2020-06-17 there was a retroactive report of 36179.0 cases. In order for the model to work better I will replace this data point with the average of the surrounding dates
-confirmed_daily['Chile']['2020-06-17']=np.mean([confirmed_daily['Chile']['2020-06-16'],confirmed_daily['Chile']['2020-06-18']])
-
 #Dataframe of deaths
 deaths=pd.read_csv(url_d)
 deaths=deaths.groupby('Country/Region').sum().astype(int)
@@ -62,11 +59,6 @@ deaths.rename(columns={'US': 'USA', 'Korea, South': 'South Korea','United Kingdo
 #Dataframe of daily deaths
 deaths_daily=cum_to_daily(deaths)
 deaths_daily=deaths_daily.fillna(0)
-
-#Chile: On 2020-06-08 there was a retroactive report of 627.0 deaths. In order for the model to work better I will replace this data point with the average of the surrounding dates
-deaths_daily['Chile']['2020-06-08']=np.mean([deaths_daily['Chile']['2020-06-07'],deaths_daily['Chile']['2020-06-09']])
-#Chile: On 2020-07-17 there was a retroactive report of 1057.0 deaths. In order for the model to work better I will replace this data point with the average of the surrounding dates
-deaths_daily['Chile']['2020-07-17']=np.mean([deaths_daily['Chile']['2020-07-16'],deaths_daily['Chile']['2020-07-18']])
 
 #Dataframe of confirmed cases reindexed to days since the first instance
 confirmed_comp=pd.DataFrame()
