@@ -537,7 +537,7 @@ for i in range(len(countries)):
     colors=['denim blue','pale red']
     sns.lineplot(data=df,palette=sns.xkcd_palette(colors),dashes=False,legend=False,ax=axs[i])
     axs[i].set(yscale='log')
-    axs[i].set_title('{}. Mortality rate on {}: {}'.format(countries[i],yesterday_str,str(mortality)+'%'))
+    axs[i].set_title('{}. Mortality rate on {}: {}%'.format(countries[i],yesterday_str,format_decimal(mortality,locale=locale)))
     axs[i].set_xlabel(None)
     axs[i].yaxis.set_major_formatter(ticker.FuncFormatter(lambda y,p: format_decimal(y,locale=locale)))
     #axs[i].xaxis.set_major_locator(mdates.WeekdayLocator(interval=2))
