@@ -12,12 +12,12 @@ yesterday=today-datetime.timedelta(1)
 yesterday_str=format_date(yesterday,locale=locale)
 
 def cum_to_daily(cum_data):
-    #Returns daily changes dataframe provided with cummulative data dataframe
+    '''Returns daily changes dataframe provided with cummulative data dataframe'''
     daily_data=cum_data-cum_data.shift(+1)
     return daily_data
 
 def daily_to_cum(cum_data,daily_forcast):
-    #Returns cummulative forcast from daily change forcast, provided with current cummulative data
+    '''Returns a cummulative dataframe from daily change data, provided with current cummulative data'''
     cum_forcast=daily_forcast.cumsum(axis=0)
     cum_forcast=cum_forcast+cum_data[-1]
     return cum_forcast
