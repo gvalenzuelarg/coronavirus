@@ -2,279 +2,279 @@
 
 World:
 
-	Data on 05.08.2020:
+	Data on 06.08.2020:
 
-		Confirmed cases: 18.810.392 (+270.273).
-		Deaths: 707.666 (+6.958).
-		Mortality rate: 3,8%.
+		Confirmed cases: 19.089.364 (+277.411).
+		Deaths: 714.744 (+6.320).
+		Mortality rate: 3,7%.
 
 	Today's predictions:
 
-		Confirmed cases: 19.057.985 (+247.593).
-		Deaths: 713.640 (+5.974).
+		Confirmed cases: 19.347.126 (+257.762).
+		Deaths: 720.667 (+5.923).
 
 	Expected parameters:
 
-		Maximum daily infections on 23.07.2020.
-		The pandemic is expected to end on 18.04.2022.
-		Total number of confirmed cases: 33.115.121.
-		Total number of deaths: 1.273.530.
-		Final mortality rate: 3,8%.
+		Maximum daily infections on 24.07.2020.
+		The pandemic is expected to end on 21.04.2022.
+		Total number of confirmed cases: 33.656.140.
+		Total number of deaths: 1.298.009.
+		Final mortality rate: 3,9%.
 
 	Confirmed cases model's metrics:
 
-		Root Mean Squared Error: 198.164,87.
+		Root Mean Squared Error: 199.176,86.
 		Explained Variance: 0,998.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 14.301,45.
+		Root Mean Squared Error: 14.509,87.
 		Explained Variance: 0,993.
 
 USA:
 
-	Data on 05.08.2020:
+	Data on 06.08.2020:
 
-		Confirmed cases: 4.823.890 (+52.810).
-		Deaths: 158.250 (+1.388).
+		Confirmed cases: 4.883.582 (+59.692).
+		Deaths: 160.104 (+1.250).
 		Mortality rate: 3,3%.
 
 	Today's predictions:
 
-		Confirmed cases: 4.886.778 (+62.888).
-		Deaths: 159.467 (+1.217).
+		Confirmed cases: 4.945.529 (+61.947).
+		Deaths: 161.214 (+1.110).
 
 	Expected parameters:
 
-		Maximum daily infections on 23.07.2020.
-		The pandemic is expected to end on 12.07.2022.
-		Total number of confirmed cases: 9.071.797.
-		Total number of deaths: 250.293.
-		Final mortality rate: 2,8%.
+		Maximum daily infections on 25.07.2020.
+		The pandemic is expected to end on 29.04.2022.
+		Total number of confirmed cases: 9.253.150.
+		Total number of deaths: 273.367.
+		Final mortality rate: 3%.
 
 	Confirmed cases model's metrics:
 
-		Root Mean Squared Error: 94.025,03.
+		Root Mean Squared Error: 94.233,06.
 		Explained Variance: 0,992.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 3.303,37.
+		Root Mean Squared Error: 3.436,66.
 		Explained Variance: 0,994.
 
 Brazil:
 
-	Data on 05.08.2020:
+	Data on 06.08.2020:
 
-		Confirmed cases: 2.859.073 (+57.152).
-		Deaths: 97.256 (+1.437).
+		Confirmed cases: 2.912.212 (+53.139).
+		Deaths: 98.493 (+1.237).
 		Mortality rate: 3,4%.
 
 	Today's predictions:
 
-		Confirmed cases: 2.903.781 (+44.708).
-		Deaths: 98.331 (+1.075).
+		Confirmed cases: 2.956.471 (+44.259).
+		Deaths: 99.536 (+1.043).
 
 	Expected parameters:
 
-		Maximum daily infections on 08.07.2020.
-		The pandemic is expected to end on 27.07.2021.
-		Total number of confirmed cases: 4.544.317.
-		Total number of deaths: 151.310.
-		Final mortality rate: 3,3%.
+		Maximum daily infections on 09.07.2020.
+		The pandemic is expected to end on 30.05.2021.
+		Total number of confirmed cases: 4.647.256.
+		Total number of deaths: 160.926.
+		Final mortality rate: 3,5%.
 
 	Confirmed cases model's metrics:
 
-		Root Mean Squared Error: 18.573,65.
+		Root Mean Squared Error: 19.188,18.
 		Explained Variance: 0,999.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 909,67.
+		Root Mean Squared Error: 925,74.
 		Explained Variance: 0,999.
 
 India:
 
-	Data on 05.08.2020:
+	Data on 06.08.2020:
 
-		Confirmed cases: 1.964.536 (+56.282).
-		Deaths: 40.699 (+904).
+		Confirmed cases: 2.027.074 (+62.538).
+		Deaths: 41.585 (+886).
 		Mortality rate: 2,1%.
 
 	Today's predictions:
 
-		Confirmed cases: 2.024.769 (+60.233).
-		Deaths: 41.506 (+807).
+		Confirmed cases: 2.087.758 (+60.684).
+		Deaths: 42.409 (+824).
 
 	Expected parameters:
 
 		Maximum daily infections on 01.09.2020.
-		The pandemic is expected to end on 14.10.2021.
-		Total number of confirmed cases: 7.882.676.
-		Total number of deaths: 94.350.
+		The pandemic is expected to end on 13.10.2021.
+		Total number of confirmed cases: 7.957.165.
+		Total number of deaths: 96.945.
 		Final mortality rate: 1,2%.
 
 	Confirmed cases model's metrics:
 
-		Root Mean Squared Error: 6.593,72.
+		Root Mean Squared Error: 6.569,31.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 281,74.
+		Root Mean Squared Error: 293,2.
 		Explained Variance: 0,999.
 
 Russia:
 
-	Data on 05.08.2020:
+	Data on 06.08.2020:
 
-		Confirmed cases: 864.948 (+5.186).
-		Deaths: 14.465 (+138).
+		Confirmed cases: 870.187 (+5.239).
+		Deaths: 14.579 (+114).
 		Mortality rate: 1,7%.
 
 	Today's predictions:
 
-		Confirmed cases: 869.814 (+4.866).
-		Deaths: 14.576 (+111).
+		Confirmed cases: 875.191 (+5.004).
+		Deaths: 14.697 (+118).
 
 	Expected parameters:
 
 		Maximum daily infections on 03.06.2020.
-		The pandemic is expected to end on 27.02.2021.
-		Total number of confirmed cases: 1.137.201.
-		Total number of deaths: 19.033.
+		The pandemic is expected to end on 24.03.2021.
+		Total number of confirmed cases: 1.139.662.
+		Total number of deaths: 18.998.
 		Final mortality rate: 1,7%.
 
 	Confirmed cases model's metrics:
 
-		Root Mean Squared Error: 11.111,13.
+		Root Mean Squared Error: 11.215,33.
 		Explained Variance: 0,998.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 124,29.
+		Root Mean Squared Error: 125,92.
 		Explained Variance: 0,999.
 
 South Africa:
 
-	Data on 05.08.2020:
+	Data on 06.08.2020:
 
-		Confirmed cases: 529.877 (+8.559).
-		Deaths: 9.298 (+414).
+		Confirmed cases: 538.184 (+8.307).
+		Deaths: 9.604 (+306).
 		Mortality rate: 1,8%.
 
 	Today's predictions:
 
-		Confirmed cases: 538.038 (+8.161).
-		Deaths: 9.535 (+237).
+		Confirmed cases: 545.825 (+7.641).
+		Deaths: 9.854 (+250).
 
 	Expected parameters:
 
-		Maximum daily infections on 20.07.2020.
-		The pandemic is expected to end on 01.03.2021.
-		Total number of confirmed cases: 733.420.
-		Total number of deaths: 25.262.
-		Final mortality rate: 3,4%.
+		Maximum daily infections on 19.07.2020.
+		The pandemic is expected to end on 19.02.2021.
+		Total number of confirmed cases: 725.163.
+		Total number of deaths: 26.310.
+		Final mortality rate: 3,6%.
 
 	Confirmed cases model's metrics:
 
-		Root Mean Squared Error: 2.026,78.
+		Root Mean Squared Error: 2.069,93.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 58,5.
+		Root Mean Squared Error: 61,64.
 		Explained Variance: 0,999.
 
 Mexico:
 
-	Data on 05.08.2020:
+	Data on 06.08.2020:
 
-		Confirmed cases: 456.100 (+6.139).
-		Deaths: 49.698 (+829).
+		Confirmed cases: 462.690 (+6.590).
+		Deaths: 50.517 (+819).
 		Mortality rate: 10,9%.
 
 	Today's predictions:
 
-		Confirmed cases: 463.273 (+7.173).
-		Deaths: 50.293 (+595).
+		Confirmed cases: 469.709 (+7.019).
+		Deaths: 51.124 (+607).
 
 	Expected parameters:
 
-		Maximum daily infections on 10.07.2020.
-		The pandemic is expected to end on 19.05.2021.
-		Total number of confirmed cases: 880.714.
-		Total number of deaths: 77.061.
-		Final mortality rate: 8,7%.
+		Maximum daily infections on 11.07.2020.
+		The pandemic is expected to end on 15.05.2021.
+		Total number of confirmed cases: 856.570.
+		Total number of deaths: 84.939.
+		Final mortality rate: 9,9%.
 
 	Confirmed cases model's metrics:
 
-		Root Mean Squared Error: 2.541,31.
-		Explained Variance: 0,999.
-
-	Deaths model's metrics:
-
-		Root Mean Squared Error: 309,98.
-		Explained Variance: 0,999.
-
-Chile:
-
-	Data on 05.08.2020:
-
-		Confirmed cases: 364.723 (+1.761).
-		Deaths: 9.792 (+47).
-		Mortality rate: 2,7%.
-
-	Today's predictions:
-
-		Confirmed cases: 366.370 (+1.647).
-		Deaths: 9.860 (+68).
-
-	Expected parameters:
-
-		Maximum daily infections on 10.06.2020.
-		The pandemic is expected to end on 20.12.2020.
-		Total number of confirmed cases: 457.693.
-		Total number of deaths: 11.896.
-		Final mortality rate: 2,6%.
-
-	Confirmed cases model's metrics:
-
-		Root Mean Squared Error: 2.375,57.
+		Root Mean Squared Error: 2.579,99.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 131,37.
+		Root Mean Squared Error: 325,21.
+		Explained Variance: 0,999.
+
+Chile:
+
+	Data on 06.08.2020:
+
+		Confirmed cases: 366.671 (+1.948).
+		Deaths: 9.889 (+97).
+		Mortality rate: 2,7%.
+
+	Today's predictions:
+
+		Confirmed cases: 368.378 (+1.707).
+		Deaths: 9.982 (+93).
+
+	Expected parameters:
+
+		Maximum daily infections on 10.06.2020.
+		The pandemic is expected to end on 29.12.2020.
+		Total number of confirmed cases: 458.403.
+		Total number of deaths: 11.878.
+		Final mortality rate: 2,6%.
+
+	Confirmed cases model's metrics:
+
+		Root Mean Squared Error: 2.446,76.
+		Explained Variance: 1.
+
+	Deaths model's metrics:
+
+		Root Mean Squared Error: 129,3.
 		Explained Variance: 0,998.
 
 Germany:
 
-	Data on 05.08.2020:
+	Data on 06.08.2020:
 
-		Confirmed cases: 214.113 (+1.285).
-		Deaths: 9.179 (+16).
+		Confirmed cases: 215.039 (+926).
+		Deaths: 9.181 (+2).
 		Mortality rate: 4,3%.
 
 	Today's predictions:
 
-		Confirmed cases: 215.107 (+994).
-		Deaths: 9.190 (+11).
+		Confirmed cases: 216.147 (+1.108).
+		Deaths: 9.185 (+4).
 
 	Expected parameters:
 
 		Maximum daily infections on 07.04.2020.
-		The pandemic is expected to end on 17.08.2020.
-		Total number of confirmed cases: 319.322.
-		Total number of deaths: 9.903.
-		Final mortality rate: 3,1%.
+		The pandemic is expected to end on 26.08.2020.
+		Total number of confirmed cases: 344.375.
+		Total number of deaths: 9.774.
+		Final mortality rate: 2,8%.
 
 	Confirmed cases model's metrics:
 
-		Root Mean Squared Error: 4.422,93.
+		Root Mean Squared Error: 4.485,67.
 		Explained Variance: 0,995.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 106,8.
+		Root Mean Squared Error: 107,21.
 		Explained Variance: 0,999.
