@@ -103,8 +103,8 @@ parm_c={}
 #Logistic model parameters deaths
 parm_d={}
 #Countries confirmed cases trend points
-t_c={'World':'2020-03',
- 'USA':'2020-03',
+t_c={'World':None,
+ 'USA':None,
  'Brazil':'2020-06-15',
  'India':None,
  'Russia':'2020-06-21',
@@ -113,14 +113,14 @@ t_c={'World':'2020-03',
  'Chile':'2020-07-15',
  'Germany':'2020-05-15'}
 #Countries deaths trend points
-t_d={'World':'2020-05',
- 'USA':'2020-05-15',
+t_d={'World':'2020-04-15',
+ 'USA':'2020-05-10',
  'Brazil':'2020-07-15',
  'India':'2020-06-10',
  'Russia':'2020-06-15',
- 'South Africa':'2020-03',
- 'Mexico':'2020-07-15',
- 'Chile':'2020-06-15',
+ 'South Africa':None,
+ 'Mexico':'2020-07-10',
+ 'Chile':'2020-06-20',
  'Germany':'2020-05-15'}
  #Countries pandemic status
 status={'World':'second wave',
