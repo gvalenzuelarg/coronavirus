@@ -104,37 +104,121 @@ parm_c={}
 parm_d={}
 #Countries confirmed cases trend points
 t_c={'World':None,
- 'USA':None,
- 'Brazil':'2020-06-15',
- 'India':None,
- 'Russia':'2020-06-21',
- 'South Africa':None,
- 'Peru':'2020-05-20',
- 'Mexico':'2020-07-09',
- 'Chile':'2020-07-15',
- 'Germany':'2020-05-15'}
+    'USA':None,
+    'Brazil':'2020-06-15',
+    'India':None,
+    'Russia':'2020-06-21',
+    'South Africa':None,
+    'Peru':'2020-05-20',
+    'Mexico':'2020-07-09',
+    'Chile':'2020-07-15',
+    'Germany':'2020-05-15'}
 #Countries deaths trend points
 t_d={'World':'2020-04-15',
- 'USA':'2020-05-10',
- 'Brazil':'2020-07-15',
- 'India':'2020-06-10',
- 'Russia':'2020-06-15',
- 'South Africa':None,
- 'Peru':'2020-05-20',
- 'Mexico':'2020-07-10',
- 'Chile':'2020-06-20',
- 'Germany':'2020-05-15'}
- #Countries pandemic status
+    'USA':'2020-05-10',
+    'Brazil':'2020-07-15',
+    'India':'2020-06-10',
+    'Russia':'2020-06-15',
+    'South Africa':None,
+    'Peru':'2020-05',
+    'Mexico':'2020-07-10',
+    'Chile':'2020-06-20',
+    'Germany':'2020-05-15'}
+#Countries cases hyperparameters
+hyper_c={'World':{'growth':'logistic',
+                'changepoint_prior_scale':5,
+                'changepoint_range': 0.95},
+        'USA':{'growth':'logistic',
+                'changepoint_prior_scale':5,
+                'changepoint_range': 0.95},
+        'Brazil':{'growth':'logistic',
+                'changepoint_prior_scale':0.05,
+                'changepoint_range': 0.95},
+        'India':{'growth':'logistic',
+                'changepoint_prior_scale':5,
+                'changepoint_range': 0.8},
+        'Russia':{'growth':'logistic',
+                'changepoint_prior_scale':0.5,
+                'changepoint_range': 0.95},
+        'South Africa':{'growth':'logistic',
+                'changepoint_prior_scale':5,
+                'changepoint_range': 0.95},
+        'Peru':{'growth':'logistic',
+                'changepoint_prior_scale':0.5,
+                'changepoint_range': 0.95},
+        'Mexico':{'growth':'logistic',
+                'changepoint_prior_scale':0.05,
+                'changepoint_range': 0.95},
+        'Chile':{'growth':'logistic',
+                'changepoint_prior_scale':5,
+                'changepoint_range': 0.95},
+        'Germany':{'growth':'linear',
+                'changepoint_prior_scale':5,
+                'changepoint_range': 0.8}}
+#Countries deaths hyperparameters
+hyper_d={'World':{'growth':'logistic',
+                'changepoint_prior_scale':0.5,
+                'changepoint_range': 0.95},
+        'USA':{'growth':'logistic',
+                'changepoint_prior_scale':.5,
+                'changepoint_range': 0.95},
+        'Brazil':{'growth':'logistic',
+                'changepoint_prior_scale':5,
+                'changepoint_range': 0.95},
+        'India':{'growth':'logistic',
+                'changepoint_prior_scale':.5,
+                'changepoint_range': 0.95},
+        'Russia':{'growth':'logistic',
+                'changepoint_prior_scale':0.05,
+                'changepoint_range': 0.95},
+        'South Africa':{'growth':'logistic',
+                'changepoint_prior_scale':0.05,
+                'changepoint_range': 0.95},
+        'Peru':{'growth':'logistic',
+                'changepoint_prior_scale':0.05,
+                'changepoint_range': 0.8},
+        'Mexico':{'growth':'logistic',
+                'changepoint_prior_scale':0.05,
+                'changepoint_range': 0.95},
+        'Chile':{'growth':'logistic',
+                'changepoint_prior_scale':0.5,
+                'changepoint_range': 0.95},
+        'Germany':{'growth':'linear',
+                'changepoint_prior_scale':5,
+                'changepoint_range': 0.95}}
+#Countries cases outliers
+outliers_c={'World':[],
+            'USA':[],
+            'Brazil':['2020-06-19'],
+            'India':[],
+            'Russia':[],
+            'South Africa':[],
+            'Peru':['2020-06-03','2020-06-12','2020-07-25','2020-07-26','2020-07-27','2020-07-30','2020-08-01','2020-08-02','2020-08-08','2020-08-09','2020-08-12','2020-08-14','2020-08-15'],
+            'Mexico':[],
+            'Chile':['2020-05-30','2020-06-06'],
+            'Germany':[]}
+#Countries deaths outliers
+outliers_d={'World':['2020-08-14'],
+            'USA':[],
+            'Brazil':[],
+            'India':['2020-06-16'],
+            'Russia':[],
+            'South Africa':['2020-07-22'],
+            'Peru':['2020-07-23','2020-08-14'],
+            'Mexico':['2020-06-04'],
+            'Chile':['2020-06-08','2020-07-17'],
+            'Germany':[]}
+#Countries pandemic status
 status={'World':'second wave',
- 'USA':'second wave',
- 'Brazil':'first wave',
- 'India':'first wave',
- 'Russia':'first wave',
- 'South Africa':'first wave',
- 'Peru':'first wave',
- 'Mexico':'first wave',
- 'Chile':'first wave',
- 'Germany':'saturation point'}
+        'USA':'second wave',
+        'Brazil':'first wave',
+        'India':'first wave',
+        'Russia':'first wave',
+        'South Africa':'first wave',
+        'Peru':'first wave',
+        'Mexico':'first wave',
+        'Chile':'first wave',
+        'Germany':'saturation point'}
 #list of text lines to be printed/saved to the report file
 textlist=[]
 #Title of the report
@@ -152,14 +236,14 @@ for country in countries:
     y=confirmed[country].dropna()
     X=np.arange(len(y))
     #Prophet model
-    train=pd.DataFrame({'ds':y.index,'y':y.values})
-    train['cap'] = cap
-    #Choice of model depending saturation status
+    #Choice of trainset depending on pandemic status
     if status[country]=='saturation point':
         train=pd.DataFrame({'ds':y[t_c[country]:].index,'y':y[t_c[country]:].values})
-        m = Prophet(changepoint_prior_scale=0.5,changepoint_range=1)
     else:
-        m = Prophet(growth='logistic',changepoint_prior_scale=0.5,changepoint_range=1)
+        train=pd.DataFrame({'ds':y.index,'y':y.values})
+    train_df.loc[train_df['ds'].isin(outliers_c[country]), 'y'] = None
+    train['cap'] = cap
+    m = Prophet(**hyper_c[country])
     m.fit(train)
     future = m.make_future_dataframe(periods=1460)
     future['cap'] = cap
@@ -214,14 +298,14 @@ for country in countries:
     y=deaths[country].dropna()
     X=np.arange(len(y))
     #Prophet model
-    train=pd.DataFrame({'ds':y.index,'y':y.values})
-    train['cap'] = cap
-    #Choice of model depending saturation status
+    #Choice of trainset depending on pandemic status
     if status[country]=='saturation point':
         train=pd.DataFrame({'ds':y[t_d[country]:].index,'y':y[t_d[country]:].values})
-        m = Prophet(changepoint_prior_scale=0.5,changepoint_range=1)
     else:
-        m = Prophet(growth='logistic',changepoint_prior_scale=0.5,changepoint_range=1)
+        train=pd.DataFrame({'ds':y.index,'y':y.values})
+    train_df.loc[train_df['ds'].isin(outliers_d[country]), 'y'] = None
+    train['cap'] = cap
+    m = Prophet(**hyper_d[country])
     m.fit(train)
     future = m.make_future_dataframe(periods=1460)
     future['cap'] = cap
