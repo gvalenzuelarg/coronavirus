@@ -241,7 +241,7 @@ for country in countries:
         train=pd.DataFrame({'ds':y[t_c[country]:].index,'y':y[t_c[country]:].values})
     else:
         train=pd.DataFrame({'ds':y.index,'y':y.values})
-    train_df.loc[train_df['ds'].isin(outliers_c[country]), 'y'] = None
+    train.loc[train['ds'].isin(outliers_c[country]), 'y'] = None
     train['cap'] = cap
     m = Prophet(**hyper_c[country])
     m.fit(train)
@@ -261,6 +261,10 @@ for country in countries:
     #Saves dataframe to list
     dfs_c.append(df_c)
     #Metrics Prophet model
+    if status[country]=='saturation point':
+        train=pd.DataFrame({'ds':y[t_c[country]:].index,'y':y[t_c[country]:].values})
+    else:
+        train=pd.DataFrame({'ds':y.index,'y':y.values})
     RMSE_c_arima=np.round(mean_squared_error(train['y'],predictions_in_sample)**(1/2),2)
     explained_variance_c_arima=np.round(explained_variance_score(train['y'],predictions_in_sample),3)
     #Fitting a logistic model for long term predictions
@@ -303,7 +307,7 @@ for country in countries:
         train=pd.DataFrame({'ds':y[t_d[country]:].index,'y':y[t_d[country]:].values})
     else:
         train=pd.DataFrame({'ds':y.index,'y':y.values})
-    train_df.loc[train_df['ds'].isin(outliers_d[country]), 'y'] = None
+    train.loc[train['ds'].isin(outliers_d[country]), 'y'] = None
     train['cap'] = cap
     m = Prophet(**hyper_d[country])
     m.fit(train)
@@ -323,6 +327,10 @@ for country in countries:
     #Saves dataframe to list
     dfs_d.append(df_d)
     #Metrics Prophet model
+    if status[country]=='saturation point':
+        train=pd.DataFrame({'ds':y[t_d[country]:].index,'y':y[t_d[country]:].values})
+    else:
+        train=pd.DataFrame({'ds':y.index,'y':y.values})
     RMSE_d_arima=mean_squared_error(train['y'],predictions_in_sample)**(1/2)
     explained_variance_d_arima=explained_variance_score(train['y'],predictions_in_sample)
     #Fitting a logistic model for long term predictions
