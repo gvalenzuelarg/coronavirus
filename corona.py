@@ -122,7 +122,7 @@ t_d={'World':'2020-04-15',
     'South Africa':None,
     'Peru':'2020-05',
     'Mexico':'2020-07-10',
-    'Chile':'2020-06-20',
+    'Chile':'2020-07-18',
     'Germany':'2020-05-15'}
 #Countries cases hyperparameters
 hyper_c={'World':{'growth':'logistic',
