@@ -1,0 +1,16 @@
+name: /Users/gabriel/Projects/coronavirus/envs
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy
+  - matplotlib
+  - seaborn
+  - fbprophet
+  - scipy
+  - scikit-learn
+  - babel
+  - pandas
+  - python
+  - ipykernel
+prefix: /Users/gabriel/Projects/coronavirus/envs
