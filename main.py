@@ -28,7 +28,8 @@ for country in countries:
         params_cases[country]
     except:
         print(
-            '{}: Parameters missing. A model must be first tuned.'.format(country))
+            '{}: Parameters missing. A model must be first tuned.'.format(
+                country))
 
 # Models
     
