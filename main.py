@@ -176,7 +176,7 @@ for country in countries:
     cases_forecast_country = cases_forecast[country]
     deaths_forecast_country = deaths_forecast[country]
     # Graph
-    fig, _ = graph.country_situation_10_week_forecast(
+    fig, _ = graph.country_situation_with_forecast(
         cases_country, deaths_country,
         cases_forecast_country, deaths_forecast_country)
     fig.savefig('output/{}.png'.format(str.lower(country).replace(' ','_')),
