@@ -31,7 +31,12 @@ def csse_covid_19_time_series_csv_to_df(url):
     # Create column 'World'
     world = pd.DataFrame(df.sum(axis=1), columns=['World'])
     df = pd.concat([world, df], axis=1)
-    df.rename(columns={'US': 'USA', 'Korea, South': 'South Korea', 'United Kingdom': 'UK'}, inplace=True)
+    df.rename(columns={
+        'Czechia' : 'Czech Republic',
+        'Taiwan*' : 'Taiwan',
+        'US' : 'USA',
+        'Korea, South' : 'South Korea',
+        'United Kingdom' : 'UK'}, inplace=True)
     return df
 
 def align_from_first_ocurrence(df):
@@ -98,7 +103,8 @@ def cummulative_continuation(df_delta,initial_value):
 
 def population_2019():
     """Extracts the world population in 2019 from the World Bank
-    population CSV file.
+    population CSV file. Country names are matched to the
+    JHU CSSE COVID-19 Data designations. 
 
     Returns
     -------
@@ -107,7 +113,33 @@ def population_2019():
     """
     population = pd.read_csv('data/population.csv')
     population_2019 = population.set_index('Country Name')['2019']
-    population_2019.rename(index={'United States': 'USA','United Kingdom':'UK','Russian Federation':'Russia'}, inplace=True)
+    population_2019.rename(index={
+        'Bahamas, The' : 'Bahamas',
+        'Brunei Darussalam' : 'Brunei',
+        'Myanmar' : 'Burma',
+        'Congo, Dem. Rep.' : 'Congo (Kinshasa)',
+        'Congo, Rep.' : 'Congo (Brazzaville)',
+        'Egypt, Arab Rep.' : 'Egypt',
+        'Gambia, The' : 'Gambia',
+        'Iran, Islamic Rep.' : 'Iran',
+        'Kyrgyz Republic' : 'Kyrgyzstan',
+        'Lao PDR' : 'Laos',
+        'St. Kitts and Nevis' : 'Saint Kitts and Nevis',
+        'St. Lucia' : 'Saint Lucia',
+        'St. Vincent and the Grenadines' : 'Saint Vincent and the Grenadines',
+        'Slovak Republic' : 'Slovakia',
+        'Korea, Rep.' : 'South Korea',
+        'Syrian Arab Republic' : 'Syria',
+        'Venezuela, RB' : 'Venezuela',
+        'Yemen, Rep.' : 'Yemen',
+        'United States' : 'USA',
+        'United Kingdom' : 'UK',
+        'Russian Federation' : 'Russia'}, inplace=True)
+    population_2019['Diamond Princess'] = 3711
+    population_2019['Holy See'] = 801
+    population_2019['MS Zaandam'] = 1829
+    population_2019['Taiwan'] = 23780452
+    population_2019['Western Sahara'] = 567402
     return population_2019
 
 def to_prophet_input(series, cap=None, outliers=[]):
