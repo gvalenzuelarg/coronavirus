@@ -28,7 +28,7 @@ locale = 'de_DE'
 today = pd.to_datetime('today').normalize()
 yesterday = today - pd.Timedelta(1,'D')
 
-footnote = 'Updated on {}. JHU CSSE COVID-19 Data: https://github.com/CSSEGISandData/COVID-19.'.format(format_date(yesterday, locale=locale))
+footnote = 'Updated on {}. JHU CSSE COVID-19 Data: https://github.com/CSSEGISandData/COVID-19.'.format(format_date(today, locale=locale))
 
 def cases(cases, cases_forecast=pd.DataFrame()):
     fig, ax = plt.subplots()
@@ -232,8 +232,9 @@ def deaths_by_days_per_million(deaths, population):
     plt.show()
     return fig, ax
 
-def country_situation_10_week_forecast(cases, deaths, cases_forecast, deaths_forecast):
+def country_situation_with_forecast(cases, deaths, cases_forecast, deaths_forecast):
     country = cases.name
+    days = cases_forecast.shape[0]
     fig, axs = plt.subplots(2, 2 , figsize=(12, 6), sharex='col')
     fig.subplots_adjust(hspace=0.05)
     # Cases
@@ -288,8 +289,8 @@ def country_situation_10_week_forecast(cases, deaths, cases_forecast, deaths_for
     axs[1,1].xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
     plt.setp(axs[1,1].get_xticklabels(), rotation=45)
     axs[1,1].set_xlabel(None)
-    fig.suptitle('{}: COVID-19 situation and 10 week forecast'.format(country))
-    plt.figtext(0.5, -0.01,footnote, fontsize=6, ha='center')
+    fig.suptitle('{}: COVID-19 situation and {} day forecast'.format(country, days))
+    plt.figtext(0.5, -0.01, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, axs
 
