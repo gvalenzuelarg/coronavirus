@@ -22,6 +22,14 @@ countries = list(
     cases.iloc[-1].sort_values(
             ascending=False)[0 : 7].index) + ['Chile', 'Germany']
 
+# Test if the parameters for the countries in the list are available
+for country in countries:
+    try:
+        params_cases[country]
+    except:
+        print(
+            '{}: Parameters missing. A model must be first tuned.'.format(country))
+
 # Models
     
 # Dictionary of models per country
