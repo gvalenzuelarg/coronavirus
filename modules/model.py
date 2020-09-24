@@ -334,7 +334,7 @@ def report(model_cases, model_deaths, country):
     yesterday_str = format_date(yesterday, locale=locale)
 
     #Long-term cases predictions
-    prophet_output_cases = predict_raw(model_cases, 730)
+    prophet_output_cases = predict_raw(model_cases, 1460)
 
     # In-sample deaths predictions
     prophet_output_deaths = predict_raw(model_deaths, 0)
@@ -376,7 +376,7 @@ def report(model_cases, model_deaths, country):
     text_list.append('')
     text_list.append('\tData on {}:'.format(format_date(today, locale=locale)))
     text_list.append('')
-    text_list.append('\t\tConfirmed cases: {} ({}).'.format(
+    text_list.append('\t\tCases: {} ({}).'.format(
         format_decimal(cases_yesterday, locale=locale),
         format_decimal(daily_cases_yesterday, locale=locale, format='+#,###;-#')))
     text_list.append('\t\tDeaths: {} ({}).'.format(
@@ -387,7 +387,7 @@ def report(model_cases, model_deaths, country):
     text_list.append('')
     text_list.append('\tToday\'s predictions:')
     text_list.append('')
-    text_list.append('\t\tConfirmed cases: {} ({}).'.format(
+    text_list.append('\t\tCases: {} ({}).'.format(
         format_decimal(cases_today, locale=locale),
         format_decimal(daily_cases_today, locale=locale, format='+#,###;-#')))
     text_list.append('\t\tDeaths: {} ({}).'.format(
@@ -402,7 +402,7 @@ def report(model_cases, model_deaths, country):
         format_date(peak, locale=locale)))
         text_list.append('\t\tCurrent pandemic\'s wave to end on {}.'.format(
             format_date(end, locale=locale)))
-        text_list.append('\t\tTotal number of confirmed cases: {}.'.format(
+        text_list.append('\t\tTotal number of cases: {}.'.format(
             format_decimal(total_cases, locale=locale)))
         text_list.append('\t\tTotal number of deaths: {}.'.format(
             format_decimal(total_deaths, locale=locale)))
