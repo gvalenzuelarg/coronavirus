@@ -100,19 +100,16 @@ deaths_forecast = pd.concat(deaths_list, keys=countries, axis=1)
 
 # Graphs
 
-# Cases, deaths Dataframe for selected countries
-cases_data = cases.loc['2020-03-01':, countries]
-deaths_data = deaths.loc['2020-03-01':, countries]
-
 # COVID-19 situation overview graph
-fig, _ = graph.countries_situation_overview(cases_data, deaths_data)
+fig, _ = graph.countries_situation_overview(
+    cases.loc['2020-03':, countries], deaths.loc['2020-03':, countries])
 fig.savefig('output/situation_overview.png', dpi=300, bbox_inches='tight')
 
 # Population for all countries but the World
 population = population_2019.reindex(countries[1 : ])
 
 # Cases DataFrames for all countries but the World
-data = cases.loc['2020-03-01':, countries[1 : ]]
+data = cases.loc['2020-03':, countries[1 : ]]
 forecast = cases_forecast.loc[:, (countries[1 : ], 'yhat')]
 forecast.columns = forecast.columns.droplevel(1)
 
@@ -141,7 +138,7 @@ fig, _ = graph.cases_by_days_per_million(data, population)
 fig.savefig('output/cases_by_days_per_million.png', dpi=300, bbox_inches='tight')
 
 # Deaths DataFrames for all countries but the World
-data = deaths.loc['2020-03-01':, countries[1 : ]]
+data = deaths.loc['2020-03':, countries[1 : ]]
 forecast = deaths_forecast.loc[:, (countries[1 : ], 'yhat')]
 forecast.columns = forecast.columns.droplevel(1)
 
@@ -169,10 +166,17 @@ fig.savefig('output/deaths_by_days.png', dpi=300, bbox_inches='tight')
 fig, _ = graph.deaths_by_days_per_million(data, population)
 fig.savefig('output/deaths_by_days_per_million.png', dpi=300, bbox_inches='tight')
 
+# Mortality graph
+mortality = model.mortality(
+    cases['2020-04' : countries], deaths['2020-04' : countries])
+mortality_forecast = model.mortality(cases_forecast, deaths_forecast)
+fig, _ = graph.mortality(mortality, mortality_forecast)
+fig.savefig('output/mortality.png', dpi=300, bbox_inches='tight')
+
 # Situation overview and forecast per country
 for country in countries:
-    cases_country = cases.loc['2020-03-01':, country]
-    deaths_country = deaths.loc['2020-03-01':, country]
+    cases_country = cases.loc['2020-03':, country]
+    deaths_country = deaths.loc['2020-03':, country]
     cases_forecast_country = cases_forecast[country]
     deaths_forecast_country = deaths_forecast[country]
     # Graph
