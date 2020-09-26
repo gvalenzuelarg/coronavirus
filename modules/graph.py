@@ -44,7 +44,7 @@ def cases(cases, cases_forecast=pd.DataFrame()):
         lambda y,p: format_decimal(y, locale=locale)))
     plt.xticks(rotation=45)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.03, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
@@ -65,7 +65,7 @@ def cases_per_million(cases,  population, cases_forecast=pd.DataFrame()):
         lambda y, p : format_decimal(y, locale=locale)))
     plt.xticks(rotation=45)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.03, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
@@ -84,7 +84,7 @@ def deaths(deaths, deaths_forecast=pd.DataFrame()):
         lambda y, p : format_decimal(y, locale=locale)))
     plt.xticks(rotation=45)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.03, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
@@ -105,7 +105,7 @@ def deaths_per_million(deaths, population, deaths_forecast=pd.DataFrame()):
         lambda y, p : format_decimal(y, locale=locale)))
     plt.xticks(rotation=45)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.03, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
@@ -121,7 +121,7 @@ def daily_cases(cases):
         lambda y, p : format_decimal(y, locale=locale)))
     plt.xticks(rotation=45)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.03, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
@@ -137,7 +137,7 @@ def daily_deaths(deaths):
         lambda y, p : format_decimal(y, locale=locale)))
     plt.xticks(rotation=45)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.03, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
@@ -153,7 +153,7 @@ def daily_cases_per_million(cases, population):
         lambda y, p : format_decimal(y, locale=locale)))
     plt.xticks(rotation=45)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.03, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
@@ -169,7 +169,7 @@ def daily_deaths_per_million(deaths, population):
         lambda y, p : format_decimal(y, locale=locale)))
     plt.xticks(rotation=45)
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.03, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
@@ -183,7 +183,7 @@ def cases_by_days(cases):
     ax.set_ylabel('Cases')
     ax.yaxis.set_major_formatter(ticker.FuncFormatter(
         lambda y, p : format_decimal(y, locale=locale)))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.01, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
@@ -197,7 +197,7 @@ def deaths_by_days(deaths):
     ax.set_ylabel('Deaths')
     ax.yaxis.set_major_formatter(ticker.FuncFormatter(
         lambda y, p : format_decimal(y, locale=locale)))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.01, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
@@ -212,7 +212,7 @@ def cases_by_days_per_million(cases, population):
     ax.set_ylabel('Cases per million inhabitants')
     ax.yaxis.set_major_formatter(ticker.FuncFormatter(
         lambda y, p : format_decimal(y, locale=locale)))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.01, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
@@ -227,7 +227,7 @@ def deaths_by_days_per_million(deaths, population):
     ax.set_ylabel('Deaths per million inhabitants')
     ax.yaxis.set_major_formatter(ticker.FuncFormatter(
         lambda y, p : format_decimal(y, locale=locale)))
-    ax.legend(loc='center right', bbox_to_anchor=(1.25, 0.67))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
     plt.figtext(0.5, -0.01, footnote, fontsize=6, ha='center')
     plt.show()
     return fig, ax
