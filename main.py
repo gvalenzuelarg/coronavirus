@@ -168,8 +168,12 @@ fig.savefig('output/deaths_by_days_per_million.png', dpi=300, bbox_inches='tight
 
 # Mortality graph
 mortality = model.mortality(
-    cases['2020-04' : countries], deaths['2020-04' : countries])
-mortality_forecast = model.mortality(cases_forecast, deaths_forecast)
+    cases.loc['2020-04':, countries], deaths.loc['2020-04':, countries])
+mortality_forecast = model.mortality(
+    cases_forecast.loc[:, (countries, 'yhat')], deaths_forecast.loc[:, (countries, 'yhat')])
+mortality_forecast.columns = mortality_forecast.columns.droplevel(1)
+forecast = cases_forecast.loc[:, (countries[1 : ], 'yhat')]
+forecast.columns = forecast.columns.droplevel(1)
 fig, _ = graph.mortality(mortality, mortality_forecast)
 fig.savefig('output/mortality.png', dpi=300, bbox_inches='tight')
 
