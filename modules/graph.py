@@ -232,6 +232,25 @@ def deaths_by_days_per_million(deaths, population):
     plt.show()
     return fig, ax
 
+def mortality(mortality, mortality_forecast=pd.DataFrame()):
+    fig, ax = plt.subplots()
+    if mortality_forecast.empty == False:
+        sns.lineplot(data=mortality_forecast, dashes=False, legend=False)
+        for i in np.arange(len(mortality_forecast.columns)):
+            ax.lines[i].set_linestyle('--')
+    sns.lineplot(data=mortality.rolling(7).mean(), dashes=False)
+    ax.set_title('COVID-19 mortality (7 day rolling average)')
+    ax.set_xlabel(None)
+    ax.set_ylabel('Percentage of deaths per cases')
+    ax.yaxis.set_major_formatter(ticker.FuncFormatter(
+        lambda y,p: format_decimal(y, locale=locale)))
+    plt.xticks(rotation=45)
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
+    ax.legend(loc='upper left', bbox_to_anchor=(1.01, 0.95))
+    plt.figtext(0.5, -0.03, footnote, fontsize=6, ha='center')
+    plt.show()
+    return fig, ax
+
 def country_situation_with_forecast(cases, deaths, cases_forecast, deaths_forecast):
     country = cases.name
     days = cases_forecast.shape[0]
