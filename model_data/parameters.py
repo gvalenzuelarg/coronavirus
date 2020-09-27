@@ -3,7 +3,7 @@
 
 # Countries start date for cases model traning
 start_cases = {
-    'World' : None,
+    'World' : '2020-05',
     'USA' : '2020-05',
     'Brazil' : '2020-06-15',
     'India' : '2020-06',
@@ -17,7 +17,7 @@ start_cases = {
     }
 # Countries start date for deaths model traning
 start_deaths = {
-    'World' : '2020-04-15',
+    'World' : '2020-06',
     'USA' : '2020-05',
     'Brazil' : '2020-07-15',
     'India' : '2020-06-20',
@@ -33,7 +33,7 @@ start_deaths = {
 params_cases = {
     'World' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
+        'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 0.1},
     'USA' : {
         'growth' : 'logistic',
@@ -80,8 +80,8 @@ params_cases = {
 params_deaths = {
     'World':{
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 10},
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 0.1},
     'USA' : {
             'growth' : 'logistic',
             'changepoint_prior_scale' : 0.5,
