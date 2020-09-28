@@ -58,8 +58,8 @@ def growth_limit(series):
     cap = parms[0][2].astype(int)
     return cap
 
-def init_train(series, hyperparams, cap=None, outliers=[]):
-    """Initializes and trains a Prophet model.
+def init_fit(series, hyperparams, cap=None, outliers=[]):
+    """Initializes and fits a Prophet model.
 
     Change points are set to be inferred from the full series.
     A cap must be provided for logistic growth. A list of timestapms
@@ -101,7 +101,7 @@ def predict(model, periods):
     Paramaters
     ----------
     model : dict
-        A trained Prophet model created with init_train.
+        A trained Prophet model created with init_fit.
     periods : int
         The number of periods to forecast.
     
@@ -134,7 +134,7 @@ def predict_raw(model, periods):
     Paramaters
     ----------
     model : dict
-        A trained Prophet model created with init_train.
+        A trained Prophet model created with init_fit.
     periods : int
         The number of periods to forecast.
     cap : float
@@ -313,9 +313,9 @@ def report(model_cases, model_deaths, country):
     Parameters
     ----------
     model_cases : dict
-        A trained cases Prophet model created with init_train.
+        A trained cases Prophet model created with init_fit.
     model_deaths : dict
-        A trained deaths Prophet model created with init_train.
+        A trained deaths Prophet model created with init_fit.
     country : str
         The country's name.
 
