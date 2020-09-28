@@ -42,7 +42,7 @@ for country in countries:
     # Models for cases
     print('{}: Cases model training...'.format(country))
     if params_cases[country]['growth'] == 'logistic':
-        models_cases[country] = model.init_train(
+        models_cases[country] = model.init_fit(
             series=cases[country].dropna(),
             hyperparams=params_cases[country],
             cap=model.growth_limit(
@@ -50,7 +50,7 @@ for country in countries:
             outliers=outliers_cases[country]
         )
     else:
-        models_cases[country] = model.init_train(
+        models_cases[country] = model.init_fit(
             series=cases[country][start_cases[country] : ].dropna(),
             hyperparams=params_cases[country],
             outliers=outliers_cases[country]
@@ -58,7 +58,7 @@ for country in countries:
     # Models for deaths
     print('{}: Deaths model training...'.format(country))
     if params_deaths[country]['growth'] == 'logistic':
-        models_deaths[country] = model.init_train(
+        models_deaths[country] = model.init_fit(
             series=deaths[country].dropna(),
             hyperparams=params_deaths[country],
             cap=model.growth_limit(
@@ -66,7 +66,7 @@ for country in countries:
             outliers=outliers_deaths[country]
         )
     else:
-        models_deaths[country] = model.init_train(
+        models_deaths[country] = model.init_fit(
             series=deaths[country][start_deaths[country] : ].dropna(),
             hyperparams=params_deaths[country],
             outliers=outliers_deaths[country]
