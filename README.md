@@ -1,4 +1,6 @@
-# Visualization and Modeling of the COVID-19 Pandemic [![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gvalenzuelarg/coronavirus/master?filepath=demo.ipynb)
+# Visualization and Modeling of the COVID-19 Pandemic 
+
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/gvalenzuelarg/coronavirus/master?filepath=demo.ipynb)
 
 ![world](output/world.png)
 
@@ -30,7 +32,7 @@ The script `main.py` is configured to track and forecast the case and death curv
 python main.py
 ```
 Running the script will:
-- Fit the models to the current (updated daily) time series.
+- Fit the models to the current (daily updated) time series.
 - Print and save a daily report with short and long-term information about the countries' situation.
 - Plot and save several graphs including an overview, comparison of the countries' case, death, and mortality curves, as well as a situation and 10 week forecast plot per country. For example:
 
@@ -46,7 +48,7 @@ The modeling module is build upon [Prophet](https://facebook.github.io/prophet/)
 
 ### Model assumptions:
 
-- **The case and death curves during a pandemic wave grow logistically towards a saturation point.** The number of cases and deaths do not exactly follow a logistic growth function with fixed coefficients. For example, many countries' number of cases/deaths show a much faster exponential growth towards their peak than their approach to a saturation point. Moreover, some countries' daily growth curves have more than one local maximum. All of this is taken into account by the Prophet model through trend changepoints, where the coefficients are allowed to change. One must, however, provide a saturation value to the model, which is calculated by fitting a logistic curve to the tail of a given time series. One advantage of this method is that the saturation point gets updated every time the data is fitted, for example, when new data becomes available.
+- **The case and death curves during a pandemic wave grow logistically towards a saturation point.** The number of cases and deaths do not exactly follow a logistic growth function with fixed coefficients. For example, many countries' number of cases/deaths show a much faster exponential growth towards their peak than their approach to a saturation point. Moreover, some countries' daily growth curves have more than one local maximum. All of this is taken into account by the Prophet model through trend change points, where the coefficients are allowed to change. One must, however, provide a saturation value to the model, which is calculated by fitting a logistic curve to the tail of a given time series. One advantage of this method is that the saturation point gets updated every time the data is fitted, for example, when new data becomes available.
 
 - **The case and death curves are approximately piecewise linear in between pandemic waves.** After a country's pandemic wave ends, the curves tend to not fully flatten but rather present a growth that can be linearly approximated. The forecast of such a model during these stages should only be considered for short-term predictions. Once a country shows signs of entering another pandemic wave, one can switch to a logistical growth model, provided there is enough data to estimate a reasonable saturation point.
 
