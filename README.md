@@ -52,7 +52,7 @@ The modeling module is build upon [Prophet](https://facebook.github.io/prophet/)
 
 - **The case and death curves are approximately piecewise linear in between pandemic waves.** After a country's pandemic wave ends, the curves tend to not fully flatten but rather present a growth that can be linearly approximated. The forecast of such a model during these stages should only be considered for short-term predictions. Once a country shows signs of entering another pandemic wave, one can switch to a logistical growth model, provided there is enough data to train it.
 
-# Data sources
+## Data sources
 
 - JHU CSSE COVID-19 Data: [https://github.com/CSSEGISandData/COVID-19](https://github.com/CSSEGISandData/COVID-19).
 - The World Bank population dataset: [https://data.worldbank.org/indicator/SP.POP.TOTL](https://data.worldbank.org/indicator/SP.POP.TOTL).
