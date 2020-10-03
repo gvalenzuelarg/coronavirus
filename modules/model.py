@@ -250,7 +250,7 @@ def explained_variance_in_sample(train, prophet_output):
     explained_variance = explained_variance_score(y, y_pred)
     return explained_variance
 
-def hyperparameter_tunning(train, growth='logistic'):
+def hyperparameter_tunning(train, growth='logistic', horizon='45 days'):
     """Returns optimal hyperparameters for a Prophet model.
 
     The hyperparameters are tunned using Prophet's cross_validation
@@ -283,8 +283,7 @@ def hyperparameter_tunning(train, growth='logistic'):
         m = Prophet(
             growth=growth, **params, changepoint_range=1,
             daily_seasonality=False, yearly_seasonality=False).fit(train)
-        df_cv = cross_validation(
-            m, initial='120 days', horizon='60 days', parallel=None)
+        df_cv = cross_validation(m, horizon=horizon, parallel=None)
         df_p = performance_metrics(df_cv, rolling_window=1)
         rmses.append(df_p['rmse'].values[0])
 
