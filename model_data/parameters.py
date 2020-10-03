@@ -12,6 +12,7 @@ start_cases = {
     'Peru' : '2020-07',
     'Colombia' : '2020-09',
     'Mexico' : '2020-08',
+    'Argentina' : '2020-06',
     'Chile' : '2020-08',
     'Germany' : '2020-05'
     }
@@ -26,6 +27,7 @@ start_deaths = {
     'Peru' : '2020-09',
     'Colombia' : '2020-08',
     'Mexico' : '2020-08',
+    'Argentina' : '2020-06',
     'Chile' : '2020-08',
     'Germany' : '2020-06'
     }
@@ -66,6 +68,10 @@ params_cases = {
     'Mexico' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 0.1},
+    'Argentina' : {
+        'growth' : 'logistic',
+        'changepoint_prior_scale' : 5,
         'seasonality_prior_scale' : 0.1},
     'Chile' : {
         'growth' : 'logistic',
@@ -114,6 +120,10 @@ params_deaths = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
         'seasonality_prior_scale' : 0.1},
+    'Argentina' : {
+        'growth' : 'logistic',
+        'changepoint_prior_scale' : 0.05,
+        'seasonality_prior_scale' : 10},
     'Chile' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
@@ -134,6 +144,7 @@ outliers_cases = {
     'Peru' : ['2020-06-03','2020-06-12','2020-07-25','2020-07-26','2020-07-27','2020-07-30','2020-08-01','2020-08-02','2020-08-08','2020-08-09','2020-08-12','2020-08-14','2020-08-15','2020-09-03','2020-09-04'],
     'Colombia' : [],
     'Mexico' : [],
+    'Argentina' : [],
     'Chile' : ['2020-05-30','2020-06-06'],
     'Germany' : []
     }
@@ -148,6 +159,7 @@ outliers_deaths = {
     'Peru' : ['2020-07-23','2020-08-14'],
     'Colombia' : [],
     'Mexico' : ['2020-06-04'],
+    'Argentina' : ['2020-10-02'],
     'Chile' : ['2020-06-08','2020-07-17'],
     'Germany' : []
     }
