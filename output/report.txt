@@ -2,38 +2,38 @@
 
 World:
 
-	Data on 06.10.2020:
+	Data on 05.10.2020:
 
-		Cases: 35.414.612 (+264.144).
-		Deaths: 1.043.061 (+6.120).
+		Cases: 35.475.879 (+325.411).
+		Deaths: 1.043.945 (+7.004).
 		Mortality rate: 2,9%.
 
 	Today's predictions:
 
-		Cases: 35.692.060 (+277.448).
-		Deaths: 1.049.109 (+6.048).
+		Cases: 35.751.956 (+276.077).
+		Deaths: 1.049.889 (+5.944).
 
 	Expected parameters:
 
 		Maximum daily infections on 25.09.2020.
 		Current pandemic's wave to end on 23.07.2021.
-		Total number of cases: 51.860.807.
-		Total number of deaths: 1.586.576.
+		Total number of cases: 51.892.557.
+		Total number of deaths: 1.587.331.
 		Final mortality rate: 3,1%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 23.231,49.
+		Root Mean Squared Error: 22.698,53.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 1.179,87.
+		Root Mean Squared Error: 1.147,11.
 		Explained Variance: 1.
 
 USA:
 
-	Data on 06.10.2020:
+	Data on 05.10.2020:
 
 		Cases: 7.457.402 (+39.557).
 		Deaths: 210.181 (+460).
@@ -64,38 +64,38 @@ USA:
 
 India:
 
-	Data on 06.10.2020:
+	Data on 05.10.2020:
 
-		Cases: 6.623.815 (+0).
-		Deaths: 102.685 (+0).
-		Mortality rate: 1,6%.
+		Cases: 6.685.082 (+61.267).
+		Deaths: 103.569 (+884).
+		Mortality rate: 1,5%.
 
 	Today's predictions:
 
-		Cases: 6.695.945 (+72.130).
-		Deaths: 103.679 (+994).
+		Cases: 6.757.657 (+72.575).
+		Deaths: 104.577 (+1.008).
 
 	Expected parameters:
 
 		Maximum daily infections on 12.09.2020.
 		Current pandemic's wave to end on 08.05.2021.
-		Total number of cases: 9.542.495.
-		Total number of deaths: 156.992.
+		Total number of cases: 9.579.301.
+		Total number of deaths: 157.796.
 		Final mortality rate: 1,6%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 6.459,7.
+		Root Mean Squared Error: 4.796,78.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 161,82.
+		Root Mean Squared Error: 154,67.
 		Explained Variance: 1.
 
 Brazil:
 
-	Data on 06.10.2020:
+	Data on 05.10.2020:
 
 		Cases: 4.927.235 (+11.946).
 		Deaths: 146.675 (+323).
@@ -126,7 +126,7 @@ Brazil:
 
 Russia:
 
-	Data on 06.10.2020:
+	Data on 05.10.2020:
 
 		Cases: 1.219.796 (+10.757).
 		Deaths: 21.375 (+115).
@@ -157,7 +157,7 @@ Russia:
 
 Colombia:
 
-	Data on 06.10.2020:
+	Data on 05.10.2020:
 
 		Cases: 862.158 (+7.106).
 		Deaths: 26.844 (+132).
@@ -188,7 +188,7 @@ Colombia:
 
 Peru:
 
-	Data on 06.10.2020:
+	Data on 05.10.2020:
 
 		Cases: 828.169 (+6.605).
 		Deaths: 32.742 (+133).
@@ -219,7 +219,7 @@ Peru:
 
 Chile:
 
-	Data on 06.10.2020:
+	Data on 05.10.2020:
 
 		Cases: 471.746 (+1.567).
 		Deaths: 13.037 (+58).
@@ -250,7 +250,7 @@ Chile:
 
 Germany:
 
-	Data on 06.10.2020:
+	Data on 05.10.2020:
 
 		Cases: 304.673 (+3.100).
 		Deaths: 9.554 (+21).
