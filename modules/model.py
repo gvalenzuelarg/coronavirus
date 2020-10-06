@@ -16,7 +16,7 @@ from fbprophet.diagnostics import performance_metrics
 
 from modules import processing
 
-def logistic_curve(X,a,b,c):
+def logistic_curve(X, a, b, c, l):
     """Logistic function with standard parameters.
 
     Parameters
@@ -29,13 +29,15 @@ def logistic_curve(X,a,b,c):
         The x-value of the curve's midpoint.
     c : float
         The function's upper asymptote (saturation limit).
+    l : float
+        The function's lower asymptote (intial value).
     
     Returns
     -------
     y : ndarray
         A 1-dimensional array of y-values corresponding to X.
     """
-    y = c / (1+np.exp(-a*(X-b)))
+    y = l + (c - l) / (1+np.exp(-a*(X-b)))
     return y
 
 def growth_limit(series):
