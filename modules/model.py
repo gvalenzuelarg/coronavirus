@@ -328,9 +328,7 @@ def report(model_cases, model_deaths, country):
 
     # Dates
     today = pd.to_datetime('today').normalize()
-    today_str = format_date(today, locale=locale)
     yesterday = today - pd.Timedelta(1,'D')
-    yesterday_str = format_date(yesterday, locale=locale)
 
     #Long-term cases predictions
     prophet_output_cases = predict_raw(model_cases, 1460)
@@ -373,7 +371,7 @@ def report(model_cases, model_deaths, country):
     text_list = []
     text_list.append('{}:'.format(country))
     text_list.append('')
-    text_list.append('\tData on {}:'.format(format_date(today, locale=locale)))
+    text_list.append('\tData on {}:'.format(format_date(yesterday, locale=locale)))
     text_list.append('')
     text_list.append('\t\tCases: {} ({}).'.format(
         format_decimal(cases_yesterday, locale=locale),
