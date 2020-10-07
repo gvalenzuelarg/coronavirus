@@ -1,88 +1,94 @@
 """Parameters for trained models.
 """
 
-# Countries start date for cases model traning
+# Start date for cases model training
 start_cases = {
     'World' : '2020-05',
-    'USA' : '2020-05',
+    'USA' : '2020-07-10',
     'Brazil' : '2020-08',
-    'India' : '2020-05',
-    'Russia' : '2020-07-15',
+    'India' : '2020-09-12',
+    'Russia' : '2020-06',
     'South Africa' : '2020-09',
-    'Peru' : '2020-07',
-    'Colombia' : '2020-09',
-    'Mexico' : '2020-08',
-    'Argentina' : '2020-06',
-    'Chile' : '2020-08',
-    'Germany' : '2020-05'
-    }
-# Countries start date for deaths model traning
-start_deaths = {
-    'World' : '2020-06',
-    'USA' : '2020-05',
-    'Brazil' : '2020-08',
-    'India' : '2020-07',
-    'Russia' : '2020-07-25',
-    'South Africa' : '2020-05',
-    'Peru' : '2020-09',
-    'Colombia' : '2020-08',
-    'Mexico' : '2020-08',
-    'Argentina' : '2020-06',
-    'Chile' : '2020-08',
+    'Peru' : '2020-08',
+    'Colombia' : '2020-08-15',
+    'Mexico' : '2020-07',
+    'Spain' : '2020-07',
+    'Argentina' : '2020-05',
+    'Chile' : '2020-07',
     'Germany' : '2020-06'
     }
-# Countries hyperparameters for cases models
+# Start date for deaths model training
+start_deaths = {
+    'World' : '2020-06',
+    'USA' : '2020-08',
+    'Brazil' : '2020-08',
+    'India' : '2020-09-15',
+    'Russia' : '2020-07',
+    'South Africa' : '2020-09',
+    'Peru' : '2020-09',
+    'Colombia' : '2020-08-15',
+    'Mexico' : '2020-08',
+    'Spain' : '2020-07',
+    'Argentina' : '2020-06',
+    'Chile' : '2020-07-15',
+    'Germany' : '2020-06'
+    }
+# Hyperparameters for cases model
 params_cases = {
     'World' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 0.1},
+        'changepoint_prior_scale' : 0.05,
+        'seasonality_prior_scale' : 10},
     'USA' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
+        'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10},
     'Brazil' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 1},
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 0.1},
     'India' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 0.05,
+        'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10},
     'Russia' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 10},
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 0.1},
     'South Africa' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 0.1},
+        'seasonality_prior_scale' : 10},
     'Peru' : {
+        'growth' : 'logistic',
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 10},
+    'Colombia' : {
+        'growth' : 'logistic',
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 1},
+    'Mexico' : {
+        'growth' : 'logistic',
+        'changepoint_prior_scale' : 5,
+        'seasonality_prior_scale' : 0.1},
+    'Spain' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
         'seasonality_prior_scale' : 1},
-    'Colombia' : {
-        'growth' : 'logistic',
-        'changepoint_prior_scale' : 0.05,
-        'seasonality_prior_scale' : 10},
-    'Mexico' : {
-        'growth' : 'logistic',
-        'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 0.1},
     'Argentina' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 0.1},
+        'changepoint_prior_scale' : 0.05,
+        'seasonality_prior_scale' : 1},
     'Chile' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
         'seasonality_prior_scale' : 1},
     'Germany' : {
-        'growth' : 'linear',
+        'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 1}
+        'seasonality_prior_scale' : 10}
     }
-# Countries hyperparameters for deaths models
+# Hyperparameters for deaths model
 params_deaths = {
     'World':{
         'growth' : 'logistic',
@@ -90,24 +96,24 @@ params_deaths = {
         'seasonality_prior_scale' : 0.1},
     'USA' : {
             'growth' : 'logistic',
-            'changepoint_prior_scale' : 0.5,
-            'seasonality_prior_scale' : 10},
+            'changepoint_prior_scale' : 5,
+            'seasonality_prior_scale' : 0.1},
     'Brazil' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 0.1},
+        'seasonality_prior_scale' : 10},
     'India' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 1},
+        'seasonality_prior_scale' : 0.1},
     'Russia' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 10},
+        'seasonality_prior_scale' : 0.1},
     'South Africa' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 10},
+        'seasonality_prior_scale' : 0.1},
     'Peru' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
@@ -120,10 +126,14 @@ params_deaths = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
         'seasonality_prior_scale' : 0.1},
+    'Spain' : {
+        'growth' : 'logistic',
+        'changepoint_prior_scale' : 5,
+        'seasonality_prior_scale' : 0.1},
     'Argentina' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.05,
-        'seasonality_prior_scale' : 10},
+        'seasonality_prior_scale' : 1},
     'Chile' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
@@ -133,7 +143,7 @@ params_deaths = {
         'changepoint_prior_scale' : 0.05,
         'seasonality_prior_scale' : 10}
     }
-#Countries cases outliers
+#Case outliers
 outliers_cases = {
     'World' : [],
     'USA' : [],
@@ -144,11 +154,12 @@ outliers_cases = {
     'Peru' : ['2020-06-03','2020-06-12','2020-07-25','2020-07-26','2020-07-27','2020-07-30','2020-08-01','2020-08-02','2020-08-08','2020-08-09','2020-08-12','2020-08-14','2020-08-15','2020-09-03','2020-09-04'],
     'Colombia' : [],
     'Mexico' : [],
+    'Spain' : [],
     'Argentina' : [],
     'Chile' : ['2020-05-30','2020-06-06'],
     'Germany' : []
     }
-#Countries deaths outliers
+#Death outliers
 outliers_deaths = {
     'World' : ['2020-08-14'],
     'USA' : [],
@@ -159,6 +170,7 @@ outliers_deaths = {
     'Peru' : ['2020-07-23','2020-08-14'],
     'Colombia' : [],
     'Mexico' : ['2020-06-04'],
+    'Spain' : [],
     'Argentina' : ['2020-10-02'],
     'Chile' : ['2020-06-08','2020-07-17'],
     'Germany' : []
