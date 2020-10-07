@@ -351,7 +351,7 @@ def report(model_cases, model_deaths, country):
         deaths_yesterday / cases_yesterday * 100, 1)
 
     # Only valid for logistic growth models
-    if model_cases['cap'] != None:
+    if (model_cases['cap'] != None) & (model_deaths['cap'] != None):
         peak = date_of_peak(prophet_output_cases)
         end = date_of_saturation(prophet_output_cases)
         total_cases = model_cases['cap']
@@ -393,7 +393,7 @@ def report(model_cases, model_deaths, country):
         format_decimal(deaths_today, locale=locale),
         format_decimal(daily_deaths_today, locale=locale, format='+#,###;-#')))
     # Only valid for logistic growth models
-    if model_cases['cap'] != None:
+    if (model_cases['cap'] != None) & (model_deaths['cap'] != None):
         text_list.append('')
         text_list.append('\tExpected parameters:')
         text_list.append('')
