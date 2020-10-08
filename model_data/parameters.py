@@ -5,7 +5,7 @@
 start_cases = {
     'World' : '2020-05',
     'USA' : '2020-07-15',
-    'Brazil' : '2020-08',
+    'Brazil' : '2020-09',
     'India' : '2020-09-15',
     'Russia' : '2020-06',
     'South Africa' : '2020-09',
@@ -46,7 +46,7 @@ params_cases = {
     'Brazil' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 0.1},
+        'seasonality_prior_scale' : 10},
     'India' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
