@@ -29,7 +29,7 @@ start_deaths = {
     'Colombia' : '2020-08-15',
     'Mexico' : '2020-08',
     'Spain' : '2020-07',
-    'Argentina' : '2020-06',
+    'Argentina' : '2020-10',
     'Chile' : '2020-07-15',
     'Germany' : '2020-06'
     }
