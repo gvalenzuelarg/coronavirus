@@ -171,7 +171,7 @@ outliers_deaths = {
     'Colombia' : [],
     'Mexico' : ['2020-06-04'],
     'Spain' : [],
-    'Argentina' : ['2020-10-02'],
+    'Argentina' : ['2020-10-01'],
     'Chile' : ['2020-06-08','2020-07-17'],
     'Germany' : ['2020-10-08']
     }
