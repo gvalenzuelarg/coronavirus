@@ -84,9 +84,9 @@ params_cases = {
         'changepoint_prior_scale' : 5,
         'seasonality_prior_scale' : 0.1},
     'Germany' : {
-        'growth' : 'logistic',
+        'growth' : 'linear',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 1}
+        'seasonality_prior_scale' : 10}
     }
 # Hyperparameters for deaths model
 params_deaths = {
@@ -133,7 +133,7 @@ params_deaths = {
     'Argentina' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 0.1},
+        'seasonality_prior_scale' : 10},
     'Chile' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
