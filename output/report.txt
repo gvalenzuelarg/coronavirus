@@ -197,7 +197,7 @@ Argentina:
 	Today's predictions:
 
 		Cases: 884.088 (+12.620).
-		Deaths: 23.866 (+641).
+		Deaths: 23.868 (+643).
 
 	Expected parameters:
 
@@ -214,7 +214,7 @@ Argentina:
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 189,84.
+		Root Mean Squared Error: 190,07.
 		Explained Variance: 0,999.
 
 Chile:
@@ -258,12 +258,12 @@ Germany:
 
 	Today's predictions:
 
-		Cases: 323.022 (+2.527).
+		Cases: 323.744 (+3.249).
 		Deaths: 9.610 (+11).
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 1.129,18.
+		Root Mean Squared Error: 253,81.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
