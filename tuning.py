@@ -59,7 +59,7 @@ _ = graph.daily_deaths(deaths[country])
 
 # Logistic 
 
-cap = model.growth_limit(deaths[country]['2020-8-30':])
+cap = model.growth_limit(deaths[country]['2020-8-24':])
 print(cap)
 
 train = processing.to_prophet_input(deaths[country], cap)
