@@ -5,8 +5,8 @@
 start_cases = {
     'World' : '2020-05',
     'USA' : '2020-07-15',
-    'Brazil' : '2020-09',
-    'India' : '2020-09-15',
+    'Brazil' : '2020-06',
+    'India' : '2020-07',
     'Russia' : '2020-06',
     'South Africa' : '2020-09',
     'Peru' : '2020-08',
@@ -21,15 +21,15 @@ start_cases = {
 start_deaths = {
     'World' : '2020-06',
     'USA' : '2020-08',
-    'Brazil' : '2020-08',
-    'India' : '2020-09-15',
-    'Russia' : '2020-07',
+    'Brazil' : '2020-07',
+    'India' : '2020-07',
+    'Russia' : '2020-06-20',
     'South Africa' : '2020-09',
     'Peru' : '2020-09',
-    'Colombia' : '2020-08-15',
+    'Colombia' : '2020-09',
     'Mexico' : '2020-08',
     'Spain' : '2020-07',
-    'Argentina' : '2020-08-30',
+    'Argentina' : '2020-08-20',
     'Chile' : '2020-07-15',
     'Germany' : '2020-06'
     }
@@ -45,12 +45,12 @@ params_cases = {
         'seasonality_prior_scale' : 0.1},
     'Brazil' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 10},
+        'changepoint_prior_scale' : 0.05,
+        'seasonality_prior_scale' : 0.1},
     'India' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 1},
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 10},
     'Russia' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
@@ -101,7 +101,7 @@ params_deaths = {
     'Brazil' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 10},
+        'seasonality_prior_scale' : 0.1},
     'India' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.05,
@@ -109,7 +109,7 @@ params_deaths = {
     'Russia' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 0.1},
+        'seasonality_prior_scale' : 1},
     'South Africa' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
@@ -121,7 +121,7 @@ params_deaths = {
     'Colombia' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 0.1},
+        'seasonality_prior_scale' : 1},
     'Mexico' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
@@ -132,7 +132,7 @@ params_deaths = {
         'seasonality_prior_scale' : 10},
     'Argentina' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
+        'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10},
     'Chile' : {
         'growth' : 'logistic',
