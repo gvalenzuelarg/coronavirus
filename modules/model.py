@@ -56,7 +56,7 @@ def growth_limit(series):
     y = series.dropna()
     X = np.arange(len(y))
     parms = curve_fit(logistic_curve, X, y.values,
-                     p0=[1,1,y[-1],y[0]], bounds=([0, -np.inf, y[-1], -np.inf], np.inf), maxfev=100000)
+                     p0=[1,1,y[-1],y[0]], bounds=([0, -np.inf, y[-1], y[0]], np.inf), maxfev=100000)
     cap = parms[0][2].astype(int)
     return cap
 
