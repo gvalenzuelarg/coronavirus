@@ -15,7 +15,7 @@ start_cases = {
     'Spain' : '2020-07',
     'Argentina' : '2020-05',
     'Chile' : '2020-06-20',
-    'Germany' : '2020-06'
+    'Germany' : '2020-03-21'
     }
 # Start date for deaths model training
 start_deaths = {
@@ -29,9 +29,9 @@ start_deaths = {
     'Colombia' : '2020-09',
     'Mexico' : '2020-08',
     'Spain' : '2020-07',
-    'Argentina' : '2020-08-20',
+    'Argentina' : '2020-08-15',
     'Chile' : '2020-07-15',
-    'Germany' : '2020-06'
+    'Germany' : '2020-06-07'
     }
 # Hyperparameters for cases model
 params_cases = {
@@ -84,9 +84,9 @@ params_cases = {
         'changepoint_prior_scale' : 5,
         'seasonality_prior_scale' : 0.1},
     'Germany' : {
-        'growth' : 'linear',
-        'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 10}
+        'growth' : 'logistic',
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 1}
     }
 # Hyperparameters for deaths model
 params_deaths = {
@@ -139,9 +139,9 @@ params_deaths = {
         'changepoint_prior_scale' : 5,
         'seasonality_prior_scale' : 0.1},
     'Germany' : {
-        'growth' : 'linear',
-        'changepoint_prior_scale' : 0.05,
-        'seasonality_prior_scale' : 10}
+        'growth' : 'logistic',
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 0.1}
     }
 #Case outliers
 outliers_cases = {
