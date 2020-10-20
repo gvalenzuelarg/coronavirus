@@ -31,7 +31,7 @@ for country in countries:
             '{}: Parameters missing. A model must be first tuned.'.format(
                 country))
 
-country = 'Germany'
+country = 'Spain'
 print(country)
 
 # Cases
@@ -41,7 +41,7 @@ _ = graph.daily_cases(cases[country])
 
 # Logistic 
 
-cap = model.growth_limit(cases[country]['2020-7-15':])
+cap = model.growth_limit(cases[country]['2020-9':])
 print(cap)
 
 train = processing.to_prophet_input(cases[country], cap)
@@ -59,7 +59,7 @@ _ = graph.daily_deaths(deaths[country])
 
 # Logistic 
 
-cap = model.growth_limit(deaths[country]['2020-8':])
+cap = model.growth_limit(deaths[country]['2020-9':])
 print(cap)
 
 train = processing.to_prophet_input(deaths[country], cap)
