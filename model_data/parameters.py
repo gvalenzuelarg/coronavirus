@@ -12,7 +12,7 @@ start_cases = {
     'Peru' : '2020-08',
     'Colombia' : '2020-08-15',
     'Mexico' : '2020-07',
-    'Spain' : '2020-07',
+    'Spain' : '2020-09',
     'Argentina' : '2020-05',
     'Chile' : '2020-07-15',
     'Germany' : '2020-07-15'
@@ -28,7 +28,7 @@ start_deaths = {
     'Peru' : '2020-09',
     'Colombia' : '2020-09',
     'Mexico' : '2020-08',
-    'Spain' : '2020-07',
+    'Spain' : '2020-09',
     'Argentina' : '2020-08-10',
     'Chile' : '2020-07-20',
     'Germany' : '2020-08'
@@ -73,7 +73,7 @@ params_cases = {
         'seasonality_prior_scale' : 0.1},
     'Spain' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
+        'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 1},
     'Argentina' : {
         'growth' : 'logistic',
