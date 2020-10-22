@@ -4,7 +4,7 @@
 # Start date for cases model training
 start_cases = {
     'World' : '2020-08-15',
-    'USA' : '2020-08-10',
+    'USA' : '2020-08',
     'Brazil' : '2020-08-15',
     'India' : '2020-07-15',
     'Russia' : '2020-09-15',
