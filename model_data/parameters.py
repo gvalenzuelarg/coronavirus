@@ -7,7 +7,7 @@ start_cases = {
     'USA' : '2020-08',
     'Brazil' : '2020-08-15',
     'India' : '2020-07-15',
-    'Russia' : '2020-06-15',
+    'Russia' : '2020-06',
     'South Africa' : '2020-09',
     'Peru' : '2020-08',
     'Colombia' : '2020-08-15',
@@ -16,7 +16,7 @@ start_cases = {
     'Argentina' : '2020-09-15',
     'France' : '2020-06',
     'Chile' : '2020-08',
-    'Germany' : '2020-07-15'
+    'Germany' : '2020-09'
     }
 # Start date for deaths model training
 start_deaths = {
@@ -31,9 +31,9 @@ start_deaths = {
     'Mexico' : '2020-08',
     'Spain' : '2020-09-10',
     'Argentina' : '2020-07',
-    'France' : '2020-08',
+    'France' : '2020-09-15',
     'Chile' : '2020-08',
-    'Germany' : '2020-06-15'
+    'Germany' : '2020-09'
     }
 # Hyperparameters for cases model
 params_cases = {
