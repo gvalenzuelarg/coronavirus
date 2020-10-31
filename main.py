@@ -20,7 +20,7 @@ population_2019 = processing.population_2019()
 # List consisting of the World, the top 6 countries by cases, plus Chile and Germany
 countries = list(
     cases.iloc[-1].sort_values(
-            ascending=False)[0 : 7].index) + ['Chile', 'Germany']
+            ascending=False)[0 : 7].index) + ['Germany', 'Chile']
 
 # Test if the parameters for the countries in the list are available
 for country in countries:
