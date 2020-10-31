@@ -41,7 +41,7 @@ _ = graph.daily_cases(cases[country])
 
 # Logistic 
 
-cap = model.growth_limit(cases[country]['2020-10':])
+cap = model.growth_limit(cases[country]['2020-9-20':])
 print(cap)
 params = {
         'growth' : 'logistic',
