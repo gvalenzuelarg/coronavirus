@@ -3,8 +3,8 @@
 
 # Start date for cases model training
 start_cases = {
-    'World' : '2020-08-10',
-    'USA' : '2020-08',
+    'World' : '2020-07-25',
+    'USA' : '2020-07-25',
     'Brazil' : '2020-08-15',
     'India' : '2020-07-15',
     'Russia' : '2020-06',
@@ -12,16 +12,16 @@ start_cases = {
     'Peru' : '2020-08',
     'Colombia' : '2020-08-15',
     'Mexico' : '2020-07',
-    'Spain' : '2020-09-05',
+    'Spain' : '2020-08-05',
     'Argentina' : '2020-09-15',
-    'France' : '2020-07',
+    'France' : '2020-08',
     'Chile' : '2020-08',
-    'Germany' : '2020-10'
+    'Germany' : '2020-09-20'
     }
 # Start date for deaths model training
 start_deaths = {
-    'World' : '2020-08-15',
-    'USA' : '2020-09-10',
+    'World' : '2020-09-15',
+    'USA' : '2020-09',
     'Brazil' : '2020-08-15',
     'India' : '2020-07',
     'Russia' : '2020-07',
@@ -29,7 +29,7 @@ start_deaths = {
     'Peru' : '2020-09',
     'Colombia' : '2020-09',
     'Mexico' : '2020-08',
-    'Spain' : '2020-09-15',
+    'Spain' : '2020-09',
     'Argentina' : '2020-07',
     'France' : '2020-09-15',
     'Chile' : '2020-08',
