@@ -7,24 +7,24 @@ start_cases = {
     'USA' : '2020-07-25',
     'Brazil' : '2020-08-15',
     'India' : '2020-07-15',
-    'Russia' : '2020-06',
+    'Russia' : '2020-05-25',
     'South Africa' : '2020-09',
     'Peru' : '2020-08',
     'Colombia' : '2020-08-15',
     'Mexico' : '2020-07',
     'Spain' : '2020-08-05',
     'Argentina' : '2020-09-15',
-    'France' : '2020-08',
+    'France' : '2020-08-05',
     'Chile' : '2020-08',
     'Germany' : '2020-09-20'
     }
 # Start date for deaths model training
 start_deaths = {
-    'World' : '2020-09-15',
-    'USA' : '2020-09',
+    'World' : '2020-09-05',
+    'USA' : '2020-08-25',
     'Brazil' : '2020-08-15',
     'India' : '2020-07',
-    'Russia' : '2020-07',
+    'Russia' : '2020-08-25',
     'South Africa' : '2020-09',
     'Peru' : '2020-09',
     'Colombia' : '2020-09',
@@ -33,7 +33,7 @@ start_deaths = {
     'Argentina' : '2020-07',
     'France' : '2020-09-15',
     'Chile' : '2020-08',
-    'Germany' : '2020-09'
+    'Germany' : '2020-09-15'
     }
 # Hyperparameters for cases model
 params_cases = {
@@ -92,7 +92,7 @@ params_cases = {
     'Germany' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 1}
+        'seasonality_prior_scale' : 0.1}
     }
 # Hyperparameters for deaths model
 params_deaths = {
@@ -151,7 +151,7 @@ params_deaths = {
     'Germany' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 0.1}
+        'seasonality_prior_scale' : 10}
     }
 #Case outliers
 outliers_cases = {
