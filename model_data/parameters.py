@@ -12,7 +12,7 @@ start_cases = {
     'Peru' : '2020-08',
     'Colombia' : '2020-08-15',
     'Mexico' : '2020-07',
-    'Spain' : '2020-8-20',
+    'Spain' : '2020-10',
     'Argentina' : '2020-09-15',
     'France' : '2020-9',
     'Chile' : '2020-07-25',
