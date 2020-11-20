@@ -41,7 +41,7 @@ _ = graph.daily_cases(cases[country])
 
 # Logistic 
 
-cap = model.growth_limit(cases[country]['2020-9-5':])
+cap = model.growth_limit(cases[country]['2020-8-15':])
 print(cap)
 params = {
         'growth' : 'logistic',
@@ -66,7 +66,7 @@ _ = graph.daily_deaths(deaths[country])
 
 # Logistic 
 
-cap = model.growth_limit(deaths[country]['2020-10-15':])
+cap = model.growth_limit(deaths[country]['2020-9-25':])
 print(cap)
 params = {
         'growth' : 'logistic',
