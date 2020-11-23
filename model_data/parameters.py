@@ -5,7 +5,7 @@
 start_cases = {
     'World' : '2020-06-15',
     'USA' : '2020-06-25',
-    'Brazil' : '2020-10',
+    'Brazil' : '2020-9-20',
     'India' : '2020-10',
     'Russia' : '2020-10',
     'South Africa' : '2020-09',
