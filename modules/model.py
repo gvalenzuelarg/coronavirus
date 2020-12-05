@@ -256,7 +256,7 @@ def explained_variance_in_sample(train, prophet_output):
     explained_variance = explained_variance_score(y, y_pred)
     return explained_variance
 
-def hyperparameter_tunning(train, growth='logistic', horizon='45 days'):
+def hyperparameter_tunning(train, growth='logistic', horizon='60 days'):
     """Returns optimal hyperparameters for a Prophet model.
 
     The hyperparameters are tunned using Prophet's cross_validation
