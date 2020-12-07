@@ -16,6 +16,7 @@ start_cases = {
     'Argentina' : '2020-09-15',
     'France' : '2020-08',
     'UK' : '2020-06',
+    'Italy' : '2020-11', 
     'Chile' : '2020-11',
     'Germany' : '2020-06'
     }
@@ -34,6 +35,7 @@ start_deaths = {
     'Argentina' : '2020-07',
     'France' : '2020-08',
     'UK': '2020-08',
+    'Italy' : '2020-11',
     'Chile' : '2020-11',
     'Germany' : '2020-07'
     }
@@ -91,6 +93,10 @@ params_cases = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 0.1},
+    'Italy' : {
+        'growth' : 'logistic',
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 1},
     'Chile' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
@@ -154,6 +160,10 @@ params_deaths = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 1},
+    'Italy' : {
+        'growth' : 'logistic',
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 0.1},
     'Chile' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
