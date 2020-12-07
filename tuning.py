@@ -31,7 +31,7 @@ for country in countries:
             '{}: Parameters missing. A model must be first tuned.'.format(
                 country))
 
-country = 'Chile'
+country = 'Italy'
 print(country)
 
 # Cases
