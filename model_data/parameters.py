@@ -188,6 +188,7 @@ outliers_cases = {
     'Argentina' : [],
     'France' : [],
     'UK' : [],
+    'Italy': [],
     'Chile' : ['2020-05-30','2020-06-06'],
     'Germany' : []
     }
@@ -206,6 +207,7 @@ outliers_deaths = {
     'Argentina' : ['2020-10-01'],
     'France' : [],
     'UK' : [],
+    'Italy' : [],
     'Chile' : ['2020-06-08','2020-07-17'],
     'Germany' : ['2020-10-08']
     }
