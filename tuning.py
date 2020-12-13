@@ -31,7 +31,7 @@ for country in countries:
             '{}: Parameters missing. A model must be first tuned.'.format(
                 country))
 
-country = 'Germany'
+country = 'Chile'
 print(country)
 
 # Cases
@@ -41,7 +41,7 @@ _ = graph.daily_cases(cases[country])
 
 # Logistic 
 
-cap = model.growth_limit(cases[country]['2020-06':])
+cap = model.growth_limit(cases[country]['2020-11':])
 print(cap)
 print(country)
 params = {
@@ -57,7 +57,7 @@ params = model.hyperparameter_tunning(train, horizon='60 days')
 
 # Linear
 
-train = processing.to_prophet_input(cases[country]['2020-06':])
+train = processing.to_prophet_input(cases[country]['2020-08':])
 params = model.hyperparameter_tunning(train, 'linear', '30 days')
 
 # Deaths
@@ -67,7 +67,7 @@ _ = graph.daily_deaths(deaths[country])
 
 # Logistic 
 
-cap = model.growth_limit(deaths[country]['2020-07':])
+cap = model.growth_limit(deaths[country]['2020-11':])
 print(cap)
 print(country)
 params = {
@@ -83,5 +83,5 @@ params = model.hyperparameter_tunning(train, horizon='60 days')
 
 # Linear
 
-train = processing.to_prophet_input(deaths[country]['2020-06':])
+train = processing.to_prophet_input(deaths[country]['2020-08':])
 params = model.hyperparameter_tunning(train, 'linear', '30 days')
