@@ -3,7 +3,7 @@
 
 # Start date for cases model training
 start_cases = {
-    'World' : '2020-09',
+    'World' : '2020-11',
     'USA' : '2020-08-15',
     'Brazil' : '2020-09',
     'India' : '2020-11',
@@ -98,9 +98,9 @@ params_cases = {
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 1},
     'Chile' : {
-        'growth' : 'logistic',
-        'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 1},
+        'growth' : 'linear',
+        'changepoint_prior_scale' : 0.05,
+        'seasonality_prior_scale' : 10},
     'Germany' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
@@ -165,9 +165,9 @@ params_deaths = {
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 0.1},
     'Chile' : {
-        'growth' : 'logistic',
-        'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 10},
+        'growth' : 'linear',
+        'changepoint_prior_scale' : 0.05,
+        'seasonality_prior_scale' : 0.1},
     'Germany' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
