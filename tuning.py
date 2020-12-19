@@ -26,6 +26,7 @@ countries = list(
 for country in countries:
     try:
         params_cases[country]
+        print(country)
     except:
         print(
             '{}: Parameters missing. A model must be first tuned.'.format(
@@ -41,7 +42,7 @@ _ = graph.daily_cases(cases[country])
 
 # Logistic 
 
-cap = model.growth_limit(cases[country]['2020-11':])
+cap = model.growth_limit(cases[country]['2020-10':])
 print(cap)
 print(country)
 params = {
@@ -67,7 +68,7 @@ _ = graph.daily_deaths(deaths[country])
 
 # Logistic 
 
-cap = model.growth_limit(deaths[country]['2020-09':])
+cap = model.growth_limit(deaths[country]['2020-9-24':])
 print(cap)
 print(country)
 params = {
