@@ -4,30 +4,30 @@
 # Start date for cases model training
 start_cases = {
     'World' : '2020-11',
-    'USA' : '2020-08-15',
-    'Brazil' : '2020-09',
-    'India' : '2020-11',
-    'Russia' : '2020-11',
+    'USA' : '2020-12',
+    'Brazil' : '2020-11',
+    'India' : '2020-10',
+    'Russia' : '2020-10',
     'South Africa' : '2020-09',
     'Peru' : '2020-08',
     'Colombia' : '2020-08-15',
     'Mexico' : '2020-07',
     'Spain' : '2020-06',
     'Argentina' : '2020-09-15',
-    'France' : '2020-08',
+    'France' : '2020-12',
     'UK' : '2020-06',
     'Italy' : '2020-11',
     'Turkey' : '2020-07-15', 
     'Chile' : '2020-11',
-    'Germany' : '2020-11-15'
+    'Germany' : '2020-11-10'
     }
 # Start date for deaths model training
 start_deaths = {
-    'World' : '2020-10',
-    'USA' : '2020-06',
+    'World' : '2020-11',
+    'USA' : '2020-09',
     'Brazil' : '2020-10',
-    'India' : '2020-11',
-    'Russia' : '2020-11',
+    'India' : '2020-10',
+    'Russia' : '2020-10',
     'South Africa' : '2020-09',
     'Peru' : '2020-09',
     'Colombia' : '2020-09',
@@ -39,7 +39,7 @@ start_deaths = {
     'Italy' : '2020-11',
     'Turkey' : '2020-09',
     'Chile' : '2020-11',
-    'Germany' : '2020-11'
+    'Germany' : '2020-09'
     }
 # Hyperparameters for cases model
 params_cases = {
