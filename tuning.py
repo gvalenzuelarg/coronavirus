@@ -68,7 +68,7 @@ _ = graph.daily_deaths(deaths[country])
 
 # Logistic 
 
-cap = model.growth_limit(deaths[country]['2020-10-20':])
+cap = model.growth_limit(deaths[country]['2020-11-15':])
 print(cap)
 print(country)
 params = {
