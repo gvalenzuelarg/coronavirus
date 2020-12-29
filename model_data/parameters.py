@@ -15,7 +15,7 @@ start_cases = {
     'Spain' : '2020-06',
     'Argentina' : '2020-09-15',
     'France' : '2020-11-17',
-    'UK' : '2020-11-09',
+    'UK' : '2020-11-05',
     'Italy' : '2020-11',
     'Turkey' : '2020-07-15', 
     'Chile' : '2020-11',
@@ -23,7 +23,7 @@ start_cases = {
     }
 # Start date for deaths model training
 start_deaths = {
-    'World' : '2020-12',
+    'World' : '2020-11',
     'USA' : '2020-08-20',
     'Brazil' : '2020-09-18',
     'India' : '2020-10',
@@ -34,8 +34,8 @@ start_deaths = {
     'Mexico' : '2020-08',
     'Spain' : '2020-08',
     'Argentina' : '2020-07',
-    'France' : '2020-11-27',
-    'UK': '2020-11-25',
+    'France' : '2020-11-25',
+    'UK': '2020-11-20',
     'Italy' : '2020-11',
     'Turkey' : '2020-09',
     'Chile' : '2020-11',
