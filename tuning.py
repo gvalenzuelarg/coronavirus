@@ -32,7 +32,7 @@ for country in countries:
             '{}: Parameters missing. A model must be first tuned.'.format(
                 country))
 
-country = 'Chile'
+country = 'UK'
 print(country)
 
 # Cases
@@ -42,7 +42,7 @@ _ = graph.daily_cases(cases[country])
 
 # Logistic 
 
-cap = model.growth_limit(cases[country]['2020-10':])
+cap = model.growth_limit(cases[country]['2020-11-03':])
 print(cap)
 print(country)
 params = {
