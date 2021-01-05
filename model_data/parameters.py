@@ -24,7 +24,7 @@ start_cases = {
 # Start date for deaths model training
 start_deaths = {
     'World' : '2020-06-05',
-    'USA' : '2020-04-32',
+    'USA' : '2020-04-30',
     'Brazil' : '2020-09-15',
     'India' : '2020-10',
     'Russia' : '2020-12',
