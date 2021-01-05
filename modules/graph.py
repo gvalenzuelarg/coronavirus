@@ -254,7 +254,7 @@ def mortality(mortality, mortality_forecast=pd.DataFrame()):
 def country_situation_with_forecast(cases, deaths, cases_forecast, deaths_forecast):
     country = cases.name
     days = cases_forecast.shape[0]
-    fig, axs = plt.subplots(2, 2 , figsize=(12, 6), sharex='col')
+    fig, axs = plt.subplots(2, 2 , figsize=(13, 6), sharex='col')
     fig.subplots_adjust(hspace=0.05)
     # Cases
     sns.lineplot(
@@ -275,33 +275,43 @@ def country_situation_with_forecast(cases, deaths, cases_forecast, deaths_foreca
     # Daily cases
     sns.lineplot(
         data=processing.time_series_delta(cases).rolling(7).mean(),
-        color=blue, dashes=False, ax=axs[0,1])
-    axs[0,1].yaxis.set_major_formatter(ticker.FuncFormatter(
+        color=blue, dashes=False, ax=axs[1,0], label='Confirmed daily cases')
+    sns.lineplot(
+        data=processing.time_series_delta(pd.concat([cases[-8:], cases_forecast['yhat']])).rolling(7).mean(),
+        color=blue, ax=axs[1,0], label='Projected daily cases')
+    axs[1,0].lines[1].set_linestyle('--')
+    axs[1,0].legend()
+    axs[1,0].yaxis.set_major_formatter(ticker.FuncFormatter(
         lambda y, p : format_decimal(y,locale=locale)))
-    axs[0,1].set_ylabel('Daily cases')
+    plt.setp(axs[1,0].get_xticklabels(), rotation=45)
+    axs[1,0].set_ylabel('Daily cases')
+    axs[1,0].xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
+    axs[1,0].set_xlabel(None)
     # Deaths
     sns.lineplot(
         data=deaths, color=red, dashes=False,
-        ax=axs[1,0], label='Confirmed deaths')
+        ax=axs[0,1], label='Confirmed deaths')
     sns.lineplot(
         data=deaths_forecast['yhat'], color=red,
-        ax=axs[1,0], label='Projected deaths')
-    axs[1,0].lines[1].set_linestyle('--')
-    axs[1,0].fill_between(
+        ax=axs[0,1], label='Projected deaths')
+    axs[0,1].lines[1].set_linestyle('--')
+    axs[0,1].fill_between(
         deaths_forecast.index, deaths_forecast['yhat_lower'],
         deaths_forecast['yhat_upper'], color=red, alpha=0.1,
         label='95% confidence interval')
-    axs[1,0].legend(loc='upper left')
-    axs[1,0].yaxis.set_major_formatter(ticker.FuncFormatter(
+    axs[0,1].legend(loc='upper left')
+    axs[0,1].yaxis.set_major_formatter(ticker.FuncFormatter(
         lambda y, p : format_decimal(y,locale=locale)))
-    axs[1,0].set_ylabel('Deaths')
-    axs[1,0].xaxis.set_major_formatter(mdates.DateFormatter('%d %b'))
-    plt.setp(axs[1,0].get_xticklabels(), rotation=45)
-    axs[1,0].set_xlabel(None)
+    axs[0,1].set_ylabel('Deaths')
     # Daily deaths
     sns.lineplot(
         data=processing.time_series_delta(deaths).rolling(7).mean(),
-        color=red, dashes=False, ax=axs[1,1])
+        color=red, dashes=False, ax=axs[1,1], label='Confirmed daily deaths')
+    sns.lineplot(
+        data=processing.time_series_delta(pd.concat([deaths[-8:], deaths_forecast['yhat']])).rolling(7).mean(),
+        color=red, ax=axs[1,1], label='Projected daily deaths')
+    axs[1,1].lines[1].set_linestyle('--')
+    axs[1,1].legend()
     axs[1,1].yaxis.set_major_formatter(ticker.FuncFormatter(
         lambda y, p : format_decimal(y,locale=locale)))
     axs[1,1].set_ylabel('Daily deaths')

@@ -129,14 +129,6 @@ fig.savefig('output/cases_daily.png', dpi=300, bbox_inches='tight')
 fig, _ = graph.daily_cases_per_million(data, population)
 fig.savefig('output/cases_daily_per_million.png', dpi=300, bbox_inches='tight')
 
-# Cases by days since first ocurrence graph
-fig, _ = graph.cases_by_days(data)
-fig.savefig('output/cases_by_days.png', dpi=300, bbox_inches='tight')
-
-# Cases by days since first ocurrence per million graph
-fig, _ = graph.cases_by_days_per_million(data, population)
-fig.savefig('output/cases_by_days_per_million.png', dpi=300, bbox_inches='tight')
-
 # Deaths DataFrames for all countries but the World
 data = deaths.loc['2020-03':, countries[1 : ]]
 forecast = deaths_forecast.loc[:, (countries[1 : ], 'yhat')]
@@ -157,14 +149,6 @@ fig.savefig('output/deaths_daily.png', dpi=300, bbox_inches='tight')
 # Daily deaths per million graph
 fig, _ = graph.daily_deaths_per_million(data, population)
 fig.savefig('output/deaths_daily_per_million.png', dpi=300, bbox_inches='tight')
-
-# Deaths by days since first ocurrence graph
-fig, _ = graph.deaths_by_days(data)
-fig.savefig('output/deaths_by_days.png', dpi=300, bbox_inches='tight')
-
-# Deaths by days since first ocurrence per million graph
-fig, _ = graph.deaths_by_days_per_million(data, population)
-fig.savefig('output/deaths_by_days_per_million.png', dpi=300, bbox_inches='tight')
 
 # Mortality graph
 mortality = model.mortality(
