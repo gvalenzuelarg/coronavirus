@@ -337,7 +337,7 @@ def report(model_cases, model_deaths, country):
     yesterday = today - pd.Timedelta(1,'D')
 
     #Long-term cases predictions
-    prophet_output_cases = predict_raw(model_cases, 3650)
+    prophet_output_cases = predict_raw(model_cases, 7300)
 
     # In-sample deaths predictions
     prophet_output_deaths = predict_raw(model_deaths, 0)
