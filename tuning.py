@@ -49,7 +49,7 @@ params = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10}
-m = model.init_fit(cases[country], params, cap)
+m = model.init_fit(cases[country], params, 10000000)
 fsct = model.predict_raw(m, 365)
 processing.time_series_delta(fsct['trend']).plot()
 
@@ -68,7 +68,7 @@ _ = graph.daily_deaths(deaths[country])
 
 # Logistic 
 
-cap = model.growth_limit(deaths[country]['2020-11-9':])
+cap = model.growth_limit(deaths[country]['2020-12-8':])
 print(cap)
 print(country)
 params = {
