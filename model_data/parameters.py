@@ -2,7 +2,7 @@
 """
 
 # Cases cap
-cap = {
+cap_cases = {
     'World' : 283951042,
     'USA' : 74853277,
     'Brazil' : 31398080,
@@ -14,7 +14,7 @@ cap = {
     'Germany' : 5817152
 }
 # Deaths cap
-cap = {
+cap_deaths = {
     'World' : 81801363,
     'USA' : 1337328,
     'Brazil' : 865.944,
