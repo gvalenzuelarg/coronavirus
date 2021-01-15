@@ -1,6 +1,30 @@
 """Parameters for trained models.
 """
 
+# Cases cap
+cap = {
+    'World' : 283951042,
+    'USA' : 74853277,
+    'Brazil' : 31398080,
+    'India' : 12436943,
+    'Russia' : 7018323,
+    'UK' : 9600838,
+    'France' : 9126244,
+    'Chile' : 2214956,
+    'Germany' : 5817152
+}
+# Deaths cap
+cap = {
+    'World' : 81801363,
+    'USA' : 1337328,
+    'Brazil' : 865.944,
+    'India' : 168652,
+    'Russia' : 161776,
+    'UK' : 374927,
+    'France' : 171767,
+    'Chile' : 67580,
+    'Germany' : 123130
+}
 # Start date for cases model training
 start_cases = {
     'World' : '2020-06-15',
