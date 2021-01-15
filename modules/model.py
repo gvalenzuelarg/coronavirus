@@ -40,7 +40,7 @@ def logistic_curve(X, a, b, c, l):
     y = l + (c - l) / (1+np.exp(-a*(X-b)))
     return y
 
-def growth_limit(series):
+def growth_limit(series, lower_bound=False):
     """Estimates the upper limit of a series with logistic growth.
 
     Parameters
@@ -58,7 +58,7 @@ def growth_limit(series):
     parms = curve_fit(logistic_curve, X, y.values,
                      p0=[1,1,y[-1],y[0]], bounds=([0, -np.inf, y[-1], 0], np.inf), maxfev=100000)
     cap = parms[0][2].astype(int)
-    if cap > y[-1]*10:
+    if lower_bound == True:
         parms = curve_fit(logistic_curve, X, y.values,
                     p0=[1,1,y[-1],y[0]], bounds=([0, -np.inf, y[-1], y[0]], np.inf), maxfev=100000)
         cap = parms[0][2].astype(int)
