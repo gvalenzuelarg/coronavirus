@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from modules import processing, model, graph
-from model_data.parameters import params_cases, start_cases, outliers_cases, params_deaths, start_deaths, outliers_deaths
+from model_data.parameters import cap_cases, cap_deaths, params_cases, start_cases, outliers_cases, params_deaths, start_deaths, outliers_deaths
 
 # Data import and preprocessing
 
@@ -45,8 +45,7 @@ for country in countries:
         models_cases[country] = model.init_fit(
             series=cases[country].dropna(),
             hyperparams=params_cases[country],
-            cap=model.growth_limit(
-                cases[country][start_cases[country] : ].dropna()),
+            cap=cap_cases[country],
             outliers=outliers_cases[country]
         )
     else:
@@ -61,8 +60,7 @@ for country in countries:
         models_deaths[country] = model.init_fit(
             series=deaths[country].dropna(),
             hyperparams=params_deaths[country],
-            cap=model.growth_limit(
-                deaths[country][start_deaths[country] : ].dropna()),
+            cap=cap_deaths[country],
             outliers=outliers_deaths[country]
         )
     else:
