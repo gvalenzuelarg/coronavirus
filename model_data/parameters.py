@@ -17,7 +17,7 @@ cap_cases = {
 cap_deaths = {
     'World' : 81801363,
     'USA' : 1337328,
-    'Brazil' : 865.944,
+    'Brazil' : 865944,
     'India' : 168652,
     'Russia' : 161776,
     'UK' : 374927,
