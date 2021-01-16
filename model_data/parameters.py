@@ -10,7 +10,7 @@ cap_cases = {
     'Russia' : 7018323,
     'UK' : 9600838,
     'France' : 9126244,
-    'Chile' : 3214956,
+    'Chile' : 2214956,
     'Germany' : 5817152
 }
 # Deaths cap
@@ -22,7 +22,7 @@ cap_deaths = {
     'Russia' : 161776,
     'UK' : 374927,
     'France' : 171767,
-    'Chile' : 77580,
+    'Chile' : 67580,
     'Germany' : 123130
 }
 # Start date for cases model training
