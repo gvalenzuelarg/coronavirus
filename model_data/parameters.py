@@ -69,8 +69,8 @@ start_deaths = {
 params_cases = {
     'World' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 0.05,
-        'seasonality_prior_scale' : 10},
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 0.1},
     'USA' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.05,
@@ -141,7 +141,7 @@ params_deaths = {
     'World':{
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 10},
+        'seasonality_prior_scale' : 1},
     'USA' : {
             'growth' : 'logistic',
             'changepoint_prior_scale' : 0.5,
