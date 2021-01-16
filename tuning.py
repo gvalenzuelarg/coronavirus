@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 
 from modules import processing, model, graph
-from model_data.parameters import params_cases, start_cases, outliers_cases, params_deaths, start_deaths, outliers_deaths
+from model_data.parameters import cap_cases, cap_deaths, params_cases, start_cases, outliers_cases, params_deaths, start_deaths, outliers_deaths
 
 # Data import and preprocessing
 
@@ -32,7 +32,7 @@ for country in countries:
             '{}: Parameters missing. A model must be first tuned.'.format(
                 country))
 
-country = 'Germany'
+country = 'World'
 print(country)
 
 # Cases
@@ -49,17 +49,17 @@ params = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10}
-m = model.init_fit(cases[country], params, 5817152)
+m = model.init_fit(cases[country], params_cases[country], cap_cases[country])
 fsct = model.predict_raw(m, 365)
 processing.time_series_delta(fsct['trend']).plot()
 
-train = processing.to_prophet_input(cases[country], cap)
-params = model.hyperparameter_tunning(train, horizon='60 days')
+train = processing.to_prophet_input(cases[country], cap_cases[country])
+params = model.hyperparameter_tuning(train, horizon='60 days')
 
 # Linear
 
 train = processing.to_prophet_input(cases[country]['2020-08':])
-params = model.hyperparameter_tunning(train, 'linear', '30 days')
+params = model.hyperparameter_tuning(train, 'linear', '30 days')
 
 # Deaths
 
@@ -75,14 +75,14 @@ params = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10}
-m = model.init_fit(deaths[country], params, cap)
+m = model.init_fit(deaths[country], params_deaths[country], cap_deaths[country])
 fsct = model.predict_raw(m, 365)
 processing.time_series_delta(fsct['trend']).plot()
 
-train = processing.to_prophet_input(deaths[country], cap)
-params = model.hyperparameter_tunning(train, horizon='60 days')
+train = processing.to_prophet_input(deaths[country], cap_deaths[country])
+params = model.hyperparameter_tuning(train, horizon='60 days')
 
 # Linear
 
 train = processing.to_prophet_input(deaths[country]['2020-08':])
-params = model.hyperparameter_tunning(train, 'linear', '30 days')
+params = model.hyperparameter_tuning(train, 'linear', '30 days')
