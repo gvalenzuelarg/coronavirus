@@ -32,7 +32,7 @@ for country in countries:
             '{}: Parameters missing. A model must be first tuned.'.format(
                 country))
 
-country = 'World'
+country = 'Germany'
 print(country)
 
 # Cases
@@ -54,7 +54,8 @@ fsct = model.predict_raw(m, 365)
 processing.time_series_delta(fsct['trend']).plot()
 
 train = processing.to_prophet_input(cases[country], cap_cases[country])
-params = model.hyperparameter_tuning(train, horizon='60 days')
+params = model.hyperparameter_tuning(train, horizon='60 days', parallel=None)
+print(country)
 
 # Linear
 
@@ -80,7 +81,8 @@ fsct = model.predict_raw(m, 365)
 processing.time_series_delta(fsct['trend']).plot()
 
 train = processing.to_prophet_input(deaths[country], cap_deaths[country])
-params = model.hyperparameter_tuning(train, horizon='60 days')
+params = model.hyperparameter_tuning(train, horizon='60 days', parallel=None)
+print(country)
 
 # Linear
 
