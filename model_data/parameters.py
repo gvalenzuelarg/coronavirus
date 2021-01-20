@@ -73,20 +73,20 @@ params_cases = {
         'seasonality_prior_scale' : 0.1},
     'USA' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 0.05,
+        'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10},
     'Brazil' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
+        'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10},
     'India' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 0.1},
+        'seasonality_prior_scale' : 1},
     'Russia' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 1},
+        'seasonality_prior_scale' : 0.1},
     'South Africa' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
@@ -113,8 +113,8 @@ params_cases = {
         'seasonality_prior_scale' : 10},
     'France' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 0.1},
+        'changepoint_prior_scale' : 5,
+        'seasonality_prior_scale' : 1},
     'UK' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
@@ -129,12 +129,12 @@ params_cases = {
         'seasonality_prior_scale' : 10},
     'Chile' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 1},
+        'changepoint_prior_scale' : 0.5,
+        'seasonality_prior_scale' : 0.1},
     'Germany' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 10}
+        'seasonality_prior_scale' : 0.1}
     }
 # Hyperparameters for deaths model
 params_deaths = {
@@ -144,20 +144,20 @@ params_deaths = {
         'seasonality_prior_scale' : 1},
     'USA' : {
             'growth' : 'logistic',
-            'changepoint_prior_scale' : 0.5,
+            'changepoint_prior_scale' : 5,
             'seasonality_prior_scale' : 1},
     'Brazil' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 0.1},
+        'seasonality_prior_scale' : 10},
     'India' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 0.5,
+        'changepoint_prior_scale' : 5,
         'seasonality_prior_scale' : 0.1},
     'Russia' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 1},
+        'seasonality_prior_scale' : 10},
     'South Africa' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
@@ -185,7 +185,7 @@ params_deaths = {
     'France' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
-        'seasonality_prior_scale' : 0.1},
+        'seasonality_prior_scale' : 10},
     'UK' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
@@ -201,10 +201,10 @@ params_deaths = {
     'Chile' : {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 5,
-        'seasonality_prior_scale' : 1},
+        'seasonality_prior_scale' : 0.1},
     'Germany' : {
         'growth' : 'logistic',
-        'changepoint_prior_scale' : 5,
+        'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10}
     }
 #Case outliers
