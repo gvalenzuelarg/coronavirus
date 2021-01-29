@@ -76,7 +76,7 @@ params = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10}
-m = model.init_fit(deaths[country], params_deaths[country], 87130)
+m = model.init_fit(deaths[country], params_deaths[country], cap_deaths[country])
 fsct = model.predict_raw(m, 365)
 processing.time_series_delta(fsct['trend']).plot()
 
