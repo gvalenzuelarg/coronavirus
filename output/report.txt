@@ -2,69 +2,69 @@
 
 World:
 
-	Data on 30.01.2021:
+	Data on 31.01.2021:
 
-		Cases: 102.577.980 (+508.757).
-		Deaths: 2.219.889 (+13.432).
+		Cases: 102.583.819 (+514.596).
+		Deaths: 2.219.980 (+13.523).
 		Mortality rate: 2,2%.
 
 	Today's predictions:
 
-		Cases: 103.107.429 (+529.449).
-		Deaths: 2.232.427 (+12.538).
+		Cases: 103.105.347 (+521.528).
+		Deaths: 2.232.200 (+12.220).
 
 	Expected parameters:
 
 		Maximum daily infections on 15.12.2020.
-		Current pandemic's wave to end on 01.07.2022.
+		Current pandemic's wave to end on 08.07.2022.
 		Total number of cases: 163.444.119.
 		Total number of deaths: 5.448.521.
 		Final mortality rate: 3,3%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 90.987,42.
+		Root Mean Squared Error: 94.864,63.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 3.767,88.
+		Root Mean Squared Error: 3.493,46.
 		Explained Variance: 1.
 
 USA:
 
-	Data on 30.01.2021:
+	Data on 31.01.2021:
 
-		Cases: 26.069.046 (+136.252).
-		Deaths: 439.439 (+2.640).
+		Cases: 26.074.885 (+142.091).
+		Deaths: 439.530 (+2.731).
 		Mortality rate: 1,7%.
 
 	Today's predictions:
 
-		Cases: 26.219.436 (+150.390).
-		Deaths: 442.289 (+2.850).
+		Cases: 26.234.021 (+159.136).
+		Deaths: 442.271 (+2.741).
 
 	Expected parameters:
 
 		Maximum daily infections on 31.12.2020.
-		Current pandemic's wave to end on 26.03.2022.
+		Current pandemic's wave to end on 05.03.2022.
 		Total number of cases: 39.226.485.
 		Total number of deaths: 849.835.
 		Final mortality rate: 2,2%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 33.631,41.
+		Root Mean Squared Error: 34.131,83.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 962,82.
+		Root Mean Squared Error: 1.030,05.
 		Explained Variance: 1.
 
 India:
 
-	Data on 30.01.2021:
+	Data on 31.01.2021:
 
 		Cases: 10.746.174 (+13.044).
 		Deaths: 154.274 (+127).
@@ -95,7 +95,7 @@ India:
 
 Brazil:
 
-	Data on 30.01.2021:
+	Data on 31.01.2021:
 
 		Cases: 9.176.975 (+58.462).
 		Deaths: 223.945 (+1.279).
@@ -126,7 +126,7 @@ Brazil:
 
 UK:
 
-	Data on 30.01.2021:
+	Data on 31.01.2021:
 
 		Cases: 3.806.993 (+23.400).
 		Deaths: 105.777 (+1.205).
@@ -157,7 +157,7 @@ UK:
 
 Russia:
 
-	Data on 30.01.2021:
+	Data on 31.01.2021:
 
 		Cases: 3.790.265 (+18.751).
 		Deaths: 71.556 (+502).
@@ -188,7 +188,7 @@ Russia:
 
 France:
 
-	Data on 30.01.2021:
+	Data on 31.01.2021:
 
 		Cases: 3.236.685 (+24.045).
 		Deaths: 76.006 (+241).
@@ -219,7 +219,7 @@ France:
 
 Germany:
 
-	Data on 30.01.2021:
+	Data on 31.01.2021:
 
 		Cases: 2.224.911 (+17.518).
 		Deaths: 57.105 (+819).
@@ -250,7 +250,7 @@ Germany:
 
 Chile:
 
-	Data on 30.01.2021:
+	Data on 31.01.2021:
 
 		Cases: 722.900 (+4.151).
 		Deaths: 18.339 (+82).
