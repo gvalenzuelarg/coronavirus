@@ -8,19 +8,19 @@ cap_cases = {
     'Brazil' : 18398080,
     'India' : 12436943,
     'Russia' : 4401422,
-    'UK' : 4193384,
+    'UK' : 4213939,
     'France' : 7997871,
-    'Chile' : 926479,
-    'Germany' : 2488519
+    'Chile' : 1226479,
+    'Germany' : 2505773
 }
 # Deaths cap
 cap_deaths = {
     'World' : 2909816,
-    'USA' : 627043,
+    'USA' : 546830,
     'Brazil' : 465944,
     'India' : 168652,
     'Russia' : 151776,
-    'UK' : 144351,
+    'UK' : 125067,
     'France' : 167299,
     'Chile' : 40933,
     'Germany' : 78533
