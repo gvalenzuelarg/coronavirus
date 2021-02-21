@@ -49,8 +49,8 @@ params = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10}
-m = model.init_fit(cases[country], params_cases[country], cap_cases[country])
-fsct = model.predict_raw(m, 365)
+m_cases = model.init_fit(cases[country], params_cases[country], cap_cases[country])
+fsct = model.predict_raw(m_cases, 70)
 processing.time_series_delta(fsct['trend']).plot()
 
 train = processing.to_prophet_input(cases[country], cap_cases[country])
@@ -76,8 +76,8 @@ params = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10}
-m = model.init_fit(deaths[country], params_deaths[country], cap_deaths[country])
-fsct = model.predict_raw(m, 365)
+m_deaths = model.init_fit(deaths[country], params_deaths[country], cap_deaths[country])
+fsct = model.predict_raw(m_deaths, 365)
 processing.time_series_delta(fsct['trend']).plot()
 
 train = processing.to_prophet_input(deaths[country], cap_deaths[country])
@@ -88,3 +88,15 @@ print(country)
 
 train = processing.to_prophet_input(deaths[country]['2020-08':])
 params = model.hyperparameter_tuning(train, 'linear', '30 days')
+
+# Situation overview and forecast per country
+print('{}: Calculating 10 week forecast...'.format(country))
+cases_forecast_country = model.predict(m_cases, 70)
+deaths_forecast_country = model.predict(m_deaths, 70)
+
+cases_country = cases.loc['2020-03':, country]
+deaths_country = deaths.loc['2020-03':, country]
+# Graph
+fig, _ = graph.country_situation_with_forecast(
+    cases_country, deaths_country,
+    cases_forecast_country, deaths_forecast_country)
