@@ -3,25 +3,25 @@
 
 # Cases cap
 cap_cases = {
-    'World' : 118684607,
+    'World' : 129073864,
     'USA' : 29633470,
     'Brazil' : 18398080,
     'India' : 12436943,
-    'Russia' : 4401422,
-    'UK' : 4213939,
-    'France' : 7997871,
-    'Chile' : 1226479,
-    'Germany' : 2505773
+    'Russia' : 4705424,
+    'UK' : 4417640,
+    'France' : 4051474,
+    'Chile' : 926479,
+    'Germany' : 2610593
 }
 # Deaths cap
 cap_deaths = {
     'World' : 2909816,
-    'USA' : 546830,
+    'USA' : 627043,
     'Brazil' : 465944,
     'India' : 168652,
-    'Russia' : 151776,
-    'UK' : 125067,
-    'France' : 167299,
+    'Russia' : 126475,
+    'UK' : 130264,
+    'France' : 94573,
     'Chile' : 40933,
     'Germany' : 78533
 }
