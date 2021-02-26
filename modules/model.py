@@ -187,8 +187,11 @@ def date_of_saturation(prophet_output):
         A pandas timestamp with the date when saturations occur.
     """
     cap = prophet_output['cap'][0]
-    index = np.argwhere(prophet_output['yhat'].values >= cap)[0]
-    saturation = prophet_output['ds'][index[0]]
+    try:
+        index = np.argwhere(prophet_output['yhat'].values >= cap)[0]
+        saturation = prophet_output['ds'][index[0]]
+    except:
+        saturation = prophet_output['ds'].iloc[-1]
     return saturation
 
 def mortality(cases, deaths, dates=None):
