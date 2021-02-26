@@ -32,7 +32,7 @@ for country in countries:
             '{}: Parameters missing. A model must be first tuned.'.format(
                 country))
 
-country = 'Germany'
+country = 'Chile'
 print(country)
 
 # Cases
@@ -42,7 +42,7 @@ _ = graph.daily_cases(cases[country])
 
 # Logistic 
 
-cap = model.growth_limit(cases[country]['2021-1':], lower_bound=False)
+cap = model.growth_limit(cases[country]['2021-2':], lower_bound=False)
 print(cap)
 print(country)
 params = {
@@ -69,7 +69,7 @@ _ = graph.daily_deaths(deaths[country])
 
 # Logistic 
 
-cap = model.growth_limit(deaths[country]['2021-1':])
+cap = model.growth_limit(deaths[country]['2021-2':])
 print(cap)
 print(country)
 params = {
@@ -77,7 +77,7 @@ params = {
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10}
 m_deaths = model.init_fit(deaths[country], params_deaths[country], cap_deaths[country])
-fsct = model.predict_raw(m_deaths, 365)
+fsct = model.predict_raw(m_deaths, 70)
 processing.time_series_delta(fsct['trend']).plot()
 
 train = processing.to_prophet_input(deaths[country], cap_deaths[country])
