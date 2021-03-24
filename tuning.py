@@ -32,7 +32,7 @@ for country in countries:
             '{}: Parameters missing. A model must be first tuned.'.format(
                 country))
 
-country = 'UK'
+country = 'Chile'
 print(country)
 
 # Cases
@@ -49,7 +49,7 @@ params = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10}
-m_cases = model.init_fit(cases[country], params_cases[country], cap_cases[country])
+m_cases = model.init_fit(cases[country], params_cases[country], 3790651)
 fsct = model.predict_raw(m_cases, 70)
 processing.time_series_delta(fsct['trend']).plot()
 
