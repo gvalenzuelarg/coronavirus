@@ -43,7 +43,7 @@ for country in countries:
     print('{}: Cases model training...'.format(country))
     if params_cases[country]['growth'] == 'logistic':
         models_cases[country] = model.init_fit(
-            series=cases[country].dropna(),
+            series=cases[country][start_cases[country] : ].dropna(),
             hyperparams=params_cases[country],
             cap=cap_cases[country],
             outliers=outliers_cases[country]
@@ -58,7 +58,7 @@ for country in countries:
     print('{}: Deaths model training...'.format(country))
     if params_deaths[country]['growth'] == 'logistic':
         models_deaths[country] = model.init_fit(
-            series=deaths[country].dropna(),
+            series=deaths[country][start_deaths[country] : ].dropna(),
             hyperparams=params_deaths[country],
             cap=cap_deaths[country],
             outliers=outliers_deaths[country]
