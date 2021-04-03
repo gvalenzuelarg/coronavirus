@@ -55,12 +55,13 @@ def growth_limit(series, lower_bound=False):
     """
     y = series.dropna()
     X = np.arange(len(y))
-    parms = curve_fit(logistic_curve, X, y.values,
-                     p0=[1,1,y[-1],y[0]], bounds=([0, -np.inf, y[-1], 0], np.inf), maxfev=100000)
-    cap = parms[0][2].astype(int)
     if lower_bound == True:
         parms = curve_fit(logistic_curve, X, y.values,
-                    p0=[1,1,y[-1],y[0]], bounds=([0, -np.inf, y[-1], y[0]], np.inf), maxfev=100000)
+                    p0=[1,1,y[-1],y[0]], bounds=([0, -np.inf, y[-1], y[0]*.9], np.inf), maxfev=100000)
+        cap = parms[0][2].astype(int)
+    else:
+        parms = curve_fit(logistic_curve, X, y.values,
+                    p0=[1,1,y[-1],y[0]], bounds=([0, -np.inf, y[-1], 0], np.inf), maxfev=100000)
         cap = parms[0][2].astype(int)
     return cap
 
