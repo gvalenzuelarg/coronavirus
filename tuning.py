@@ -32,7 +32,7 @@ for country in countries:
             '{}: Parameters missing. A model must be first tuned.'.format(
                 country))
 
-country = 'Chile'
+country = 'Germany'
 print(country)
 
 # Cases
@@ -42,14 +42,14 @@ _ = graph.daily_cases(cases[country])
 
 # Logistic 
 
-cap = model.growth_limit(cases[country]['2021-2':], lower_bound=False)
+cap = model.growth_limit(cases[country]['2021-2':], lower_bound=True)
 print(cap)
 print(country)
 params = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10}
-m_cases = model.init_fit(cases[country], params_cases[country], 3790651)
+m_cases = model.init_fit(cases[country]['2020-12':], params_cases[country], 6131960)
 fsct = model.predict_raw(m_cases, 70)
 processing.time_series_delta(fsct['trend']).plot()
 
@@ -69,14 +69,14 @@ _ = graph.daily_deaths(deaths[country])
 
 # Logistic 
 
-cap = model.growth_limit(deaths[country]['2021-2':])
+cap = model.growth_limit(deaths[country]['2021-2':], lower_bound=True)
 print(cap)
 print(country)
 params = {
         'growth' : 'logistic',
         'changepoint_prior_scale' : 0.5,
         'seasonality_prior_scale' : 10}
-m_deaths = model.init_fit(deaths[country], params_deaths[country], cap_deaths[country])
+m_deaths = model.init_fit(deaths[country]['2020-12':], params_deaths[country], 97058)
 fsct = model.predict_raw(m_deaths, 70)
 processing.time_series_delta(fsct['trend']).plot()
 
