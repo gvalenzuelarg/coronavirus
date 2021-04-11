@@ -93,7 +93,7 @@ def init_fit(series, hyperparams, cap=None, outliers=[]):
     m = Prophet(**hyperparams,
                 daily_seasonality=False,
                 yearly_seasonality=False,
-                changepoint_range=0.8)
+                changepoint_range=1)
     m.fit(train)
     model = {'m' : m, 'train' : series, 'cap' : cap}
     return model
