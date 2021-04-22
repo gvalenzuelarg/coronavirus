@@ -10,6 +10,7 @@ cap_cases = {
     'Russia' : 8631960,
     'UK' : 5216603,
     'France' : 10764016,
+    'Turkey' : 10394770,
     'Chile' : 3013950,
     'Germany' : 6530283
 }
@@ -22,6 +23,7 @@ cap_deaths = {
     'Russia' : 219866,
     'UK' : 137560,
     'France' : 201955,
+    'Turkey' : 85662,
     'Chile' : 64893,
     'Germany' : 135731
 }
@@ -41,7 +43,7 @@ start_cases = {
     'France' : '2021-02',
     'UK' : '2021-02',
     'Italy' : '2020-11',
-    'Turkey' : '2020-07-15', 
+    'Turkey' : '2021-02', 
     'Chile' : '2021-02',
     'Germany' : '2021-02'
     }
@@ -61,7 +63,7 @@ start_deaths = {
     'France' : '2021-02',
     'UK': '2021-02',
     'Italy' : '2020-11',
-    'Turkey' : '2020-09',
+    'Turkey' : '2021-02',
     'Chile' : '2021-02',
     'Germany' : '2021-02'
     }
