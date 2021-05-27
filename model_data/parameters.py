@@ -222,7 +222,7 @@ outliers_cases = {
     'Mexico' : [],
     'Spain' : [],
     'Argentina' : [],
-    'France' : [],
+    'France' : ['2021-05-20'],
     'UK' : [],
     'Italy': [],
     'Turkey': [],
