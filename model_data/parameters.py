@@ -231,7 +231,7 @@ outliers_cases = {
     }
 #Death outliers
 outliers_deaths = {
-    'World' : ['2020-08-14'],
+    'World' : ['2020-08-14', '2021-06-03'],
     'USA' : [],
     'Brazil' : [],
     'India' : ['2020-06-16'],
