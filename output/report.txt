@@ -2,279 +2,279 @@
 
 World:
 
-	Data on 18.06.2021:
+	Data on 22.06.2021:
 
-		Cases: 177.825.428 (+390.831).
-		Deaths: 3.851.512 (+9.221).
+		Cases: 179.158.295 (+372.137).
+		Deaths: 3.882.237 (+8.982).
 		Mortality rate: 2,2%.
 
 	Today's predictions:
 
-		Cases: 178.176.178 (+350.750).
-		Deaths: 3.859.863 (+8.351).
+		Cases: 179.571.163 (+412.868).
+		Deaths: 3.891.942 (+9.705).
 
 	Expected parameters:
 
-		Maximum daily infections on 19.04.2021.
-		Current pandemic's wave to end on 24.05.2024.
-		Total number of cases: 253.822.907.
-		Total number of deaths: 5.189.058.
-		Final mortality rate: 2%.
+		Maximum daily infections on 21.04.2021.
+		Current pandemic's wave to end on 05.05.2023.
+		Total number of cases: 224.881.776.
+		Total number of deaths: 4.712.188.
+		Final mortality rate: 2,1%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 34.826,98.
+		Root Mean Squared Error: 37.193,13.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 756,07.
+		Root Mean Squared Error: 904.
 		Explained Variance: 1.
 
 USA:
 
-	Data on 18.06.2021:
+	Data on 22.06.2021:
 
-		Cases: 33.516.175 (+7.308).
-		Deaths: 601.571 (+637).
+		Cases: 33.565.215 (+10.940).
+		Deaths: 602.462 (+370).
 		Mortality rate: 1,8%.
 
 	Today's predictions:
 
-		Cases: 33.524.390 (+8.215).
-		Deaths: 601.702 (+131).
+		Cases: 33.581.563 (+16.348).
+		Deaths: 603.182 (+720).
 
 	Expected parameters:
 
 		Maximum daily infections on 01.02.2021.
-		Current pandemic's wave to end on 17.05.2024.
-		Total number of cases: 35.672.893.
-		Total number of deaths: 709.552.
-		Final mortality rate: 2%.
+		Current pandemic's wave to end on 22.12.2023.
+		Total number of cases: 35.695.495.
+		Total number of deaths: 641.977.
+		Final mortality rate: 1,8%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 4.563,3.
+		Root Mean Squared Error: 4.823,9.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 242,7.
+		Root Mean Squared Error: 271,43.
 		Explained Variance: 1.
 
 India:
 
-	Data on 18.06.2021:
+	Data on 22.06.2021:
 
-		Cases: 29.823.546 (+60.753).
-		Deaths: 385.137 (+1.647).
+		Cases: 30.028.709 (+50.848).
+		Deaths: 390.660 (+1.358).
 		Mortality rate: 1,3%.
 
 	Today's predictions:
 
-		Cases: 29.886.022 (+62.476).
-		Deaths: 387.206 (+2.069).
+		Cases: 30.087.146 (+58.437).
+		Deaths: 391.895 (+1.235).
 
 	Expected parameters:
 
-		Maximum daily infections on 05.05.2021.
-		Current pandemic's wave to end on 18.12.2021.
-		Total number of cases: 31.915.472.
-		Total number of deaths: 408.198.
+		Maximum daily infections on 02.05.2021.
+		Current pandemic's wave to end on 29.01.2022.
+		Total number of cases: 32.187.436.
+		Total number of deaths: 427.908.
 		Final mortality rate: 1,3%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 11.802,93.
+		Root Mean Squared Error: 10.124,78.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 398,32.
+		Root Mean Squared Error: 483,01.
 		Explained Variance: 1.
 
 Brazil:
 
-	Data on 18.06.2021:
+	Data on 22.06.2021:
 
-		Cases: 17.801.462 (+98.832).
-		Deaths: 498.499 (+2.495).
+		Cases: 18.054.653 (+87.822).
+		Deaths: 504.717 (+2.131).
 		Mortality rate: 2,8%.
 
 	Today's predictions:
 
-		Cases: 17.871.848 (+70.386).
-		Deaths: 500.463 (+1.964).
+		Cases: 18.140.080 (+85.427).
+		Deaths: 507.130 (+2.413).
 
 	Expected parameters:
 
-		Maximum daily infections on 28.03.2021.
-		Current pandemic's wave to end on 16.09.2023.
-		Total number of cases: 31.359.775.
-		Total number of deaths: 761.955.
+		Maximum daily infections on 31.03.2021.
+		Current pandemic's wave to end on 11.11.2023.
+		Total number of cases: 34.213.251.
+		Total number of deaths: 811.814.
 		Final mortality rate: 2,4%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 12.483,17.
+		Root Mean Squared Error: 13.274,84.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 397,01.
+		Root Mean Squared Error: 406,93.
 		Explained Variance: 1.
 
 France:
 
-	Data on 18.06.2021:
+	Data on 22.06.2021:
 
-		Cases: 5.814.648 (+3.187).
-		Deaths: 110.864 (+68).
+		Cases: 5.821.797 (+2.213).
+		Deaths: 110.991 (+51).
 		Mortality rate: 1,9%.
 
 	Today's predictions:
 
-		Cases: 5.818.774 (+4.126).
-		Deaths: 110.864 (+0).
+		Cases: 5.831.748 (+9.951).
+		Deaths: 111.009 (+18).
 
 	Expected parameters:
 
-		Maximum daily infections on 07.04.2021.
-		Current pandemic's wave to end on 31.07.2022.
-		Total number of cases: 6.126.137.
-		Total number of deaths: 122.545.
-		Final mortality rate: 2%.
+		Maximum daily infections on 09.04.2021.
+		Current pandemic's wave to end on 19.06.2022.
+		Total number of cases: 6.121.797.
+		Total number of deaths: 132.138.
+		Final mortality rate: 2,2%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 26.581,93.
+		Root Mean Squared Error: 29.417,7.
 		Explained Variance: 0,999.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 81,13.
+		Root Mean Squared Error: 77,05.
 		Explained Variance: 1.
 
 Turkey:
 
-	Data on 18.06.2021:
+	Data on 22.06.2021:
 
-		Cases: 5.359.728 (+5.575).
-		Deaths: 49.071 (+59).
+		Cases: 5.381.736 (+6.143).
+		Deaths: 49.293 (+57).
 		Mortality rate: 0,9%.
 
 	Today's predictions:
 
-		Cases: 5.364.537 (+4.809).
-		Deaths: 49.137 (+66).
+		Cases: 5.389.073 (+7.337).
+		Deaths: 49.358 (+65).
 
 	Expected parameters:
 
-		Maximum daily infections on 13.04.2021.
-		Current pandemic's wave to end on 01.02.2024.
-		Total number of cases: 6.293.627.
-		Total number of deaths: 57.614.
-		Final mortality rate: 0,9%.
+		Maximum daily infections on 15.04.2021.
+		Current pandemic's wave to end on 19.05.2023.
+		Total number of cases: 6.081.736.
+		Total number of deaths: 59.767.
+		Final mortality rate: 1%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 2.128,43.
+		Root Mean Squared Error: 2.188,1.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 13,63.
+		Root Mean Squared Error: 14,92.
 		Explained Variance: 1.
 
 Russia:
 
-	Data on 18.06.2021:
+	Data on 22.06.2021:
 
-		Cases: 5.220.168 (+17.051).
-		Deaths: 126.300 (+447).
+		Cases: 5.288.766 (+16.438).
+		Deaths: 128.180 (+539).
 		Mortality rate: 2,4%.
 
 	Today's predictions:
 
-		Cases: 5.235.077 (+14.909).
-		Deaths: 126.710 (+410).
+		Cases: 5.304.793 (+16.027).
+		Deaths: 128.643 (+463).
 
 	Expected parameters:
 
-		Maximum daily infections on 05.02.2021.
-		Current pandemic's wave to end on 20.01.2025.
-		Total number of cases: 8.631.960.
-		Total number of deaths: 219.866.
+		Maximum daily infections on 02.07.2021.
+		Current pandemic's wave to end on 21.06.2025.
+		Total number of cases: 10.909.426.
+		Total number of deaths: 267.892.
 		Final mortality rate: 2,5%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 438,26.
+		Root Mean Squared Error: 491,93.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 18,91.
+		Root Mean Squared Error: 21,62.
 		Explained Variance: 1.
 
 Germany:
 
-	Data on 18.06.2021:
+	Data on 22.06.2021:
 
-		Cases: 3.728.601 (+933).
-		Deaths: 90.374 (+97).
+		Cases: 3.731.304 (+685).
+		Deaths: 90.553 (+76).
 		Mortality rate: 2,4%.
 
 	Today's predictions:
 
-		Cases: 3.729.176 (+575).
-		Deaths: 90.374 (+0).
+		Cases: 3.737.093 (+5.789).
+		Deaths: 90.712 (+159).
 
 	Expected parameters:
 
-		Maximum daily infections on 19.04.2021.
-		Current pandemic's wave to end on 17.06.2022.
-		Total number of cases: 3.884.626.
-		Total number of deaths: 97.292.
+		Maximum daily infections on 10.04.2021.
+		Current pandemic's wave to end on 08.10.2021.
+		Total number of cases: 3.795.645.
+		Total number of deaths: 95.244.
 		Final mortality rate: 2,5%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 3.855,24.
+		Root Mean Squared Error: 4.089,87.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 84,9.
+		Root Mean Squared Error: 87,78.
 		Explained Variance: 1.
 
 Chile:
 
-	Data on 18.06.2021:
+	Data on 22.06.2021:
 
-		Cases: 1.505.001 (+6.770).
-		Deaths: 31.259 (+119).
+		Cases: 1.525.933 (+3.710).
+		Deaths: 31.690 (+45).
 		Mortality rate: 2,1%.
 
 	Today's predictions:
 
-		Cases: 1.511.813 (+6.812).
-		Deaths: 31.381 (+122).
+		Cases: 1.529.786 (+3.853).
+		Deaths: 31.748 (+58).
 
 	Expected parameters:
 
-		Maximum daily infections on 12.04.2021.
-		Current pandemic's wave to end on 11.06.2023.
-		Total number of cases: 2.510.240.
-		Total number of deaths: 47.197.
-		Final mortality rate: 1,9%.
+		Maximum daily infections on 30.05.2021.
+		Current pandemic's wave to end on 26.06.2022.
+		Total number of cases: 1.940.575.
+		Total number of deaths: 54.298.
+		Final mortality rate: 2,8%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 382,25.
+		Root Mean Squared Error: 422,85.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 19,47.
+		Root Mean Squared Error: 23,3.
 		Explained Variance: 1.
