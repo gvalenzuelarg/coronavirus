@@ -4,28 +4,28 @@
 # Cases cap
 cap_cases = {
     'World' : 224881776,
-    'USA' : 35695495,
+    'USA' : 34710521,
     'Brazil' : 34213251,
     'India' : 32187436,
     'Russia' : 10909426,
     'UK' : 5216603,
-    'France' : 6121797,
+    'France' : 5930394,
     'Turkey' : 6081736,
     'Chile' : 1940575,
-    'Germany' : 3795645
+    'Germany' : 3772560
 }
 # Deaths cap
 cap_deaths = {
     'World' : 4712188,
-    'USA' : 641977,
+    'USA' : 622477,
     'Brazil' : 811814,
     'India' : 427908,
     'Russia' : 267892,
     'UK' : 137560,
-    'France' : 132138,
+    'France' : 122084,
     'Turkey' : 59767,
     'Chile' : 54298,
-    'Germany' : 95244
+    'Germany' : 94022
 }
 # Start date for cases model training
 start_cases = {
