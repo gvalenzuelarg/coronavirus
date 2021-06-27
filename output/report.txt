@@ -47,19 +47,19 @@ USA:
 	Expected parameters:
 
 		Maximum daily infections on 01.02.2021.
-		Current pandemic's wave to end on 19.01.2024.
-		Total number of cases: 35.695.495.
-		Total number of deaths: 641.977.
+		Current pandemic's wave to end on 16.09.2022.
+		Total number of cases: 34.710.521.
+		Total number of deaths: 622.477.
 		Final mortality rate: 1,8%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 4.492,05.
+		Root Mean Squared Error: 4.593,72.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 271,28.
+		Root Mean Squared Error: 268,2.
 		Explained Variance: 1.
 
 India:
@@ -134,25 +134,25 @@ France:
 
 	Today's predictions:
 
-		Cases: 5.838.347 (+7.953).
+		Cases: 5.838.975 (+8.581).
 		Deaths: 111.113 (+0).
 
 	Expected parameters:
 
 		Maximum daily infections on 11.04.2021.
-		Current pandemic's wave to end on 25.09.2022.
-		Total number of cases: 6.121.797.
-		Total number of deaths: 132.138.
-		Final mortality rate: 2,2%.
+		Current pandemic's wave to end on 24.10.2021.
+		Total number of cases: 5.930.394.
+		Total number of deaths: 122.084.
+		Final mortality rate: 2,1%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 25.587,9.
+		Root Mean Squared Error: 32.320,25.
 		Explained Variance: 0,999.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 80,28.
+		Root Mean Squared Error: 80,7.
 		Explained Variance: 1.
 
 Turkey:
@@ -233,19 +233,19 @@ Germany:
 	Expected parameters:
 
 		Maximum daily infections on 12.04.2021.
-		Current pandemic's wave to end on 03.12.2021.
-		Total number of cases: 3.795.645.
-		Total number of deaths: 95.244.
+		Current pandemic's wave to end on 17.09.2021.
+		Total number of cases: 3.772.560.
+		Total number of deaths: 94.022.
 		Final mortality rate: 2,5%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 3.864,42.
+		Root Mean Squared Error: 3.887,88.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 86,15.
+		Root Mean Squared Error: 85,81.
 		Explained Variance: 1.
 
 Chile:
