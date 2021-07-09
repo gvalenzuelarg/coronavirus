@@ -3,37 +3,37 @@
 
 # Cases cap
 cap_cases = {
-    'World' : 274881776,
-    'USA' : 38710521,
+    'World' : 405198137,
+    'USA' : 43881536,
     'Brazil' : 34213251,
-    'India' : 32187436,
+    'India' : 34752950,
     'Russia' : 10909426,
     'UK' : 5216603,
-    'France' : 5990394,
+    'France' : 6861128,
     'Turkey' : 6081736,
-    'Chile' : 1781441,
-    'Germany' : 3738664
+    'Chile' : 1981441,
+    'Germany' : 3831470
 }
 # Deaths cap
 cap_deaths = {
-    'World' : 4912188,
-    'USA' : 613156,
+    'World' : 6865069,
+    'USA' : 640315,
     'Brazil' : 811814,
-    'India' : 427908,
+    'India' : 509904,
     'Russia' : 267892,
     'UK' : 137560,
-    'France' : 122084,
+    'France' : 118669,
     'Turkey' : 59767,
-    'Chile' : 49787,
-    'Germany' : 91700
+    'Chile' : 50787,
+    'Germany' : 92704
 }
 # Start date for cases model training
 start_cases = {
-    'World' : '2021-02',
-    'USA' : '2021-02',
-    'Brazil' : '2020-09',
-    'India' : '2021-02',
-    'Russia' : '2021-02',
+    'World' : '2021-05',
+    'USA' : '2021-05',
+    'Brazil' : '2021-05',
+    'India' : '2021-05',
+    'Russia' : '2021-05',
     'South Africa' : '2020-09',
     'Peru' : '2020-08',
     'Colombia' : '2020-08-15',
@@ -44,16 +44,16 @@ start_cases = {
     'UK' : '2021-02',
     'Italy' : '2020-11',
     'Turkey' : '2021-02', 
-    'Chile' : '2021-02',
+    'Chile' : '2021-05',
     'Germany' : '2021-05'
     }
 # Start date for deaths model training
 start_deaths = {
-    'World' : '2021-02',
+    'World' : '2021-05',
     'USA' : '2021-05',
-    'Brazil' : '2020-09',
-    'India' : '2021-02',
-    'Russia' : '2021-02',
+    'Brazil' : '2021-05',
+    'India' : '2021-05',
+    'Russia' : '2021-05',
     'South Africa' : '2020-09',
     'Peru' : '2020-09',
     'Colombia' : '2020-09',
@@ -64,7 +64,7 @@ start_deaths = {
     'UK': '2021-02',
     'Italy' : '2020-11',
     'Turkey' : '2021-02',
-    'Chile' : '2021-02',
+    'Chile' : '2021-05',
     'Germany' : '2021-05'
     }
 # Hyperparameters for cases model
