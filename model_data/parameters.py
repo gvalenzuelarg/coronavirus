@@ -7,11 +7,11 @@ cap_cases = {
     'USA' : 68710521,
     'Brazil' : 34213251,
     'India' : 35187436,
-    'Russia' : 10909426,
-    'UK' : 13091188,
+    'Russia' : 7854114,
+    'UK' : 6325036,
     'France' : 11990394,
     'Turkey' : 6081736,
-    'Chile' : 1781441,
+    'Chile' : 1718166,
     'Germany' : 4738664
 }
 # Deaths cap
@@ -20,11 +20,11 @@ cap_deaths = {
     'USA' : 813156,
     'Brazil' : 811814,
     'India' : 527908,
-    'Russia' : 267892,
-    'UK' : 263435,
+    'Russia' : 201040,
+    'UK' : 239809,
     'France' : 137560,
     'Turkey' : 59767,
-    'Chile' : 49787,
+    'Chile' : 41035,
     'Germany' : 94700
 }
 # Start date for cases model training
@@ -44,7 +44,7 @@ start_cases = {
     'UK' : '2021-05',
     'Italy' : '2020-11',
     'Turkey' : '2021-05', 
-    'Chile' : '2021-05',
+    'Chile' : '2021-06',
     'Germany' : '2021-05'
     }
 # Start date for deaths model training
@@ -64,7 +64,7 @@ start_deaths = {
     'UK': '2021-05',
     'Italy' : '2020-11',
     'Turkey' : '2021-05',
-    'Chile' : '2021-05',
+    'Chile' : '2021-06',
     'Germany' : '2021-05'
     }
 # Hyperparameters for cases model
