@@ -3,69 +3,69 @@
 
 # Cases cap
 cap_cases = {
-    'World' : 394881776,
-    'USA' : 68710521,
+    'World' : 434881776,
+    'USA' : 78710521,
     'Brazil' : 34213251,
     'India' : 35187436,
     'Russia' : 7854114,
-    'UK' : 6325036,
-    'France' : 11990394,
+    'UK' : 12397893,
+    'France' : 12990394,
     'Turkey' : 6081736,
-    'Chile' : 1718166,
-    'Germany' : 4738664
+    'Chile' : 1728293,
+    'Germany' : 6938664
 }
 # Deaths cap
 cap_deaths = {
-    'World' : 7912188,
-    'USA' : 813156,
+    'World' : 8912188,
+    'USA' : 1213156,
     'Brazil' : 811814,
     'India' : 527908,
     'Russia' : 201040,
     'UK' : 239809,
-    'France' : 137560,
+    'France' : 178560,
     'Turkey' : 59767,
-    'Chile' : 41035,
+    'Chile' : 39414,
     'Germany' : 94700
 }
 # Start date for cases model training
 start_cases = {
-    'World' : '2021-05',
-    'USA' : '2021-05',
-    'Brazil' : '2021-05',
-    'India' : '2021-05',
-    'Russia' : '2021-05',
+    'World' : '2021-06',
+    'USA' : '2021-06',
+    'Brazil' : '2021-06',
+    'India' : '2021-06',
+    'Russia' : '2021-06',
     'South Africa' : '2020-09',
     'Peru' : '2020-08',
     'Colombia' : '2020-08-15',
     'Mexico' : '2020-07',
     'Spain' : '2020-06',
     'Argentina' : '2020-09-15',
-    'France' : '2021-05-21',
-    'UK' : '2021-05',
+    'France' : '2021-06',
+    'UK' : '2021-06',
     'Italy' : '2020-11',
-    'Turkey' : '2021-05', 
+    'Turkey' : '2021-06', 
     'Chile' : '2021-06',
-    'Germany' : '2021-05'
+    'Germany' : '2021-06'
     }
 # Start date for deaths model training
 start_deaths = {
-    'World' : '2021-05',
-    'USA' : '2021-05',
-    'Brazil' : '2021-05',
-    'India' : '2021-05',
-    'Russia' : '2021-05',
+    'World' : '2021-06',
+    'USA' : '2021-06',
+    'Brazil' : '2021-06',
+    'India' : '2021-06',
+    'Russia' : '2021-06',
     'South Africa' : '2020-09',
     'Peru' : '2020-09',
     'Colombia' : '2020-09',
     'Mexico' : '2020-08',
     'Spain' : '2020-08',
     'Argentina' : '2020-07',
-    'France' : '2021-05',
-    'UK': '2021-05',
+    'France' : '2021-06',
+    'UK': '2021-06',
     'Italy' : '2020-11',
     'Turkey' : '2021-05',
     'Chile' : '2021-06',
-    'Germany' : '2021-05'
+    'Germany' : '2021-06'
     }
 # Hyperparameters for cases model
 params_cases = {
