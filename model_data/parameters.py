@@ -3,16 +3,16 @@
 
 # Cases cap
 cap_cases = {
-    'World' : 730190132,
+    'World' : 890654436,
     'USA' : 145884474,
-    'Brazil' : 23529183,
-    'India' : 75707727,
+    'Brazil' : 33931609,
+    'India' : 89237264,
     'Russia' : 13102275,
-    'UK' : 32541485,
-    'France' : 26990394,
-    'Turkey' : 6081736,
-    'Chile' : 3231644,
-    'Germany' : 17382781
+    'UK' : 20541485,
+    'France' : 36990394,
+    'Turkey' : 14385627,
+    'Chile' : 2729127,
+    'Germany' : 19382781
 }
 # Deaths cap
 cap_deaths = {
@@ -23,9 +23,9 @@ cap_deaths = {
     'Russia' : 354677,
     'UK' : 238004,
     'France' : 238560,
-    'Turkey' : 59767,
+    'Turkey' : 129354,
     'Chile' : 48053,
-    'Germany' : 161904
+    'Germany' : 129267
 }
 # Start date for cases model training
 start_cases = {
@@ -43,29 +43,29 @@ start_cases = {
     'France' : '2021-09',
     'UK' : '2021-09',
     'Italy' : '2020-11',
-    'Turkey' : '2021-06', 
+    'Turkey' : '2021-09', 
     'Chile' : '2021-09',
     'Germany' : '2021-09'
     }
 # Start date for deaths model training
 start_deaths = {
-    'World' : '2021-06',
-    'USA' : '2021-06',
-    'Brazil' : '2021-06',
-    'India' : '2021-06',
-    'Russia' : '2021-06',
+    'World' : '2021-09',
+    'USA' : '2021-09',
+    'Brazil' : '2021-09',
+    'India' : '2021-09',
+    'Russia' : '2021-09',
     'South Africa' : '2020-09',
     'Peru' : '2020-09',
     'Colombia' : '2020-09',
     'Mexico' : '2020-08',
     'Spain' : '2020-08',
     'Argentina' : '2020-07',
-    'France' : '2021-06',
-    'UK': '2021-06',
+    'France' : '2021-09',
+    'UK': '2021-09',
     'Italy' : '2020-11',
-    'Turkey' : '2021-05',
-    'Chile' : '2021-06',
-    'Germany' : '2021-06'
+    'Turkey' : '2021-09',
+    'Chile' : '2021-09',
+    'Germany' : '2021-09'
     }
 # Hyperparameters for cases model
 params_cases = {
