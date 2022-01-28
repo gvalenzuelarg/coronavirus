@@ -2,279 +2,279 @@
 
 World:
 
-	Data on 26.01.2022:
+	Data on 27.01.2022:
 
-		Cases: 362.417.416 (+3.756.995).
-		Deaths: 5.626.669 (+10.801).
-		Mortality rate: 1,6%.
+		Cases: 366.249.339 (+3.699.450).
+		Deaths: 5.637.611 (+10.314).
+		Mortality rate: 1,5%.
 
 	Today's predictions:
 
-		Cases: 365.892.215 (+3.474.799).
-		Deaths: 5.636.489 (+9.820).
+		Cases: 369.766.502 (+3.517.163).
+		Deaths: 5.647.029 (+9.418).
 
 	Expected parameters:
 
 		Maximum daily infections on 18.02.2022.
-		Current pandemic's wave to end on 21.07.2023.
+		Current pandemic's wave to end on 28.07.2023.
 		Total number of cases: 890.654.436.
 		Total number of deaths: 8.706.476.
 		Final mortality rate: 1%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 205.717,19.
+		Root Mean Squared Error: 196.800,86.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 480,24.
+		Root Mean Squared Error: 476,28.
 		Explained Variance: 1.
 
 USA:
 
-	Data on 26.01.2022:
+	Data on 27.01.2022:
 
-		Cases: 72.910.136 (+653.120).
-		Deaths: 876.065 (+4.040).
+		Cases: 73.427.335 (+517.199).
+		Deaths: 878.421 (+2.356).
 		Mortality rate: 1,2%.
 
 	Today's predictions:
 
-		Cases: 73.531.305 (+621.169).
-		Deaths: 878.998 (+2.933).
+		Cases: 74.040.825 (+613.490).
+		Deaths: 881.072 (+2.651).
 
 	Expected parameters:
 
-		Maximum daily infections on 13.01.2022.
-		Current pandemic's wave to end on 14.04.2023.
+		Maximum daily infections on 14.01.2022.
+		Current pandemic's wave to end on 19.05.2023.
 		Total number of cases: 145.884.474.
 		Total number of deaths: 1.361.951.
 		Final mortality rate: 0,9%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 77.346,8.
+		Root Mean Squared Error: 83.108,86.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 348,71.
+		Root Mean Squared Error: 375,48.
 		Explained Variance: 1.
 
 India:
 
-	Data on 26.01.2022:
+	Data on 27.01.2022:
 
-		Cases: 40.371.500 (+286.384).
-		Deaths: 491.700 (+573).
+		Cases: 40.622.709 (+251.209).
+		Deaths: 492.327 (+627).
 		Mortality rate: 1,2%.
 
 	Today's predictions:
 
-		Cases: 40.674.985 (+303.485).
-		Deaths: 492.288 (+588).
+		Cases: 40.936.834 (+314.125).
+		Deaths: 492.931 (+604).
 
 	Expected parameters:
 
-		Maximum daily infections on 19.01.2022.
-		Current pandemic's wave to end on 04.11.2023.
+		Maximum daily infections on 20.01.2022.
+		Current pandemic's wave to end on 10.12.2023.
 		Total number of cases: 89.237.264.
 		Total number of deaths: 602.266.
 		Final mortality rate: 0,7%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 28.690,24.
+		Root Mean Squared Error: 29.099,91.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 209,4.
+		Root Mean Squared Error: 207,66.
 		Explained Variance: 1.
 
 Brazil:
 
-	Data on 26.01.2022:
+	Data on 27.01.2022:
 
-		Cases: 24.560.093 (+217.771).
-		Deaths: 624.717 (+588).
+		Cases: 24.789.795 (+229.702).
+		Deaths: 625.390 (+673).
 		Mortality rate: 2,5%.
 
 	Today's predictions:
 
-		Cases: 24.726.680 (+166.587).
-		Deaths: 625.175 (+458).
+		Cases: 24.960.541 (+170.746).
+		Deaths: 625.918 (+528).
 
 	Expected parameters:
 
-		Maximum daily infections on 20.01.2022.
-		Current pandemic's wave to end on 25.11.2022.
+		Maximum daily infections on 21.01.2022.
+		Current pandemic's wave to end on 05.11.2022.
 		Total number of cases: 33.931.609.
 		Total number of deaths: 723.370.
 		Final mortality rate: 2,1%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 18.591,22.
+		Root Mean Squared Error: 18.583,35.
 		Explained Variance: 0,999.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 103,36.
+		Root Mean Squared Error: 103,42.
 		Explained Variance: 1.
 
 France:
 
-	Data on 26.01.2022:
+	Data on 27.01.2022:
 
-		Cases: 17.848.291 (+427.722).
-		Deaths: 130.739 (+256).
+		Cases: 18.241.888 (+393.597).
+		Deaths: 131.008 (+269).
 		Mortality rate: 0,7%.
 
 	Today's predictions:
 
-		Cases: 18.222.451 (+374.160).
-		Deaths: 131.037 (+298).
+		Cases: 18.611.116 (+369.228).
+		Deaths: 131.304 (+296).
 
 	Expected parameters:
 
-		Maximum daily infections on 27.01.2022.
-		Current pandemic's wave to end on 30.07.2022.
+		Maximum daily infections on 20.01.2022.
+		Current pandemic's wave to end on 06.08.2022.
 		Total number of cases: 36.990.394.
 		Total number of deaths: 238.560.
 		Final mortality rate: 0,6%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 37.092,38.
+		Root Mean Squared Error: 34.224,06.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 32,96.
+		Root Mean Squared Error: 32,83.
 		Explained Variance: 1.
 
 UK:
 
-	Data on 26.01.2022:
+	Data on 27.01.2022:
 
-		Cases: 16.260.882 (+102.427).
-		Deaths: 155.221 (+346).
+		Cases: 16.358.047 (+97.165).
+		Deaths: 155.561 (+340).
 		Mortality rate: 1%.
 
 	Today's predictions:
 
-		Cases: 16.352.965 (+92.083).
-		Deaths: 155.515 (+294).
+		Cases: 16.449.442 (+91.395).
+		Deaths: 155.838 (+277).
 
 	Expected parameters:
 
-		Maximum daily infections on 02.01.2022.
-		Current pandemic's wave to end on 14.10.2022.
+		Maximum daily infections on 03.01.2022.
+		Current pandemic's wave to end on 30.09.2022.
 		Total number of cases: 20.541.485.
 		Total number of deaths: 238.004.
 		Final mortality rate: 1,2%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 7.899,79.
+		Root Mean Squared Error: 8.732,67.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 35,82.
+		Root Mean Squared Error: 35,66.
 		Explained Variance: 1.
 
 Turkey:
 
-	Data on 26.01.2022:
+	Data on 27.01.2022:
 
-		Cases: 11.167.927 (+77.434).
-		Deaths: 86.487 (+188).
+		Cases: 11.250.107 (+82.180).
+		Deaths: 86.661 (+174).
 		Mortality rate: 0,8%.
 
 	Today's predictions:
 
-		Cases: 11.237.720 (+69.793).
-		Deaths: 86.672 (+185).
+		Cases: 11.319.605 (+69.498).
+		Deaths: 86.823 (+162).
 
 	Expected parameters:
 
-		Maximum daily infections on 20.01.2022.
-		Current pandemic's wave to end on 27.10.2022.
+		Maximum daily infections on 21.01.2022.
+		Current pandemic's wave to end on 20.10.2022.
 		Total number of cases: 14.385.627.
 		Total number of deaths: 129.354.
 		Final mortality rate: 0,9%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 3.133,46.
+		Root Mean Squared Error: 2.802,37.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 22,35.
+		Root Mean Squared Error: 23,09.
 		Explained Variance: 1.
 
 Germany:
 
-	Data on 26.01.2022:
+	Data on 27.01.2022:
 
-		Cases: 9.317.280 (+228.608).
-		Deaths: 117.318 (+187).
-		Mortality rate: 1,3%.
+		Cases: 9.477.603 (+160.323).
+		Deaths: 117.488 (+170).
+		Mortality rate: 1,2%.
 
 	Today's predictions:
 
-		Cases: 9.461.770 (+144.490).
-		Deaths: 117.516 (+198).
+		Cases: 9.622.429 (+144.826).
+		Deaths: 117.626 (+138).
 
 	Expected parameters:
 
-		Maximum daily infections on 29.01.2022.
-		Current pandemic's wave to end on 13.10.2022.
+		Maximum daily infections on 28.01.2022.
+		Current pandemic's wave to end on 22.09.2022.
 		Total number of cases: 19.382.781.
 		Total number of deaths: 129.267.
 		Final mortality rate: 0,7%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 15.110,48.
+		Root Mean Squared Error: 15.099,66.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 78,07.
+		Root Mean Squared Error: 74,35.
 		Explained Variance: 1.
 
 Chile:
 
-	Data on 26.01.2022:
+	Data on 27.01.2022:
 
-		Cases: 2.020.082 (+18.736).
-		Deaths: 39.547 (+4).
-		Mortality rate: 2%.
+		Cases: 2.045.874 (+25.792).
+		Deaths: 39.594 (+47).
+		Mortality rate: 1,9%.
 
 	Today's predictions:
 
-		Cases: 2.036.961 (+16.879).
-		Deaths: 39.589 (+42).
+		Cases: 2.064.043 (+18.169).
+		Deaths: 39.606 (+12).
 
 	Expected parameters:
 
-		Maximum daily infections on 20.01.2022.
-		Current pandemic's wave to end on 01.10.2022.
+		Maximum daily infections on 21.01.2022.
+		Current pandemic's wave to end on 27.08.2022.
 		Total number of cases: 2.729.127.
 		Total number of deaths: 48.053.
 		Final mortality rate: 1,8%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 630,22.
+		Root Mean Squared Error: 1.008,01.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
 
-		Root Mean Squared Error: 17,9.
-		Explained Variance: 0,999.
+		Root Mean Squared Error: 16,38.
+		Explained Variance: 1.
