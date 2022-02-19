@@ -10,20 +10,20 @@ World:
 
 	Today's predictions:
 
-		Cases: 423.437.661 (+1.719.639).
+		Cases: 423.261.814 (+1.543.792).
 		Deaths: 5.882.507 (+8.459).
 
 	Expected parameters:
 
-		Maximum daily infections on 28.01.2022.
-		Current pandemic's wave to end on 04.10.2024.
-		Total number of cases: 890.654.436.
+		Maximum daily infections on 22.01.2022.
+		Current pandemic's wave to end on 08.07.2022.
+		Total number of cases: 472.115.633.
 		Total number of deaths: 7.077.108.
-		Final mortality rate: 0,8%.
+		Final mortality rate: 1,5%.
 
 	Cases model's metrics:
 
-		Root Mean Squared Error: 215.840,49.
+		Root Mean Squared Error: 234.537,59.
 		Explained Variance: 1.
 
 	Deaths model's metrics:
