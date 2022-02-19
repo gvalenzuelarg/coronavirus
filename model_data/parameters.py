@@ -3,7 +3,7 @@
 
 # Cases cap
 cap_cases = {
-    'World' : 890654436,
+    'World' : 472115633,
     'USA' : 81726292,
     'Brazil' : 31072238,
     'India' : 43912257,
